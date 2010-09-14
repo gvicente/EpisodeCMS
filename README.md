@@ -1,6 +1,7 @@
 EpisodeCMS
 ==========
 EpisodeCMS is Cake PHP based content management system.
+Visit official website http://episodecms.com/
 
 
 Requirements
@@ -12,8 +13,6 @@ Installation
 ------------
 * Unpack and rename to WEBROOT/Your-Project-Name
 * Set rights recursively 777 for WEBROOT/Your-Project-Name/*
-** Linux: sudo chmod -R 777 /var/www/Your-Project-Name/
-** Windows: right click on the folder, uncheck readonly recursivly)
 * Install Wizard not finished yet (install will run if no config.yml in PROJECT-ROOT)
 * Edit config.yml in PROJECT-ROOT: using YML specify your database
 * Create database specified in config.yml and import database.sql
