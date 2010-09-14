@@ -1,7 +1,7 @@
 EpisodeCMS
 ==========
 EpisodeCMS is Cake PHP based content management system.
-Visit official website [http://episodecms.com/]
+Visit [official website](http://episodecms.com/)
 
 
 Requirements
