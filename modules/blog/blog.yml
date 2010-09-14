@@ -1,0 +1,77 @@
+title: Blog
+version: 1.0.1
+description:|
+    Blog management system
+content:|
+    * Manage blog by "adding post":/controller:admin/action:edit/module:blog/model:Post/ and "browse posts":/controller:admin/action:browse/module:blog/model:Post/
+    * "Customize":/controller:admin/action:customize/module:blog/ it and move on
+routes:
+    /blog/:
+        controller:viewer
+        action:index
+        model:post
+        pass:[model]
+    /blog/:slug:
+        controller:viewer
+        action:view
+        model:post
+        pass:[model, slug]
+        slug:|
+            [^/]+
+admin:
+    Content:
+        Posts:
+            @link:
+                controller:admin
+                action:browse
+                module:blog
+            Categories:
+                @link:
+                    controller:admin
+                    action:browse
+                    module:core
+                    model:Category
+            Tags:
+                @link:
+                    controller:admin
+                    action:browse
+                    module:core
+                    model:Tag      
+notifications:
+  Comment:
+      icon:/modules/blog/public/comments.png
+      text:% new comments         
+      content:|
+        Some users have opinion about information stored in your blog. Be connected with your audience:
+        * "Answer comments":/controller:admin/action:customize/module:blog/
+        * And keep writing "new posts":/controller:admin/action:customize/module:blog/
+models:
+  Post:
+    @default:
+    @relations:
+        +category:tree
+        +tag:autocomplete
+        parent:Page|tree
+    @browse:
+        content:
+            column:Content
+            content:|
+                p>. _Date: {created}_
+                
+                {content|teaser}
+                
+                _&nbsp;{Tag|list}_
+    photo:thumb
+    title:string*
+    slug:string*
+    content:html*
+    created:#datetime
+    modified:#datetime
+    publish_start:datetime
+    publish_end:datetime
+    draft:bool
+  Comment:
+    @relations:
+      post:tree
+    content:html*
+    created:#datetime

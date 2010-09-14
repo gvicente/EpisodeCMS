@@ -1,0 +1,19 @@
+#languages {
+	position: fixed;
+	left: 0;
+	top:40%;
+	display: block;
+	background: #333;
+	overflow: hidden;
+}
+
+#languages a {
+	display:block; 
+	color:#fff;
+	padding: 5px;
+	outline: none;
+}
+
+#languages a:hover {
+	background: #555;
+}

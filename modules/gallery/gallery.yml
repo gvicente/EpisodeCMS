@@ -1,0 +1,35 @@
+title: Photo Gallery
+version: 1.0.1
+routes:
+    /gallery: 
+        controller:viewer
+        action:index
+        model:gallery
+        pass:[model]
+    /gallery/:slug:
+        controller:viewer
+        action:view
+        model:gallery
+        pass:[model, slug]
+        slug:|
+            [^/]+
+admin:
+    Content:
+        Gallery:
+            @link:
+                controller:admin
+                action:browse
+                module:gallery
+models:
+    Gallery:
+        @default:
+        @browse:
+            content:
+                column:Content
+                content:|
+                    !{photo}!
+        photo:photo
+        title:string*
+        slug:string*
+        description:html*
+        info:html*

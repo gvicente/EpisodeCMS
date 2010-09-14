@@ -1,0 +1,208 @@
+title: Content
+version: 1.0.1
+package: core
+content:|
+    * Start with "customize":/controller:admin/action:customize/module:core/ your site
+    * Change appearence with "themes":/controller:admin/action:themes/ and "describe navigation":/controller:admin/action:menus/
+    * Manage site by "adding page":/controller:admin/action:edit/module:core/model:Page/ and "browse pages":/controller:admin/action:browse/module:core/model:Page/
+    * Find out "users":/controller:admin/action:browse/module:core/model:User/ 
+scripts:
+	- /modules/core/public/jquery
+	- /modules/core/public/jquery.quicksearch
+	- /modules/core/public/jquery-ui/jquery-ui
+	- /modules/core/public/tinymce/jquery.tinymce
+	- /modules/core/public/jquery.synctranslit
+	- /modules/core/public/jquery.promo-slider
+	- /modules/core/public/ajaxupload
+	- /modules/core/public/jquery.rightClick
+styles:
+	- /modules/core/public/jquery-ui/smoothness/jquery-ui-1.8.2.custom
+options:
+    title:string
+    description:text
+    keywords:text
+    maintance:bool    	
+routes:
+    /:
+        controller:viewer
+        action:blank
+    /login:
+        controller:users
+        action:login
+    /logout:
+        controller:users
+        action:logout
+    /admin:
+    	controller:notifications 
+    	action:index
+    /admin/language/*:
+    	controller:admin
+    	action:language         
+    /admin/modules:
+    	controller:admin
+    	action:index        
+    /admin/restore: 
+    	controller:admin
+    	action:restore
+    /admin/overview: 
+    	controller:admin
+    	action:overview
+    /admin/menus/*: 
+    	controller:admin
+    	action:menus
+    /admin/themes/*: 
+    	controller:admin
+    	action:themes
+    /admin/install/:module: 
+    	controller:admin
+    	action:install
+    	pass:[module]
+    	module:|
+    		[a-zA-Z]+
+    /admin/uninstall/:module: 
+    	controller:admin
+    	action:uninstall
+    	pass:[module]
+    	module:|
+    		[a-zA-Z]+
+    /admin/customize/:module: 
+    	controller:admin
+    	action:customize
+    	pass:[module]
+    	module:|
+    		[a-zA-Z]+
+    /admin/:module/:model/edit/:id:
+    	controller:admin
+    	action:edit
+    	pass:[module, model, id]
+    	module:|
+    		[a-zA-Z]+
+    	model:|
+    		[a-zA-Z]+
+    /admin/:module/:model/delete/:id:
+    	controller:admin
+    	action:delete
+    	pass:[module, model, id]
+    	module:|
+    		[a-zA-Z]+
+    	model:|
+    		[a-zA-Z]+
+    /admin/:module/:model/edit/*:
+    	controller:admin
+    	action:edit
+    	pass:[module, model]
+    	module:|
+    		[a-zA-Z]+
+    	model:|
+    		[a-zA-Z]+
+    /admin/:module:
+    	controller:admin
+    	action:browse 
+    	pass:[module]
+    	module:|
+    		[a-zA-Z]+
+    /photo/upload:
+    	controller:viewer
+    	action:uploadPhoto
+    /admin/:module/:model: 
+    	controller:admin
+    	action:browse
+    	pass:[module, model]
+    	module:|
+    		[a-zA-Z]+
+    	model:|
+    		[a-zA-Z]+
+    /:model/:slug: 
+    	controller:viewer
+    	action:view
+    	pass:[model, slug]
+    	model:|
+    		[a-zA-Z]+
+    	slug:|
+    		[^/]+
+    /:model:
+    	controller:viewer
+    	action:index
+    	pass:[model]
+    	model:|
+    		[a-zA-Z]+
+admin:
+    Dashboard:
+	    @link:
+            controller:notifications
+            action:index
+	    Modules:
+            @link:
+                controller:admin
+                action:index
+	    Themes:          
+            @link:
+                controller:admin
+                action:themes
+	    Menus:
+            @link:
+                controller:admin
+                action:menus                              
+    Content:
+        @link:
+            controller:admin
+            action:overview
+        Pages|General information:
+            @link:
+                controller:admin
+                action:browse
+                module:core
+            Categories:
+                @link:
+                    controller:admin
+                    action:browse
+                    module:core
+                    model:Category
+            Tags:
+                @link:
+                    controller:admin
+                    action:browse
+                    module:core
+                    model:Tag 
+    Users:
+        @link:
+            controller:admin
+            action:browse
+            module:core
+            model:User  
+models:
+    Page:
+        @default:
+        @relations:
+            +category:tree
+            +tag:autocomplete
+            parent:Page|tree
+        @browse:
+            content:
+                column:Content
+                content:|
+                    {content|teaser}
+        title:string*
+        slug:string*
+        content:html*
+        created:#datetime
+        modified:#datetime
+        draft:bool
+    Tag:
+        title:string*
+        slug:string*
+    Category:
+        @belongsTo:Category
+        title:string*
+        slug:string*        
+	User:
+        username:string*
+        password:password*
+        photo:thumb
+        email:string
+	Notification:
+        sender:string*
+        object:string*
+        text:string*
+        created:#datetime
+        read:bool

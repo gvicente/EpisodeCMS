@@ -1,0 +1,27 @@
+debug:2
+title:Мой первый сайт
+
+description:|
+    Описание моего первого сайта
+    
+keywords:|
+    ключ, слово, первый сайт
+    
+users:
+    admin:admin
+
+database:
+    host:	    localhost
+    user:       root
+    password:    
+    name:       cakelibe
+
+ftp:
+    active:	    no
+    host:	    localhost
+    user:	    guest
+    password:
+    
+modules:
+    core:1.0.1
+    blog:1.0.1

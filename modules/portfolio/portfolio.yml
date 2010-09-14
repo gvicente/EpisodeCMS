@@ -1,0 +1,34 @@
+title: Portfolio
+version: 1.0.1
+routes:
+    /portfolios: 
+        controller:viewer
+        action:index
+        model:portfolio
+        pass:[model]
+    /portfolios/:slug:
+        controller:viewer
+        action:view
+        model:portfolio
+        pass:[model, slug]
+        slug:|
+            [^/]+
+admin:
+    Content:
+        Portfolio:
+            @link:
+                controller:admin
+                action:browse
+                module:portfolio
+models:
+    Portfolio:
+        @default:
+        @browse:
+            content:
+                column:Content
+                content:|
+                    {content|teaser}
+        thumb:photo
+        title:string*
+        slug:string*
+        content:html*

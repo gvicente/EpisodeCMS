@@ -1,0 +1,51 @@
+msgid "Control Panel"
+msgstr "Панель управления"
+
+msgid "Dashboard"
+msgstr "Консоль"
+
+msgid "Content"
+msgstr "Контент"
+
+msgid "Pages"
+msgstr "Страницы"
+
+msgid "Title"
+msgstr "Название"
+
+msgid "Browse :title"
+msgstr "Просмотр :title"
+
+msgid "Menus"
+msgstr "Меню"
+
+msgid "Themes"
+msgstr "Темы"
+
+msgid "Modules"
+msgstr "Модули"
+
+msgid "Users"
+msgstr "Пользователи"
+
+msgid "General information"
+msgstr "Основная информация"
+
+msgid "Visit Site"
+msgstr "На Сайт"
+
+msgid "You logined as :name"
+msgstr "Добро пожаловать, :name"
+
+msgid "Logout"
+msgstr "Выход"
+
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+msgid "* Start with \"customize\":/controller:admin/action:customize/module:core/ your site\n"
+"* Change appearence with \"themes\":/controller:admin/action:themes/ and \"describe navigation\":/controller:admin/action:menus/\n"
+"* Manage site by \"adding page\":/controller:admin/action:edit/module:core/model:Page/ and \"browse pages\":/controller:admin/action:browse/module:core/model:Page/\n"
+"* Find out \"users\":/controller:admin/action:browse/module:core/model:User/"
+msgstr "* Начните с \"настройки\":/controller:admin/action:customize/module:core/ вашего сайта\n"
+"* Найтройте \"тему\":/controller:admin/action:themes/ и \"меню\":/controller:admin/action:menus/\n"

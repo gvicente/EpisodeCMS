@@ -1,0 +1,9 @@
+title: Console
+version: 1.0.1
+package: console
+content:|
+  * Manage quickly 
+routes:
+  /console:
+    controller:console
+    action:index
