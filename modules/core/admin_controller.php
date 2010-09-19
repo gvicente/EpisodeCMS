@@ -8,7 +8,8 @@ class AdminController extends AppController {
 		if(Configure::read('config.backend.theme'))
 			$this->theme = Configure::read('config.backend.theme');
 
-		Configure::write('Config.language', Configure::read('config.admin-language'));
+		$language = Configure::read('config.admin-language');
+		Configure::write('Config.language', $language);
 
 		$modules = Configure::read('modules');
 
@@ -20,7 +21,7 @@ class AdminController extends AppController {
 		}
 
 		$this->widget('status', '../users/admin');
-		$this->widget('status', '../admin/languages');
+		$this->widget('status', '../admin/languages', compact('language'));
 
 		$this->Event->triggerEvent('AdminInit');
 

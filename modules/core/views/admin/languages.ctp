@@ -1,4 +1,5 @@
 <div id="admin-language">
-	<?php echo $html->link('rus', array('controller'=>'admin', 'action'=>'language', 'rus'))?>
-	<?php echo $html->link('eng', array('controller'=>'admin', 'action'=>'language', 'eng'))?>
+	<?php foreach(array('rus', 'eng') as $lang):?>
+		<?php echo $html->link($lang, array('controller'=>'admin', 'action'=>'language', $lang), array('class'=>$language==$lang?'active':''))?>
+	<?php endforeach;?>
 </div>

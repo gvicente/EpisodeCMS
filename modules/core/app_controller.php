@@ -5,9 +5,7 @@
 		var $theme = "default";
 		var $layout = "page";
 		var $helpers = array('Html', 'Form', 'Session', 'Javascript', 'Textile', 'Type', 'Filter');
-		var $components = array('RequestHandler', 'Session', 'Event', 'Cookie'
-		, 'Auth'
-		);
+		var $components = array('RequestHandler', 'Session', 'Event', 'Cookie');
 
 		function __construct() {
 			$this->view = 'Theme';
@@ -24,6 +22,9 @@
 			if($config['modules']['core']['maintance'] && $this->name!='Admin') {
 				$this->cakeError('maintance');
 			}
+
+			if($this->name!='Install')
+				$this->components[] = 'Auth';
 		}
 
 		function beforeRender() {
@@ -44,18 +45,18 @@
 		}
 
 		function beforeFilter() {
+			if($this->name!='Install') {
+				$this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
+				$this->Auth->loginRedirect = array('controller' => 'notifications', 'action' => 'index');
+				$this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
+				$this->Auth->fields = array('username' => 'username', 'password' => 'password');
 
-			$this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
-			$this->Auth->loginRedirect = array('controller' => 'notifications', 'action' => 'index');
-			$this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
-			$this->Auth->fields = array('username' => 'username', 'password' => 'password');
+				if($this->Auth->user() || ($this->name!='Admin' && $this->name!='Notifications')) {
+					$this->Auth->allow('*');
+				}
 
-			if($this->Auth->user() || ($this->name!='Admin' && $this->name!='Notifications')) {
-				$this->Auth->allow('*');
+				$this->Auth->authorize = 'controller';
 			}
-
-			$this->Auth->authorize = 'controller';
-
 		}
 
 		function widget($id, $view, $data=array(), $class=false, $filter=false) {

@@ -57,8 +57,24 @@ a:hover {
 	text-decoration: underline;
 }
 
-#breadcrumbs {
-	margin-top: 5px;
+#breadcrumbs a {
+	background: #eee;
+	padding: 3px 5px;
+	display:block;
+	float:left;
+	margin-top: -10px;
+	margin-bottom: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#breadcrumbs a:hover {
+	text-decoration: none;	
+	background: #aaa;
+} 
+
+#breadcrumbs h2 {
+	clear: both;	
 }
 
 #header {
@@ -73,17 +89,50 @@ a:hover {
 #status-bar {
 	float: right;
 	margin-top: -30px;
-	padding: 10px;	
+}
+
+#status-bar>div {
+	float: right;
+	padding:2px 6px;
+}
+
+#status-bar #admin-user-info {
+	background: #e0e0e0;
+	-moz-border-radius:5px;
+	border-radius:5px;	
+}
+
+#status-bar #admin-language a {
+	-moz-border-radius:3px;
+	border-radius:3px;
+	text-decoration: none;
+	background: #333;
+	color:#fff;
+	padding: 3px;
+	display: block;
+	margin-right: 3px;
+	float: left;	
+}
+
+#status-bar #admin-language a:hover {
+	background: #666;	
+}
+
+#status-bar #admin-language a.active {
+	background: #369;	
 }
 
 #status-bar #logout {
-	background: #9c0000;
-	color: #fff;
 	text-decoration: none;
+	color:#333;
+	font-size: 12px;
 }
 
-#status-bar #logout:hover {
-	background: #666;	
+#status-bar #logout span {
+	float: right;
+	background: url(images/delete.png);
+	margin-left: 3px;
+	margin-right: -3px;
 }
 
 #status-bar a {
@@ -121,7 +170,6 @@ a:hover {
 #center {
 	margin: 0 auto;
 	width: 600px;
-	margin-top: 20px;
 }
 
 #content p {
@@ -134,7 +182,7 @@ a:hover {
 }
 
 #content h2 {
-	margin: 1em 0;
+	margin: 0 0 1em 0;
 }
 
 #content h3 a {
@@ -149,7 +197,7 @@ a:hover {
 #content>table {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	border: solid 1px #333;
+	border: solid 1px #999;
 	width: 100%;
 }
 
@@ -167,13 +215,18 @@ a:hover {
 }
 
 #content thead tr {
-	background: #333;
-	color: #fff;
+	background: url("images/bc_bg.png");
+	color: #333;
 }
 
 #content>table td,#content>table th {
 	padding: 2px 5px;
-	border-left: solid 1px #ccc;
+	border-left: solid 1px #999;
+}
+
+#content>table th {
+	font-weight: normal;
+	border-bottom: solid 1px #999;
 }
 
 #content fieldset {
@@ -311,49 +364,85 @@ a:hover {
 	font-size: 14px;	
 	padding: 0 5px;
 	margin-right: 5px;
+	margin-top: 5px;
 }
 
-.delete, .add {
+.autocomplete .delete, .autocomplete .add {
+	text-indent: -99999px;
 	display: inline-block;
 	background:transparent;
-	color:#396;
-	padding:0px 5px;
-	-moz-border-radius:10px;
-	border-radius:10px;
+	padding:0px;
 	font-family: sans-serif;
-	font-size: 14px;
 	margin-left: 2px;	
+	opacity:0.7;
+	width:18px;
 }
 
-.delete:hover, .add:hover {
-	background:#396;
-	text-decoration: none;
-	color:#fff;
+.autocomplete .delete:hover, .autocomplete .add:hover {
+	opacity:1;
 }
 
-.delete {
-	color:#9c0000;
-	font-size: 10px;
+.autocomplete .delete {
+	background:url(images/delete.png) no-repeat;
+	color:#f000;
 }
 
-.delete:hover {
-	background:#9c0000;
+.autocomplete .add {
+	background:url(images/add.png) no-repeat;
 }
 
 .button {
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	background: #333;
-	color: #fff;
+	cursor:pointer;
+	border:solid 1px #999;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background: #eaeaea url("images/bc_bg.png");
+	color: #333;
 	text-decoration: none;
 	font-size: 14px;
 	padding: 2px 6px;
+	outline: none;
+	font-weight:normal;
+	display: inline-block;
+}
+
+.button span {
+	display: block;
+	float: left;
+	width: 18px;
+	height: 18px;
+}
+
+.button.add span {
+	background: url("images/add.png") no-repeat 0% 50%;
+}
+
+.button.edit span {
+	background: url("images/edit.png") no-repeat 0% 50%;
+}
+
+.button.delete span {
+	background: url("images/delete.png") no-repeat 0% 50%;
+}
+
+.button.save span {
+	background: url("images/save.png") no-repeat 0% 50%;
+}
+
+.button.cancel span {
+	background: url("images/cancel.png") no-repeat 0% 50%;
 }
 
 .button.hover,
 .button:hover {
-	background: #000;
 	text-decoration: none;
+	color: #666;
+	border:solid 1px #666;
+}
+
+.button:active {
+	border:solid 1px #eee;
+	-moz-box-shadow:1px 1px 1px #eee, -1px -1px 1px #666;
 }
 
 .button.disabled {
@@ -369,7 +458,6 @@ a:hover {
 	margin: 0 1%;
 	display: inline-block;
 	min-height: 100px;
-	margin-top: 20px;
 }
 
 #sidebar-right {
@@ -395,17 +483,17 @@ a:hover {
 }
 
 .widget h2 {
-	background: #369;
-	padding: 5px;
+	border-bottom:solid 1px #999;
+	background:url('images/bc_bg.png');
+	padding: 2px 5px;
 	font-size: 14px;
 	text-align: left;
 	margin: 0 !important;
+	font-weight: normal;
 }
 
 .widget h2, .widget h2 a {
-	color: #fff;
-	-moz-border-radius:5px;
-	border-radius:5px;
+	color:#333;
 }
 
 .widget h2 a {
@@ -441,11 +529,11 @@ a:hover {
 }
 
 #content .even.ui-selected td {
-	background: #eea !important;
+	background: #8fc5ea !important;
 }
 
 #content .odd.ui-selected td {
-	background: #dda !important;
+	background: #84b6d9 !important;
 }
 
 #content tfoot td {
@@ -593,6 +681,11 @@ a:hover {
 	margin-bottom: 5px;
 }
 
+.module li a:hover {
+	text-decoration: none;
+	background: #ccc;	
+}
+
 #header #site a {
 	background: none !important;
 }
@@ -680,15 +773,15 @@ a:hover {
 	font-weight: normal;
 }
 
-.holder ul li {
+.holder>ul>li {
 	display: block;
 	float: left;
 	position: relative;
 	height: 21px;
 	line-height: 21px;
 	margin: 0px 6px 0px 0;
-	padding: 0px 10px 0px 0;
-	font-size: .9167em;
+	padding: 0;
+	font-size: 11px;
 	background: url(images/separator.gif) no-repeat 100% 0;
 }
 
@@ -704,7 +797,7 @@ a:hover {
 	line-height: 21px;
 	overflow: hidden;
 	float: left;
-	padding-bottom: 10px;
+	width: 100%''
 }
 
 .holder ul li ul {
@@ -713,21 +806,37 @@ a:hover {
 	background: #eee;
 	color: #333;	
 	height: auto !important;
+}
+
+.holder>ul>li>ul {
 	top: 27px;
-	-moz-border-radius-bottomleft:5px;
-	-moz-border-radius-bottomright:5px;
 }
 
-.holder ul li ul li ul{
-	left:100px;	
+.holder>ul>li>a {
+	padding: 0 10px 10px 5px;
 }
 
-.holder ul li ul li {
+.holder>ul>li:hover {
+	background: #ddd;
+}
+
+.holder ul li li em {
+	line-height: 10px;
+	margin-bottom: 5px;
+	font-size: 10px;
+	color: #999;
+}
+
+.holder li li ul {
+	left:130px;
+}
+
+.holder li li {
 	float: none !important;
 	display: block !important;
 	background: none;
 	clear: both;	
-	width: 128px;
+	width: 130px;
 	height: auto;
 	
 }
@@ -735,7 +844,7 @@ a:hover {
 .holder ul li ul li a {
 	color: #666;	
 	height: auto;
-	width: 100%;
+	width: 120px;
 	padding: 5px;
 }
 
@@ -754,6 +863,10 @@ a:hover {
 	background:url(images/home.gif) no-repeat 0 0;
 }
 
+.holder ul li.first:hover {
+	background-color: transparent;	
+}
+
 .holder ul li.first a:hover {
 	background-position: 0 -16px;
 }
@@ -766,8 +879,24 @@ a:hover {
 	text-decoration: none;
 }
 
+.holder li li a:hover {
+	background: #ddd;
+}
+
 .holder ul li.last {
 	background: none;
 	margin-right: 0;
 	padding-right: 0;
+}
+
+.holder>ul>li.childs>a {
+	background-image: url(images/more-down.png);
+	background-repeat:no-repeat;
+	background-position: 50% 80%;
+}
+
+.holder li li.childs>a {
+	background-image: url(images/more-right.png);
+	background-repeat:no-repeat;
+	background-position: 100% 50%;
 }

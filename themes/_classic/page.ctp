@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html>
-<?php echo $headers; ?>
+<head>
+	<?php echo $headers; ?>
+	<script>
+	$(function(){
+		$('.button').each(function(){
+			$(this).prepend('<span>');
+		});
+
+		$('#menu-main li').each(function(){
+			var $this = $(this);
+			if($('ul li', $this).length>0)
+				$this.addClass('childs');
+		});
+	})
+	</script>
+</head>
 <body id="<?php echo($this->action)?>">
 	<div id="header">
 		<h1><?php echo $html->link(@$site_title, '/', array('target'=>'_blank')); ?></h1>

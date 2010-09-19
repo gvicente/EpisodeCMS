@@ -83,7 +83,7 @@
 		});
 	});
 </script>
-<h2>Browse <?php echo Inflector::pluralize($model) ?> <?php if(!$static) echo $html->link('Add', array('controller'=>'admin', 'action'=>'edit', 'model'=>$model, 'module'=>$module), array('class'=>'button')) ?></h2>
+<h2>Browse <?php echo Inflector::pluralize($model) ?> <?php if(!$static) echo $html->link('Add', array('controller'=>'admin', 'action'=>'edit', 'model'=>$model, 'module'=>$module), array('class'=>'button add')) ?></h2>
 <table cellspacing="0">
 	<thead>
 	<tr>
@@ -95,11 +95,13 @@
 	</tr>
 	</thead>
 	<tfoot>
+	<tr>
 		<td colspan="<?php echo sizeof($columns)+2 ?>">
 			<?php __('Selected elements:') ?>
-			<?php echo $html->link('Edit', array('action'=>'edit', 'module'=>$module, 'model'=>$model, 'id'=>'%'), array('class'=>'button multiple', 'id'=>'edit'))?>
-			<?php echo $html->link('Delete', array('action'=>'delete', 'module'=>$module, 'model'=>$model, 'id'=>'%'), array('class'=>'button multiple', 'id'=>'delete'))?>
+			<?php echo $html->link('Edit', array('action'=>'edit', 'module'=>$module, 'model'=>$model, 'id'=>'%'), array('class'=>'button edit multiple', 'id'=>'edit'))?>
+			<?php echo $html->link('Delete', array('action'=>'delete', 'module'=>$module, 'model'=>$model, 'id'=>'%'), array('class'=>'button delete multiple', 'id'=>'delete'))?>
 		</td>
+	</tr>
 	</tfoot>
 	<tbody>
 <?php if(@$data): ?>
