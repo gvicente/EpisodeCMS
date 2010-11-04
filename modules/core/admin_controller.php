@@ -1,13 +1,15 @@
 <?php
 class AdminController extends AppController {
-	var $theme = '_classic';
+	
 	var $uses = array();
-
+	
 	function beforeFilter() {
 		parent::beforeFilter();
 		if(Configure::read('config.backend.theme'))
 			$this->theme = Configure::read('config.backend.theme');
-
+		else
+			$this->theme = '_classic';
+			 
 		$language = Configure::read('config.admin-language');
 		Configure::write('Config.language', $language);
 
@@ -19,13 +21,16 @@ class AdminController extends AppController {
 				$menu = array_extend($menu, $config['admin']);
 			}
 		}
-
-		$this->widget('status', '../users/admin');
+		
+		$user_info = $this->Auth->user();
+		$this->widget('status', '../users/admin', array('user'=>$user_info['User']));
 		$this->widget('status', '../admin/languages', compact('language'));
 
 		$this->Event->triggerEvent('AdminInit');
 
+		$config = Configure::read('config.modules.core');
 		$this->set('layout_title', 'Control Panel');
+		$this->set('site_title', $config['title']);
 		$this->set('layout_redirect', array('controller'=>'notifications', 'action'=>'index'));
 		$this->set(compact('menu'));
 	}
@@ -77,6 +82,8 @@ class AdminController extends AppController {
 	}
 
 	function browse($module=null, $model=null) {
+		
+		// @todo Рефакторинг для демо
 		$restricted = Configure::read('config.modules.core.demo') == true && $model == 'User';
 
 		if($restricted)

@@ -1,7 +1,7 @@
 title: Content
 version: 1.0.1
 package: core
-content:|
+content: |
     * Start with "customize":/controller:admin/action:customize/module:core/ your site
     * Change appearence with "themes":/controller:admin/action:themes/ and "describe navigation":/controller:admin/action:menus/
     * Manage site by "adding page":/controller:admin/action:edit/module:core/model:Page/ and "browse pages":/controller:admin/action:browse/module:core/model:Page/
@@ -196,6 +196,11 @@ models:
         title:string*
         slug:string*        
 	User:
+        @browse:
+            content:
+                column:Photo
+                content:|
+                    !{photo}!
         username:string*
         password:password*
         photo:thumb

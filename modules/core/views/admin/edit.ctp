@@ -145,7 +145,7 @@
 </script>
 
 <div id="breadcrumbs">
-	<?php if(@$model): ?>
+	<?php if(isset($model) && $model): ?>
 	<script>
 	$(function(){
 		$("#<?php echo $model ?>Title").syncTranslit({destination: "<?php echo $model ?>Slug"});
@@ -158,9 +158,9 @@
 		$('.input input:first').select();
 	});
 	</script>
-	<h2>Edit <?php echo Inflector::humanize($model); ?></h2>
+	<h2><?php echo __('Edit', true).' '.__(Inflector::humanize($model), true); ?></h2>
 	<?php else: ?>
-	<h2>Edit <?php echo Inflector::humanize($module).' Options'; ?></h2>
+	<h2><?php echo __('Edit', true).' '.__(Inflector::humanize($module), true).' '.__('Options', true); ?></h2>
 	<?php $model = $module;	endif; ?>
 </div>
 
@@ -178,7 +178,6 @@ if(@$multiple) {
 }
 
 echo $type->renderFields($fields[$model]);
-
 if(@$fields[$model]):
 foreach($fields[$model] as $name => $params) {
 	if($name[0] != '@' && $params[0] != '#') {
@@ -240,7 +239,7 @@ foreach($fields[$model] as $name => $params) {
 				@$this->viewVars['widgets'] .=
 				'<div class="widget">'
 				.'<h2>'
-				.$title
+				.__($title, true)
 				.'</h2>'
 				.'<div class="content">'
 				.$content
@@ -257,7 +256,7 @@ foreach($fields[$model] as $name => $params) {
 				@$this->viewVars['widgets'] .=
 				'<div class="widget">'
 				.'<h2>'
-				.$title
+				.__($title, true)
 				.'</h2>'
 				.'<div class="content">'
 				.$content
@@ -275,7 +274,7 @@ endif;
 ?>
 </fieldset>
 <div class="submit">
-	<?php echo $html->link('Cancel', array('controller'=>'admin', 'action'=>'browse', 'model'=>$model, 'module'=>$module), array('class'=>'button cancel')) ?>
-	<button type="submit" class="button save">Save</button>
+	<?php echo $html->link(__('Cancel', true), array('controller'=>'admin', 'action'=>'browse', 'model'=>$model, 'module'=>$module), array('class'=>'button cancel')) ?>
+	<button type="submit" class="button save"><?php echo __('Save', true)?></button>
 </div>
 </form>

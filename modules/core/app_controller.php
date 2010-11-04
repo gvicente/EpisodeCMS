@@ -13,13 +13,14 @@
 
 			$menu = Configure::read('config.menus');
 			$this->set(compact('menu'));
+			
 			$config = Configure::read('config');
-			if($config['frontend']['theme'])
+			if(isset($config['frontend']['theme']))
 				$this->theme = $config['frontend']['theme'];
 
 			$this->set('site_theme', $this->theme);
 
-			if($config['modules']['core']['maintance'] && $this->name!='Admin') {
+			if(isset($config['modules']['core']['maintance']) && $config['modules']['core']['maintance'] && $this->name!='Admin') {
 				$this->cakeError('maintance');
 			}
 

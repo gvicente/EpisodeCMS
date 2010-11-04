@@ -13,7 +13,10 @@
 	            $this->controller =& new Controller();
 	            $this->controller->viewPath = 'errors';
 	        }
-
+	        
+	        // @todo Подумать над решением:
+			$this->controller->theme = '_classic';
+			
 	        $options = array('escape' => false);
 	        $messages = Sanitize::clean($messages, $options);
 

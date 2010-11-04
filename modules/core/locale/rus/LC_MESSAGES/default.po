@@ -43,6 +43,30 @@ msgstr "Выход"
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
+msgid "Add"
+msgstr "Добавить"
+
+msgid "Add new"
+msgstr "Добавить новый"
+
+msgid "Edit"
+msgstr "Изменить"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Category"
+msgstr "Рубрика"
+
+msgid "Tag"
+msgstr "Метка"
+
 msgid "* Start with \"customize\":/controller:admin/action:customize/module:core/ your site\n"
 "* Change appearence with \"themes\":/controller:admin/action:themes/ and \"describe navigation\":/controller:admin/action:menus/\n"
 "* Manage site by \"adding page\":/controller:admin/action:edit/module:core/model:Page/ and \"browse pages\":/controller:admin/action:browse/module:core/model:Page/\n"

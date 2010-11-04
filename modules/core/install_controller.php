@@ -9,8 +9,9 @@
 					if(!$sample = load(ROOT.DS.'modules'.DS.'core'.DS.'config.default')) {
 						$sample['database'] = array(
 							'host'=>'localhost',
+							'name'=>'site',
+							'create_on_install'=>true,
 							'user'=>'root',
-							'database'=>'site',
 							'password'=>''
 						);
 					}
