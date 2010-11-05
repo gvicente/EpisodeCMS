@@ -38,9 +38,10 @@ function save($file, $array) {
 }
 
 if($config = load(ROOT.DS.'config'))
-Configure::write('debug', @$config['debug']||0);
+    Configure::write('debug', @$config['debug']||0);
 
 Configure::write('config', $config);
+
 if(!@$config || !@$config['modules']['core'])
 $config['modules']['core'] = 0;
 
@@ -64,7 +65,7 @@ foreach($controllerPaths as $path) {
 }
 
 function __controllerize($file) {
-	return Inflector::camelize(r('_controller.php', '', $file));
+	return Inflector::camelize(str_replace('_controller.php', '', $file));
 }
 
 Configure::write(compact('modules', 'controllers'));

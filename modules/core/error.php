@@ -15,7 +15,7 @@
 	        }
 	        
 	        // @todo Подумать над решением:
-			$this->controller->theme = '_classic';
+//			$this->controller->theme = '_classic';
 			
 	        $options = array('escape' => false);
 	        $messages = Sanitize::clean($messages, $options);
