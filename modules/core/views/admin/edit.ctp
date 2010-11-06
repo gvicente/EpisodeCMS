@@ -158,9 +158,10 @@
 	});
 	</script>
 	<h2><?php echo __('Edit', true).' '.__(Inflector::humanize($model), true); ?></h2>
+	<?php $customize = false;?>
 	<?php else: ?>
 	<h2><?php echo __('Edit', true).' '.__(Inflector::humanize($module), true).' '.__('Options', true); ?></h2>
-	<?php $model = $module;	endif; ?>
+	<?php $model = $module;	$customize = true; endif; ?>
 </div>
 
 <?php echo $form->create($model, array('url'=>'/'.$this->params['url']['url'])) ?>
@@ -172,7 +173,7 @@ if(@$multiple) {
 		echo $form->input($data[$id][$model]['title'], array('name'=>'id[]', 'value'=>$id, 'type'=>'checkbox', 'checked'=>'checked'));
 	}
 	echo '</div>';
-} elseif(@$model) {
+} elseif(@$model && !$customize) {
 	echo $form->input('id', array('type'=>'hidden'));
 }
 

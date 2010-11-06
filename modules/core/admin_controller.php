@@ -31,7 +31,8 @@ class AdminController extends AppController {
 		// @todo: Не самый лучший образ проверять конфиги
 		$config = Configure::read('config.modules.core');
 		$config = is_array($config)?$config:null;
-		$this->set('site_title', @$config['title']);
+		$site_title = $config['title']?$config['title']:__('EpisodeCMS', true);
+		$this->set(compact('site_title'));
 		$this->set('layout_title', 'Control Panel');
 		$this->set('layout_redirect', array('controller'=>'notifications', 'action'=>'index'));
 		$this->set(compact('menu'));
