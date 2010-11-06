@@ -143,7 +143,6 @@
 		$('.autocomplete').autocompleter();
 	});
 </script>
-
 <div id="breadcrumbs">
 	<?php if(isset($model) && $model): ?>
 	<script>

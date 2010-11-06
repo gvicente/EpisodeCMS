@@ -9,12 +9,13 @@ class InstallController extends AppController {
 				if(!$sample = load(ROOT.DS.'modules'.DS.'core'.DS.'config.default')) {
 					$sample['database'] = array(
 						'host'=>'localhost',
-						'name'=>'site',
+						'database'=>'site',
 						'create_on_install'=>true,
-						'user'=>'root',
+						'login'=>'root',
 						'password'=>''
 					);
 				}
+				
 		$this->default = $sample;
 
 		$this->menu = array(
@@ -29,25 +30,22 @@ class InstallController extends AppController {
 
 	function index() {
 		if(!isset($this->data['Database'])) {
-			$this->data['Database']['host'] 	= @$this->default['database']['host'];
-			$this->data['Database']['name'] 	= @$this->default['database']['name'];
-			$this->data['Database']['user'] 	= @$this->default['database']['user'];
-			$this->data['Database']['password']	= @$this->default['database']['password'];
+			$this->data['Database'] = $this->default['database'];
 		} else {
 			$this->Session->write('database', $this->data['Database']);
 			$config['database'] = $this->data['Database'];
 			
 			$connected = false;
 			$database_exists = false;
-			
-			$connected = mysql_connect($config['database']['host'], $config['database']['user'], $config['database']['password']);
+			$connected = mysql_connect($config['database']['host'], $config['database']['login'], $config['database']['password']);
 			if($connected) {
 				if($config['database']['create_on_install'] == true) {
-					try {
-					   $database_exists = !mysql_query("CREATE DATABASE `{$config['database']['name']}`;");
-					} catch(Exception $exception) {
-						
+					if($database_exists = mysql_select_db($config['database']['database'])) {
+					  mysql_query("DROP DATABASE {$config['database']['database']}");	
 					}
+					
+					$database_exists = mysql_query("CREATE DATABASE {$config['database']['database']}");
+
 					unset($config['database']['create_on_install']);
 				}
 				
@@ -61,13 +59,22 @@ class InstallController extends AppController {
 					// @todo: Найти другой способ генерации данных
 					Configure::write('config', $config);
 					
+					$_this =& ConnectionManager::getInstance();
+					$_this->config->{'default'} = array_merge($_this->config->{'default'}, $config['database']);
+					 
 					require_once "admin_controller.php";
 
-					// @todo: Подключиться к базе
-//					DATABASE_CONFIG
-					
 			        $admin_controller = new AdminController();
-			        $admin_controller->install('core', '/admin/');
+			        $admin_controller->install('core', false);
+			        
+			        $admin_controller->data = array(
+			             'username'=>'admin',
+			             'password'=>Security::hash('admin')
+			        );
+			        
+			        $admin_controller->edit('core', 'User', null, false);
+			        
+			        $this->redirect('/admin/customize/core');
 				} else {
 					$this->Session->setFlash('Problem with database');
                     $this->redirect('/');

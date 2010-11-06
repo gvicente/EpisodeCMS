@@ -1,10 +1,10 @@
 ---
 database: 
   host: localhost
-  user: root
+  login: root
   create_on_install: true
   password: password
-  name: episode
+  database: episode
 ftp: 
   active: false
   host: localhost

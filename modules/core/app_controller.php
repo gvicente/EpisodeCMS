@@ -15,12 +15,14 @@
 			$this->set(compact('menu'));
 			
 			$config = Configure::read('config');
-			if(isset($config['frontend']['theme']))
+
+			if(Configure::read('config.frontend.theme'))
 				$this->theme = $config['frontend']['theme'];
 
 			$this->set('site_theme', $this->theme);
-
-			if(isset($config['modules']['core']['maintance']) && $config['modules']['core']['maintance'] && $this->name!='Admin') {
+			
+			$maintance = is_array($config['modules']['core']) && $config['modules']['core']['maintance'];
+			if($maintance && $this->name!='Admin') {
 				$this->cakeError('maintance');
 			}
 
@@ -39,10 +41,12 @@
 				$title = $this->name;
 
 			$config = Configure::read('config.modules.core');
-
-			$this->set('title_for_layout', $title.' '.$config['title']);
-			$this->set('keywords', $config['keywords']);
-			$this->set('description', $config['description']);
+			
+            if(is_array($config['title'])) {
+				$this->set('title_for_layout', $title.' '.$config['title']);
+				$this->set('keywords', $config['keywords']);
+				$this->set('description', $config['description']);
+            }
 		}
 
 		function beforeFilter() {

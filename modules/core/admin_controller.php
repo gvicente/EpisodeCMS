@@ -28,9 +28,11 @@ class AdminController extends AppController {
 
 		$this->Event->triggerEvent('AdminInit');
 
+		// @todo: Не самый лучший образ проверять конфиги
 		$config = Configure::read('config.modules.core');
+		$config = is_array($config)?$config:null;
+		$this->set('site_title', @$config['title']);
 		$this->set('layout_title', 'Control Panel');
-		$this->set('site_title', $config['title']);
 		$this->set('layout_redirect', array('controller'=>'notifications', 'action'=>'index'));
 		$this->set(compact('menu'));
 	}
@@ -194,7 +196,7 @@ class AdminController extends AppController {
 		}
 	}
 
-	function edit($module, $model, $id = null) {
+	function edit($module, $model, $id = null, $redirect = true) {
 		$fields = Configure::read('modules.'.$module.'.models');
 
 		if(!$fields[$model]) {
@@ -253,7 +255,8 @@ class AdminController extends AppController {
 					}
 				}
 			}
-			$this->redirect(array('action'=>'browse', 'model'=>$model, 'module'=>$module));
+			if($redirect)
+			     $this->redirect(array('controller'=>'admin', 'action'=>'browse', 'model'=>$model, 'module'=>$module));
 		}
 
 		$data = array();
@@ -426,7 +429,7 @@ class AdminController extends AppController {
 		clearCache(null, 'models');
 
 		if($redirect)
-		$this->redirect(array('action'=>'index'));
+            $this->redirect(array('action'=>'index'));
 	}
 
 	function uninstall($module, $redirect=true) {
@@ -505,14 +508,21 @@ class AdminController extends AppController {
 	}
 
 	function customize($module = 'core') {
+		
 		if(!empty($this->data)) {
 			$config = Configure::read('config');
-			$config['modules'][$module] = array_extend(Configure::read('config.modules.'.$module), $this->data[$module]);
+			
+			// @todo: Какое-то странное изваятельство
+			if(is_array(Configure::read('config.modules.'.$module)))
+		        $config['modules'][$module] = array_extend(Configure::read('config.modules.'.$module), $this->data[$module]);
+		    else
+		        $config['modules'][$module] = $this->data[$module];
 			save(ROOT.DS.'config', $config);
 			$this->redirect(array('controller'=>'admin', 'action'=>'index'));
 		}
 
-		$this->data[$module] = Configure::read('config.modules.'.$module);
+		if(is_array($options = Configure::read('config.modules.'.$module)))
+		      $this->data[$module] = $options;
 		if(!$fields[$module] = Configure::read('modules.'.$module.'.options')) {
 			$this->Session->setFlash('Module <strong>'.$module.'</strong> has no options to customize');
 			$this->redirect(array('controller'=>'admin', 'action'=>'index'));

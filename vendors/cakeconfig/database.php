@@ -9,9 +9,9 @@ eval("
 			'driver' => 'mysql',
 			'persistent' => false,
 			'host' => '".$config['database']['host']."',
-			'login' => '".$config['database']['user']."',
+			'login' => '".$config['database']['login']."',
 			'password' => '".$config['database']['password']."',
-			'database' => '".$config['database']['name']."',
+			'database' => '".$config['database']['database']."',
 			'prefix' => '',
 		);
 		
