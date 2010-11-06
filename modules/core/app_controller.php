@@ -21,7 +21,7 @@
 
 			$this->set('site_theme', $this->theme);
 			
-			$maintance = is_array($config['modules']['core']) && $config['modules']['core']['maintance'];
+			$maintance = isset($config['modules']) && is_array($config['modules']['core']) && $config['modules']['core']['maintance'];
 			if($maintance && $this->name!='Admin') {
 				$this->cakeError('maintance');
 			}
