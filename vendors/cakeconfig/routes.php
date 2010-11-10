@@ -7,7 +7,6 @@
 		Router::connect('/', array('controller'=>'install'));
 	} else {
 		Router::parseExtensions('json', 'rss', 'xml');
-
 		$routes = array();
 		foreach($config['modules'] as $module=>$version) {
 			if(sizeof(@$modules[$module]['routes'])>1) {

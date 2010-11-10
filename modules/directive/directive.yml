@@ -1,0 +1,31 @@
+title: Directive
+version: 1.0.1
+description:|
+    Project management
+content:|
+    * Manage your project, resource and tasks
+routes:
+    /: 
+        controller:directive
+        action:index
+    /project/:slug:
+        controller:directive
+        action:view
+        pass:[slug]
+        slug:|
+            [^/]+
+    /project/:slug:/edit:
+        controller:directive
+        action:edit
+        pass:[slug]
+        slug:|
+            [^/]+    
+    /admin/directive:
+        controller:directive
+        action:admin_browse                      
+admin:
+    Content:
+        Directive:
+            @link:
+                controller:directive
+                action:admin_browse

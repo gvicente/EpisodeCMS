@@ -31,7 +31,7 @@
 		}
 
 		function beforeRender() {
-			if ($this->RequestHandler->isAjax()) {
+            if ($this->RequestHandler->isAjax()) {
 				$this->view = 'Json';
 			}
 
