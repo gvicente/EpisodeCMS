@@ -337,8 +337,10 @@ class AdminController extends AppController {
 		$this->redirect(array('action'=>'index'));
 	}
 
+    /*
+     * TODO: Fix saving with dashes.
+     */
 	function install($module, $redirect=true) {
-
 		$this->loadModel('Database');
 		$data = load(ROOT.DS.'modules'.DS.$module.DS.$module);
 

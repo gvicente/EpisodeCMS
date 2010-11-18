@@ -1,14 +1,10 @@
 ---
 database: 
   host: localhost
-  database: directive
+  database: episode
   login: root
   password: password
 modules: 
-  core: 
-    title: Directive
-    description: 
-    keywords: 
-    maintance: 0
-  directive: 1.0.1
-debug: 4
+  core: 1.0.1
+  episode-modules: 1.0.1
+  EpisodeModules: 1.0.1
