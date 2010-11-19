@@ -1,7 +1,9 @@
 <?php 
 class TypeHelper extends AppHelper { 
     function renderFields($fields = array()) {
+    	
     	$this->output = '';
+    	
     	foreach($fields as $field=>$type) {
     		if($field[0] != '@' && $field[0] != '#') {
 	    		$required = $type;
@@ -10,7 +12,7 @@ class TypeHelper extends AppHelper {
 	    		
 	    		$hidden = $type;
 	    		$type = str_replace('#', '', $type);
-	    		$hidden = $type!=$hidden;
+	    		$hidden = ($type != $hidden);
 	    		
 	    		if(!$hidden) {
 	    			$helperClass = 'TypeString';
