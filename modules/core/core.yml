@@ -15,6 +15,7 @@ scripts:
 	- /modules/core/public/jquery.promo-slider
 	- /modules/core/public/ajaxupload
 	- /modules/core/public/jquery.rightClick
+    - /modules/core/public/jquery.autocompleter	
 styles:
 	- /modules/core/public/jquery-ui/smoothness/jquery-ui-1.8.2.custom
 options:
