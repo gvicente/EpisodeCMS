@@ -35,7 +35,16 @@ class ThemeView extends View {
 
 	function _paths($plugin = null, $cached = true) {
 		$paths = parent::_paths($plugin, $cached);
+        $modules = Configure::read('modules');
 		if (!empty($this->theme)) {
+
+            foreach($modules as $module => $config) {
+                $paths = array_merge(
+                    array(ROOT . DS . 'modules' . DS . $module . DS . 'themes' . DS . $this->theme . DS),
+                    $paths
+                );
+            }
+
 			$paths = array_merge(array(ROOT.DS.'themes'. DS . $this->theme . DS), $paths);
 		}
 
@@ -55,13 +64,24 @@ class ThemeView extends View {
 		$scripts = array();
 		$styles = array();
 		$modules = Configure::read('modules');
-		foreach($modules as $config) {
+		foreach($modules as $module => $config) {
 			if(isset($config['scripts']))
 				$scripts = array_merge($scripts, $config['scripts']);
+
 			if(isset($config['styles']))
 				$styles = array_merge($styles, $config['styles']);
+            
+            if (file_exists(ROOT . DS . 'modules' . DS . $module . DS . 'themes' . DS . 'default' . DS . 'style.css')) {
+                $styles[] = '/modules/' . $module . '/themes/default/style';
+            }
+
+            if (file_exists(ROOT . DS . 'modules' . DS . $module . DS . 'themes' . DS . $this->theme . DS . 'style.css')) {
+                $styles[] = '/modules/' . $module . '/themes/'.$this->theme.'/style';
+            }
 		}
-		$styles[] = '/themes/'.$this->theme.'/style';
+        
+        if (file_exists(ROOT . DS . 'themes' . DS . $this->theme . DS . 'style.css'))
+            $styles[] = '/themes/'.$this->theme.'/style';
 
 		$content_for_layout = @$this->viewVars['top'] . @$content_for_layout . @$this->viewVars['bottom'];
 		unset($this->viewVars['top']);

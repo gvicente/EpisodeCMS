@@ -493,7 +493,7 @@ class AdminController extends AppController {
                 if(file_exists(ROOT . DS . 'themes'.DS.$themeFolder.DS.'screenshot.png')) {
                     $theme['screenshot'] = '/themes/'.$themeFolder.'/screenshot.png';
                 } else {
-                    $theme['screenshot'] = '/modules/core/views/admin/no-screenshot.png';
+                    $theme['screenshot'] = false;
                 }
                 $themes[$themeFolder] = $theme;
             }
