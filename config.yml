@@ -1,9 +1,0 @@
----
-database: 
-  host: localhost
-  database: episode
-  login: root
-  password: password
-modules: 
-  core: 1.0.1
-  blog: 1.0.1

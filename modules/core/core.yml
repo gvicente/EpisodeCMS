@@ -15,7 +15,7 @@ scripts:
 	- /modules/core/public/jquery.promo-slider
 	- /modules/core/public/ajaxupload
 	- /modules/core/public/jquery.rightClick
-    - /modules/core/public/jquery.autocompleter	
+  - /modules/core/public/jquery.autocompleter	
 styles:
 	- /modules/core/public/jquery-ui/smoothness/jquery-ui-1.8.2.custom
 options:
@@ -28,13 +28,13 @@ routes:
         controller:viewer
         action:blank
     /login:
-        controller:users
-        action:login
+      controller:users
+      action:login
     /logout:
-        controller:users
-        action:logout
+      controller:users
+      action:logout
     /admin:
-    	controller:notifications 
+      controller:notifications
     	action:index
     /admin/language/*:
     	controller:admin

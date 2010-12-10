@@ -1,8 +1,8 @@
 title: Episode Modules
 version: 1.0.1
-description:|
+description: |
     Module repository
-content:|
+content: |
     * Manage your modules
 routes:
     /: 
@@ -26,6 +26,6 @@ routes:
 admin:
     Content:
         Modules:
-            @link:
+            _link:
                 controller:modules
                 action:admin_browse
