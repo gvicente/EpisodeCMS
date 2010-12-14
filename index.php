@@ -1,4 +1,7 @@
 <?php
+// Bootstrap file
+
+
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__FILE__));
 define('APP_DIR', '.');
