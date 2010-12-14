@@ -1,9 +1,9 @@
-title: Episode Modules
+title: Project TeachMe
 version: 1.0.1
 description: |
-    Module repository
+    TeachMe - social network to collaborate
 content: |
-    * Manage your modules
+    * Manage your Network
 routes:
     /: 
         controller:modules
@@ -20,7 +20,7 @@ routes:
         pass:[slug]
         slug:|
             [^/]+    
-    /admin/EpisodeModules:
+    /admin/TeachMe:
         controller:modules
         action:admin_browse
 admin:
