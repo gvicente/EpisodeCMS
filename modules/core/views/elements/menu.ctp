@@ -2,17 +2,17 @@
 	// :TODO: Move to helper Navigation (or nav or menu)
 	if(!function_exists('get_childs')) {
 		function get_childs($items = false, $_this) {
-			if(is_array(@$items['@link']))
-				unset($items['@link']);
+			if(is_array(@$items['_link']))
+				unset($items['_link']);
 			if($items && is_array($items)) {
 				$hasActive = false;
 				$result = '<ul>';
 				foreach($items as $title=>$item) {
 					$childs = get_childs(@$item, $_this);
 					// :TODO: Check if it's active
-					$isActive = (Router::url(@$item['@link']) == $_this->here);
+					$isActive = (Router::url(@$item['_link']) == $_this->here);
 					$hasActive = @$isActive || @$childs['hasActive'];
-					if($title!='@link') {
+					if($title!='_link') {
 						$result.= '<li>';
 
 			 			unset($subtitle);
@@ -21,7 +21,7 @@
 							list($title, $subtitle) = explode('|', $title);
 						}
 
-						$result.= '<a href="'.Router::url(@$item['@link']).'">'.__($title, true);
+						$result.= '<a href="'.Router::url(@$item['_link']).'">'.__($title, true);
 
 						if(!empty($subtitle))
 							$result.= '<em>'.__($subtitle, true).'</em>';
@@ -49,14 +49,14 @@ if(isset($menu))
 foreach($menu as $title=>$item) {
 	$childs = get_childs(@$item, $this);
 	unset($subtitle);
-	$item['active']	= ($this->here == Router::url(@$item['@link']));
+	$item['active']	= ($this->here == Router::url(@$item['_link']));
 	?>
 	<li<?php echo @$item['active']?' class="active"':''?>>
 		<?php
 			if(strpos($title, '|')!==false) {
 				list($title, $subtitle) = explode('|', $title);
 			}
-			echo '<a href="'.Router::url(@$item['@link']).'">'.__($title, true);
+			echo '<a href="'.Router::url(@$item['_link']).'">'.__($title, true);
 			if(!empty($subtitle))
 				echo '<em>'.__($subtitle, true).'</em>';
 			echo '</a>';
