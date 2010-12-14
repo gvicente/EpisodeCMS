@@ -1,0 +1,31 @@
+title: Project TeachMe
+version: 1.0.1
+description: |
+    TeachMe - social network to collaborate
+content: |
+    * Manage your Network
+routes:
+    /: 
+        controller:modules
+        action:index
+    /modules/:slug:
+        controller:modules
+        action:view
+        pass:[slug]
+        slug:|
+            [^/]+
+    /project/:slug:/edit:
+        controller:module
+        action:edit
+        pass:[slug]
+        slug:|
+            [^/]+    
+    /admin/TeachMe:
+        controller:modules
+        action:admin_browse
+admin:
+    Content:
+        Modules:
+            _link:
+                controller:modules
+                action:admin_browse
