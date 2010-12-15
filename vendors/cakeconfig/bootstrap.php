@@ -41,13 +41,23 @@ function save($file, $array) {
 if ($config = load(ROOT . DS . 'config'))
     Configure::write('debug', @$config['debug'] || 0);
 
-Configure::write('config', $config);
+$modules = array();
+
+if (isset($config['project'])) {
+    $project_config = load(ROOT . DS . 'projects' . DS . $config['project'] . DS . 'project');
+
+    if (!isset($project_config['version']))
+        $project_config['version'] = 0;
+
+    $config['modules'][$config['project']] = $project_config['version'];
+    $config = array_extend($config, $project_config);
+}
 
 if (!@$config || !@$config['modules']['core'])
     $config['modules']['core'] = 0;
 
 foreach ($config['modules'] as $module => $version) {
-    $modules[$module] = load(ROOT . DS . 'modules' . DS . $module . DS . $module);
+    $modules[$module] = load(ROOT . DS . 'modules' . DS . $module . DS . 'module');
     $controllerPaths[] = ROOT . DS . 'modules' . DS . $module;
     $modelPaths[] = ROOT . DS . 'modules' . DS . $module . DS . 'models';
     $viewPaths[] = ROOT . DS . 'modules' . DS . $module . DS . 'views' . DS;
@@ -56,7 +66,19 @@ foreach ($config['modules'] as $module => $version) {
     $localePaths[] = ROOT . DS . 'modules' . DS . $module . DS . 'locale' . DS;
 }
 
+if (isset($config['project'])) {
+    $controllerPaths[] = ROOT . DS . 'projects' . DS . $config['project'];
+    $modelPaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'models';
+    $viewPaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'views' . DS;
+    $helperPaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'views' . DS . 'helpers' . DS;
+    $componentPaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'components' . DS;
+    $localePaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'locale' . DS;
+
+    $modules[$config['project']] = $project_config;
+}
+
 Configure::write('modules', $modules);
+Configure::write('config', $config);
 
 $Folder = & new Folder();
 $controllers = array();

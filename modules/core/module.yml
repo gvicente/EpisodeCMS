@@ -1,0 +1,214 @@
+title: Content
+version: 1.0.1
+package: core
+content: |
+  * Start with "customize":/controller:admin/action:customize/module:core/ your site
+  * Change appearence with "themes":/controller:admin/action:themes/ and "describe navigation":/controller:admin/action:menus/
+  * Manage site by "adding page":/controller:admin/action:edit/module:core/model:Page/ and "browse pages":/controller:admin/action:browse/module:core/model:Page/
+  * Find out "users":/controller:admin/action:browse/module:core/model:User/ 
+scripts:
+	- jquery
+	- jquery.quicksearch
+	- jquery-ui/jquery-ui
+	- tinymce/jquery.tinymce
+	- jquery.synctranslit
+	- jquery.promo-slider
+	- ajaxupload
+	- jquery.rightClick
+  - jquery.autocompleter	
+styles:
+  - jquery-ui/smoothness/jquery-ui-1.8.2.custom
+options:
+  title: string
+  description: text
+  keywords: text
+  maintance: bool
+routes:
+  /:
+    controller: viewer
+    action: blank
+  /login:
+    controller: users
+    action: login
+  /logout:
+    controller: users
+    action: logout
+  /admin:
+    controller: notifications
+    action: index
+  /admin/language/*:
+    controller: admin
+    action: language
+  /admin/modules:
+    controller: admin
+    action: index
+  /admin/restore:
+    controller: admin
+    action: restore
+  /admin/overview:
+    controller: admin
+    action: overview
+  /admin/menus/*:
+    controller: admin
+    action: menus
+  /admin/themes/*:
+    controller: admin
+    action: themes
+  /admin/install/:module:
+    controller: admin
+    action: install
+    pass: [module]
+    module: |
+      [^/]+
+  /admin/uninstall/:module:
+    controller: admin
+    action: uninstall
+    pass: [module]
+    module: |
+      [^/]+
+  /admin/customize/:module:
+    controller: admin
+    action: customize
+    pass: [module]
+    module: |
+      [^/]+
+  /admin/:module/:model/edit/:id:
+    controller: admin
+    action: edit
+    pass: [module, model, id]
+    module: |
+      [^/]+
+    model: |
+      [^/]+
+  /admin/:module/:model/delete/:id:
+    controller: admin
+    action: delete
+    pass: [module, model, id]
+    module: |
+      [^/]+
+    model: |
+      [^/]+
+  /admin/:module/:model/edit/*:
+    controller: admin
+    action: edit
+    pass: [module, model]
+    module: |
+      [^/]+
+    model: |
+      [^/]+
+  /admin/:module:
+    controller: admin
+    action: browse
+    pass: [module]
+    module: |
+      [^/]+
+  /photo/upload:
+    controller: viewer
+    action: uploadPhoto
+  /admin/:module/:model:
+    controller: admin
+    action: browse
+    pass: [module, model]
+    module: |
+      [^/]+
+    model: |
+      [^/]+
+  /:model/:slug:
+    controller: viewer
+    action: view
+    pass: [model, slug]
+    model: |
+      [^/]+
+    slug: |
+      [^/]+
+  /:model:
+    controller: viewer
+    action: index
+    pass: [model]
+    model: |
+      [^/]+
+admin:
+  Dashboard:
+    _link:
+      controller: notifications
+      action: index
+    Modules:
+      _link:
+        controller: admin
+        action: index
+    Themes:
+      _link:
+        controller: admin
+        action: themes
+    Menus:
+      _link:
+        controller: admin
+        action: menus
+  Content:
+    _link:
+      controller: admin
+      action: overview
+    Pages|General information:
+      _link:
+        controller: admin
+        action: browse
+        module: core
+      Categories:
+        _link:
+          controller: admin
+          action: browse
+          module: core
+          model: Category
+      Tags:
+        _link:
+          controller: admin
+          action: browse
+          module: core
+          model: Tag
+  Users:
+    _link:
+      controller: admin
+      action: browse
+      module: core
+      model: User
+models:
+  Page:
+    _default:
+    _relations:
+      +category: tree
+      +tag: autocomplete
+    _parent: Page|tree
+    _browse:
+      content:
+        column: Content
+        content: |
+          {content|teaser}
+        title: string*
+        slug: string*
+        content: html*
+        created: #datetime
+        modified: #datetime
+        draft: bool
+  Tag:
+    title: string*
+    slug: string*
+  Category:
+    _belongsTo: Category
+    title: string*
+    slug: string*
+  User:
+    _browse:
+      content:
+        column: Photo
+        content: |
+          !{photo}!
+        username: string*
+        password: password*
+        photo: thumb
+        email: string
+  Notification:
+    sender: string*
+    object: string*
+    text: string*
+    created: #datetime
+    read: bool

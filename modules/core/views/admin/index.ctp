@@ -1,5 +1,17 @@
 <div id="center">
-<h2><?php __('Modules')?></h2>
+<div class="module">
+    <div class="description">
+        <?php echo $textile->process(__($config['description'], true)) ?>
+    </div>
+    <div class="icon">
+        <?php
+            $iconFile = '/projects/'.$config['project'].'/public/icon.png';
+            if(file_exists(ROOT.$iconFile))
+                echo $html->image($iconFile);
+        ?>
+    </div>
+</div>
+<h2><?php __('Modules') ?></h2>
 <?php foreach($modules as $module=>$data) { ?>
 	<div class="module <?php echo @$data['installed']?'installed':'notinstalled';?> <?php echo @$data['old']?'old':'';?>">
 		<?php if(@$data['installed']) {?>

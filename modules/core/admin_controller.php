@@ -28,10 +28,8 @@ class AdminController extends AppController {
         $this->widget('status', '../admin/languages', compact('language'));
 
         $this->Event->triggerEvent('AdminInit');
-
-        // @todo: Не самый лучший образ проверять конфиги
-        $config = Configure::read('config.modules.core');
-        $config = is_array($config) ? $config : null;
+        
+        $config = Configure::read('config');
         $site_title = $config['title'] ? $config['title'] : __('EpisodeCMS', true);
         $this->set(compact('site_title'));
         $this->set('layout_title', 'Control Panel');
@@ -64,12 +62,13 @@ class AdminController extends AppController {
         $haveModules = array();
 
         foreach ($modulesPaths[0] as $module) {
-            if ($data = load(ROOT . DS . 'modules' . DS . $module . DS . $module)) {
+            if ($data = load(ROOT . DS . 'modules' . DS . $module . DS . 'module')) {
                 $haveModules[$module] = $data;
             }
         }
 
-        $installedModules = Configure::read('config.modules');
+        $config = Configure::read('config');
+        $installedModules = $config['modules'];
 
         foreach ($installedModules as $module => $version) {
             if (isset($haveModules[$module])) {
@@ -82,10 +81,10 @@ class AdminController extends AppController {
         }
         $modules = array_merge($modules, $haveModules);
 
-        $this->set(compact('modules'));
+        $this->set(compact('modules', 'config'));
     }
 
-    function browse($module=null, $model=null) {
+    function browse($module = null, $model = null) {
 
         // @todo Рефакторинг для демо
         $restricted = Configure::read('config.modules.core.demo') == true && $model == 'User';

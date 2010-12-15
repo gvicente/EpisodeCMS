@@ -1,0 +1,12 @@
+title: cook2.me
+description: Кулинарная социальная сеть
+keywords:
+maintance: 0
+modules:
+  blog: 1.0.1
+routes:
+    /:
+        controller:viewer
+        action:index
+        model:post
+        pass:[model]

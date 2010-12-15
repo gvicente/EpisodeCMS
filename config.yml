@@ -1,0 +1,6 @@
+project: cook2.me
+database: 
+  host: localhost
+  database: cake2me
+  login: root
+  password: password

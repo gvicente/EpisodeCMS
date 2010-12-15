@@ -1,12 +1,12 @@
 title: Developer Pack
 version: 1.0.1
-description:|
+description: |
   Developer Pack designed for quick deploying modules for web applications.
 routes:
     /admin/dev/:
-        controller:dev
-        action:index
+        controller: dev
+        action: index
 install:
-  method:/dev/install
+  method: /dev/install
 uninstall:
-  method:/dev/uninstall
+  method: /dev/uninstall

@@ -68,11 +68,17 @@ class ThemeView extends View {
         $modules = Configure::read('modules');
         
         foreach ($modules as $module => $config) {
-            if (isset($config['scripts']))
-                $scripts = array_merge($scripts, $config['scripts']);
+            if (isset($config['scripts'])) {
+                foreach ($config['scripts'] as $script) {
+                    $scripts[] = '/modules/'.$module.'/public/'.$script;
+                }
+            }
 
-            if (isset($config['styles']))
-                $styles = array_merge($styles, $config['styles']);
+            if (isset($config['styles'])) {
+                foreach ($config['styles'] as $style) {
+                    $styles[] = '/modules/'.$module.'/public/'.$style;
+                }
+            }
 
             if (file_exists(ROOT . DS . 'modules' . DS . $module . DS . 'themes' . DS . $this->theme . DS . 'style.css'))
                 $styles[] = '/modules/' . $module . '/themes/' . $this->theme . '/style';
