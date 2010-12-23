@@ -1,0 +1,21 @@
+blockquote p {
+	margin: 5px 0;	
+}
+
+blockquote {
+	padding: 0 10px;
+	border-left:solid 5px #aaa;
+	margin: 0 0 0 10px; 	
+	display: inline-block;
+	background: #eee;
+}
+
+.marked {
+	color:#333;
+	font-size: 110%;
+	background: #eee;
+	padding:2px 7px;
+	-moz-border-radius:10px;
+	display: inline-block;
+	margin: 0px;
+}

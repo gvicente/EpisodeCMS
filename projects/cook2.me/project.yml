@@ -10,3 +10,5 @@ routes:
         action:index
         model:post
         pass:[model]
+styles:
+  -admin

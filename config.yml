@@ -1,6 +1,29 @@
+---
 project: cook2.me
 database: 
   host: localhost
   database: cake2me
   login: root
   password: password
+debug: 0
+modules: 
+  cook2.me: 0
+  blog: 1.0.1
+  core: 1
+title: cook2.me
+description: >
+  Кулинарная
+  социальная сеть
+keywords: 
+maintance: 0
+routes: 
+  /: 
+    controller: viewer
+    action: index
+    model: post
+    pass: 
+      - model
+styles: 
+  - admin
+version: 0
+admin-language: rus

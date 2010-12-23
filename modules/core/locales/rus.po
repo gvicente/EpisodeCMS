@@ -1,0 +1,96 @@
+msgid "Content"
+msgstr "Контент"
+
+msgid "* Start with \"customize\":/controller:admin/action:customize/module:core/ your site\n"
+"* Change appearence with \"themes\":/controller:admin/action:themes/ and \"describe navigation\":/controller:admin/action:menus/\n"
+"* Manage site by \"adding page\":/controller:admin/action:edit/module:core/model:Page/ and \"browse pages\":/controller:admin/action:browse/module:core/model:Page/\n"
+"* Find out \"users\":/controller:admin/action:browse/module:core/model:User/"
+msgstr "* Начните с \"настройки\":/controller:admin/action:customize/module:core/ вашего сайта\n"
+"* Найтройте \"тему\":/controller:admin/action:themes/ и \"меню\":/controller:admin/action:menus/\n"
+
+msgid "Control Panel"
+msgstr "Панель управления"
+
+msgid "Dashboard"
+msgstr "Консоль"
+
+msgid "Update"
+msgstr "Обновить"
+
+msgid "Activate"
+msgstr "Включить"
+
+msgid "Deactivate"
+msgstr "Отключить"
+
+msgid "Pages"
+msgstr "Страницы"
+
+msgid "Title"
+msgstr "Название"
+
+msgid "Browse :title"
+msgstr "Просмотр :title"
+
+msgid "Menus"
+msgstr "Меню"
+
+msgid "Themes"
+msgstr "Темы"
+
+msgid "Modules"
+msgstr "Модули"
+
+msgid "Users"
+msgstr "Пользователи"
+
+msgid "General information"
+msgstr "Основная информация"
+
+msgid "Visit Site"
+msgstr "На Сайт"
+
+msgid "You logined as :name"
+msgstr "Добро пожаловать, :name"
+
+msgid "Logout"
+msgstr "Выход"
+
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+msgid "Add"
+msgstr "Добавить"
+
+msgid "Add new"
+msgstr "Добавить новый"
+
+msgid "Edit"
+msgstr "Изменить"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Category"
+msgstr "Рубрика"
+
+msgid "Categories"
+msgstr "Рубрики"
+
+msgid "Logical separation"
+msgstr "Логическое разделение"
+
+msgid "Tag"
+msgstr "Метка"
+
+msgid "Tags"
+msgstr "Метки"
+
+msgid "Context separation"
+msgstr "Контекстное разделение"

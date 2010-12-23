@@ -15,7 +15,8 @@ foreach (array(
     TEMP . 'cache',
     TEMP . 'cache' . DS . 'persistent',
     TEMP . 'cache' . DS . 'models',
-    TEMP . 'cache' . DS . 'views'
+    TEMP . 'cache' . DS . 'views',
+    TEMP . 'cache' . DS . 'translations'
 ) as $folder) {
     file_exists($folder) || mkdir($folder, 0777, true);
 }

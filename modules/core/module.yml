@@ -7,17 +7,17 @@ content: |
   * Manage site by "adding page":/controller:admin/action:edit/module:core/model:Page/ and "browse pages":/controller:admin/action:browse/module:core/model:Page/
   * Find out "users":/controller:admin/action:browse/module:core/model:User/ 
 scripts:
-	- jquery
-	- jquery.quicksearch
-	- jquery-ui/jquery-ui
-	- tinymce/jquery.tinymce
-	- jquery.synctranslit
-	- jquery.promo-slider
-	- ajaxupload
-	- jquery.rightClick
-  - jquery.autocompleter	
+  -jquery
+  -jquery-ui/jquery-ui
+  -jquery.quicksearch
+  -jquery.synctranslit
+  -jquery.promo-slider
+  -jquery.right-click
+  -tinymce/jquery.tinymce
+  -ajaxupload
+  -jquery.autocompleter
 styles:
-  - jquery-ui/smoothness/jquery-ui-1.8.2.custom
+  -jquery-ui/smoothness/jquery-ui-1.8.2.custom
 options:
   title: string
   description: text
@@ -34,7 +34,7 @@ routes:
     controller: users
     action: logout
   /admin:
-    controller: notifications
+    controller: admin
     action: index
   /admin/language/*:
     controller: admin
@@ -54,6 +54,9 @@ routes:
   /admin/themes/*:
     controller: admin
     action: themes
+  /admin/deploy:
+    controller: admin
+    action: deploy
   /admin/install/:module:
     controller: admin
     action: install
@@ -130,7 +133,7 @@ routes:
 admin:
   Dashboard:
     _link:
-      controller: notifications
+      controller: admin
       action: index
     Modules:
       _link:
@@ -148,23 +151,23 @@ admin:
     _link:
       controller: admin
       action: overview
-    Pages|General information:
-      _link:
-        controller: admin
-        action: browse
-        module: core
-      Categories:
+    Categories|Logical separation:
         _link:
           controller: admin
           action: browse
           module: core
           model: Category
-      Tags:
-        _link:
-          controller: admin
-          action: browse
-          module: core
-          model: Tag
+    Tags|Context separation:
+      _link:
+        controller: admin
+        action: browse
+        module: core
+        model: Tag
+    Pages|General information:
+      _link:
+        controller: admin
+        action: browse
+        module: core
   Users:
     _link:
       controller: admin
@@ -183,12 +186,12 @@ models:
         column: Content
         content: |
           {content|teaser}
-        title: string*
-        slug: string*
-        content: html*
-        created: #datetime
-        modified: #datetime
-        draft: bool
+    title: string*
+    slug: string*
+    content: html*
+    created: #datetime
+    modified: #datetime
+    draft: bool
   Tag:
     title: string*
     slug: string*
@@ -202,10 +205,10 @@ models:
         column: Photo
         content: |
           !{photo}!
-        username: string*
-        password: password*
-        photo: thumb
-        email: string
+    username: string*
+    password: password*
+    photo: thumb
+    email: string
   Notification:
     sender: string*
     object: string*

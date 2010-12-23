@@ -126,7 +126,7 @@
 	<tr>
 		<td colspan="2" class="title">
 			No <?php echo Inflector::pluralize($model) ?>
-			<?php if(!$static) echo $html->link(__('Add new', true), array('controller'=>'admin', 'action'=>'edit', 'model'=>$model, 'module'=>$module), array('class'=>'button')).'?' ?>
+			<?php if(!$static) echo $html->link(__('Add new', true), array('controller'=>'admin', 'action'=>'edit', 'model'=>$model, 'module'=>$module), array('class'=>'button add')).'?' ?>
 		</td>
 	</tr>
 <?php endif; ?>

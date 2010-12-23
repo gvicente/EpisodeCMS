@@ -19,7 +19,7 @@ class AdminController extends AppController {
         $menu = array();
         foreach ($modules as $config) {
             if (isset($config['admin'])) {
-                $menu = array_extend($menu, $config['admin']);
+                $menu = array_extend($config['admin'], $menu);
             }
         }
 
@@ -28,7 +28,7 @@ class AdminController extends AppController {
         $this->widget('status', '../admin/languages', compact('language'));
 
         $this->Event->triggerEvent('AdminInit');
-        
+
         $config = Configure::read('config');
         $site_title = $config['title'] ? $config['title'] : __('EpisodeCMS', true);
         $this->set(compact('site_title'));
@@ -70,6 +70,8 @@ class AdminController extends AppController {
         $config = Configure::read('config');
         $installedModules = $config['modules'];
 
+        $modules = array('core' => 1);
+
         foreach ($installedModules as $module => $version) {
             if (isset($haveModules[$module])) {
                 $haveModules[$module]['installed'] = true;
@@ -85,7 +87,6 @@ class AdminController extends AppController {
     }
 
     function browse($module = null, $model = null) {
-
         // @todo Рефакторинг для демо
         $restricted = Configure::read('config.modules.core.demo') == true && $model == 'User';
 
@@ -335,6 +336,65 @@ class AdminController extends AppController {
         $this->redirect(array('action' => 'index'));
     }
 
+    function themes($name = null) {
+        if (!empty($name)) {
+            $config = Configure::read('config');
+            $config['frontend']['theme'] = $name;
+            save(ROOT . DS . 'config', $config);
+            $this->redirect(array('controller' => 'admin', 'action' => 'themes'));
+        }
+
+        $themesFolderHandler = new Folder(ROOT . DS . 'themes');
+        $themesFolder = $themesFolderHandler->read();
+        $themes = array();
+        foreach ($themesFolder[0] as $themeFolder) {
+            unset($theme);
+            if ($theme = load(ROOT . DS . 'themes' . DS . $themeFolder . DS . 'theme')) {
+                if (file_exists(ROOT . DS . 'themes' . DS . $themeFolder . DS . 'screenshot.png')) {
+                    $theme['screenshot'] = '/themes/' . $themeFolder . '/screenshot.png';
+                } else {
+                    $theme['screenshot'] = false;
+                }
+                $themes[$themeFolder] = $theme;
+            }
+        }
+        $current = Configure::read('config.frontend.theme');
+        $this->set(compact('themes', 'current'));
+    }
+
+    function menus($name = null) {
+        if ($theme = load(ROOT . DS . 'themes' . DS . Configure::read('config.theme') . DS . 'theme')) {
+            $menus = $theme['menus'];
+            $links = Configure::read('config.menus');
+        }
+        $this->set(compact('menus', 'links'));
+    }
+
+    function customize($module = 'core') {
+
+        if (!empty($this->data)) {
+            $config = Configure::read('config');
+
+            // @todo: Какое-то странное изваятельство
+            if (is_array(Configure::read('config.modules.' . $module)))
+                $config['modules'][$module] = array_extend(Configure::read('config.modules.' . $module), $this->data[$module]);
+            else
+                $config['modules'][$module] = $this->data[$module];
+            save(ROOT . DS . 'config', $config);
+            $this->redirect(array('controller' => 'admin', 'action' => 'index'));
+        }
+
+        if (is_array($options = Configure::read('config.modules.' . $module)))
+            $this->data[$module] = $options;
+        if (!$fields[$module] = Configure::read('modules.' . $module . '.options')) {
+            $this->Session->setFlash('Module <strong>' . $module . '</strong> has no options to customize');
+            $this->redirect(array('controller' => 'admin', 'action' => 'index'));
+        }
+
+        $this->set(compact('module', 'fields'));
+        $this->render('/admin/edit');
+    }
+
     /*
      * TODO: Fix saving with dashes.
      */
@@ -469,69 +529,55 @@ class AdminController extends AppController {
         $config = Configure::read('config');
         unset($config['modules'][$module]);
         save(ROOT . DS . 'config', $config);
-        clearCache(null, 'models');
 
+        $this->deploy($redirect);
+    }
+
+    function deploy($redirect = true) {
+        $this->autoRender = false;
+        $Folder = & new Folder();
+        $translations = array();
+
+        foreach(App::getInstance()->controllers as $path) {
+            $path .= DS . 'locales';
+
+            if(file_exists($path)) {
+                $Folder->cd($path);
+                $localeFiles = $Folder->find('.+\.po$');
+                foreach ($localeFiles as $file) {
+                    $locale = str_replace('.po', '', $file);
+                    if(!isset($translations[$locale])) {
+                        $translations[$locale] = "# Updated at ".date("Y.m.d H:i:s")."\n";
+                    }
+
+                    $translations[$locale] .=
+                        "\n# ".$path."\n".
+                        file_get_contents($path . DS . $file);
+                }
+            }
+        }
+
+        foreach ($translations as $locale=>$data) {
+            foreach(array(
+                TEMP . 'cache' . DS . 'translations' . DS . $locale,
+                TEMP . 'cache' . DS . 'translations' . DS . $locale . DS . 'LC_MESSAGES',
+            ) as $folder) {
+                file_exists($folder) || mkdir($folder, 0777, true);
+            }
+            
+            file_put_contents($folder . DS . 'default.po', $data);
+        }
+
+        clearCache(null, 'persistent');
+        clearCache(null, 'models');
+        clearCache(null, 'views');
+        
         if ($redirect)
             $this->redirect(array('action' => 'index'));
     }
 
-    function themes($name = null) {
-        if (!empty($name)) {
-            $config = Configure::read('config');
-            $config['frontend']['theme'] = $name;
-            save(ROOT . DS . 'config', $config);
-            $this->redirect(array('controller' => 'admin', 'action' => 'themes'));
-        }
+    function backup() {
 
-        $themesFolderHandler = new Folder(ROOT . DS . 'themes');
-        $themesFolder = $themesFolderHandler->read();
-        $themes = array();
-        foreach ($themesFolder[0] as $themeFolder) {
-            unset($theme);
-            if ($theme = load(ROOT . DS . 'themes' . DS . $themeFolder . DS . 'theme')) {
-                if (file_exists(ROOT . DS . 'themes' . DS . $themeFolder . DS . 'screenshot.png')) {
-                    $theme['screenshot'] = '/themes/' . $themeFolder . '/screenshot.png';
-                } else {
-                    $theme['screenshot'] = false;
-                }
-                $themes[$themeFolder] = $theme;
-            }
-        }
-        $current = Configure::read('config.frontend.theme');
-        $this->set(compact('themes', 'current'));
-    }
-
-    function menus($name = null) {
-        if ($theme = load(ROOT . DS . 'themes' . DS . Configure::read('config.theme') . DS . 'theme')) {
-            $menus = $theme['menus'];
-            $links = Configure::read('config.menus');
-        }
-        $this->set(compact('menus', 'links'));
-    }
-
-    function customize($module = 'core') {
-
-        if (!empty($this->data)) {
-            $config = Configure::read('config');
-
-            // @todo: Какое-то странное изваятельство
-            if (is_array(Configure::read('config.modules.' . $module)))
-                $config['modules'][$module] = array_extend(Configure::read('config.modules.' . $module), $this->data[$module]);
-            else
-                $config['modules'][$module] = $this->data[$module];
-            save(ROOT . DS . 'config', $config);
-            $this->redirect(array('controller' => 'admin', 'action' => 'index'));
-        }
-
-        if (is_array($options = Configure::read('config.modules.' . $module)))
-            $this->data[$module] = $options;
-        if (!$fields[$module] = Configure::read('modules.' . $module . '.options')) {
-            $this->Session->setFlash('Module <strong>' . $module . '</strong> has no options to customize');
-            $this->redirect(array('controller' => 'admin', 'action' => 'index'));
-        }
-
-        $this->set(compact('module', 'fields'));
-        $this->render('/admin/edit');
     }
 
 }

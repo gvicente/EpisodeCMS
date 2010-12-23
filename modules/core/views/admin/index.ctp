@@ -1,5 +1,5 @@
 <div id="center">
-<div class="module">
+<div class="module project">
     <div class="description">
         <?php echo $textile->process(__($config['description'], true)) ?>
     </div>
@@ -21,12 +21,12 @@
 		<?php }?>
 		<div class="actions">
 			<?php if(!@$data['installed']) {?>
-				<?php echo $html->link('Activate', array('controller'=>'admin', 'action'=>'install', 'module'=>$module), array('class'=>'button')) ?>
+				<?php echo $html->link(__('Activate', true), array('controller'=>'admin', 'action'=>'install', 'module'=>$module), array('class'=>'button activate')) ?>
 			<?php } elseif(@$data['package']!='core') { ?>
-				<?php echo $html->link('Deactivate', array('controller'=>'admin', 'action'=>'uninstall', 'module'=>$module), array('class'=>'button')) ?>
+				<?php echo $html->link(__('Deactivate', true), array('controller'=>'admin', 'action'=>'uninstall', 'module'=>$module), array('class'=>'button deactivate')) ?>
 			<?php } ?>
 			<?php if(@$data['old']) {?>
-				<?php echo $html->link('Update', array('controller'=>'admin', 'action'=>'update', 'module'=>$module), array('class'=>'button')) ?>
+				<?php echo $html->link(__('Update', true), array('controller'=>'admin', 'action'=>'update', 'module'=>$module), array('class'=>'button update')) ?>
 			<?php } ?>
 		</div>
 		<div class="version">

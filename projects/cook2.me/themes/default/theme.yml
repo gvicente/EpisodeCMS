@@ -1,0 +1,13 @@
+title: Cook2Me
+authors:
+  -
+    name: Aleksey Razbakov
+    email: razbakov.aleksey@gmail.com
+  -
+    name: Stanislav Termosa
+    email: termosa.stanislav@gmail.com
+date: 23.12.2010
+description: |
+    Main theme for cook2.me project
+menus:
+    main: Main Menu

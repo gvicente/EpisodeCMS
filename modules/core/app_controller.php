@@ -22,6 +22,7 @@ class AppController extends Controller {
             $this->theme = $config['frontend']['theme'];
 
         $this->set('site_theme', $this->theme);
+        $this->set('widgets', '');
 
         $maintance = isset($config['modules']) && is_array($config['modules']['core']) && $config['modules']['core']['maintance'];
         if ($maintance && $this->name != 'Admin') {

@@ -16,7 +16,7 @@
 	})
 	</script>
 </head>
-<body id="<?php echo($this->action)?>">
+<body id="admin" class="<?php echo $this->params['controller'].' '.$this->params['action'] ?>">
 	<div id="header">
 		<h1><?php echo $html->link(@$site_title, '/', array('target'=>'_blank')); ?></h1>
 
@@ -46,7 +46,7 @@
 	</div>
 
 	<div id="sidebar-right">
-		<?php echo @$widgets; ?>
+		<?php echo $this->Type->widgets() ?>
 	</div>
 </body>
 </html>

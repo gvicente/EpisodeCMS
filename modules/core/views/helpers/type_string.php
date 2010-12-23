@@ -1,7 +1,8 @@
 <?php 
-class TypeStringHelper extends TypeHelper {
-	function render($field) {
-		//return "<div>$field<input value=''></div>";	
+class TypeStringHelper extends AppHelper {
+    var $helpers = array('Form');
+    
+	function render($sender, $field, $model = '') {
+        return $this->Form->input($field, array('autocomplete'=>'off'));
     }
 } 
-?>

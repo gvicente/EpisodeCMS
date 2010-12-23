@@ -1,0 +1,13 @@
+msgid "Blog"
+msgstr "Блог"
+
+msgid "* Manage blog by \"adding post\":/controller:admin/action:edit/module:blog/model:Post/ and \"browse posts\":/controller:admin/action:browse/module:blog/model:Post/\n"
+"* \"Customize\":/controller:admin/action:customize/module:blog/ it and move on"
+msgstr "* Управляйте блогом \"добавляя записи\":/controller:admin/action:edit/module:blog/model:Post/ и \"просматривая их\":/controller:admin/action:browse/module:blog/model:Post/\n"
+"* \"Настройте\":/controller:admin/action:customize/module:blog/ блог и продолжайте"
+
+msgid "Posts"
+msgstr "Записи"
+
+msgid "Blog items"
+msgstr "Элементы блога"

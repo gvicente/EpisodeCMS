@@ -38,6 +38,14 @@ function save($file, $array) {
     file_put_contents($file . '.yml', $string);
 }
 
+function __controllerize($file) {
+    return Inflector::camelize(str_replace('_controller.php', '', $file));
+}
+
+function __helperize($file) {
+    return Inflector::camelize(str_replace('.php', '', $file));
+}
+
 if ($config = load(ROOT . DS . 'config'))
     Configure::write('debug', @$config['debug'] || 0);
 
@@ -51,30 +59,28 @@ if (isset($config['project'])) {
 
     $config['modules'][$config['project']] = $project_config['version'];
     $config = array_extend($config, $project_config);
+} else {
+    $config['project'] = false;
 }
 
 if (!@$config || !@$config['modules']['core'])
-    $config['modules']['core'] = 0;
+    $config['modules']['core'] = 1;
 
 foreach ($config['modules'] as $module => $version) {
-    $modules[$module] = load(ROOT . DS . 'modules' . DS . $module . DS . 'module');
-    $controllerPaths[] = ROOT . DS . 'modules' . DS . $module;
-    $modelPaths[] = ROOT . DS . 'modules' . DS . $module . DS . 'models';
-    $viewPaths[] = ROOT . DS . 'modules' . DS . $module . DS . 'views' . DS;
-    $helperPaths[] = ROOT . DS . 'modules' . DS . $module . DS . 'views' . DS . 'helpers' . DS;
-    $componentPaths[] = ROOT . DS . 'modules' . DS . $module . DS . 'components' . DS;
-    $localePaths[] = ROOT . DS . 'modules' . DS . $module . DS . 'locale' . DS;
-}
-
-if (isset($config['project'])) {
-    $controllerPaths[] = ROOT . DS . 'projects' . DS . $config['project'];
-    $modelPaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'models';
-    $viewPaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'views' . DS;
-    $helperPaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'views' . DS . 'helpers' . DS;
-    $componentPaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'components' . DS;
-    $localePaths[] = ROOT . DS . 'projects' . DS . $config['project'] . DS . 'locale' . DS;
-
-    $modules[$config['project']] = $project_config;
+    if($config['project'] == $module) {
+        $directory = 'projects';
+        $modules[$config['project']] = $project_config;
+    } else {
+        $directory = 'modules';
+        $modules[$module] = load(ROOT . DS . $directory . DS . $module . DS . 'module');
+    }
+    
+    $modules[$module]['path'] = '/'.$directory.'/' . $module;
+    $controllerPaths[] = ROOT . DS . $directory . DS . $module;
+    $modelPaths[] = ROOT . DS . $directory . DS . $module . DS . 'models';
+    $viewPaths[] = ROOT . DS . $directory . DS . $module . DS . 'views' . DS;
+    $helperPaths[] = ROOT . DS . $directory . DS . $module . DS . 'views' . DS . 'helpers' . DS;
+    $componentPaths[] = ROOT . DS . $directory . DS . $module . DS . 'components' . DS;
 }
 
 Configure::write('modules', $modules);
@@ -87,10 +93,6 @@ foreach ($controllerPaths as $path) {
     $controllers = am(array_map('__controllerize', $Folder->find('.+_controller\.php$')), $controllers);
 }
 
-function __controllerize($file) {
-    return Inflector::camelize(str_replace('_controller.php', '', $file));
-}
-
 Configure::write(compact('modules', 'controllers'));
 
 App::build(array(
@@ -99,5 +101,5 @@ App::build(array(
     'controllers' => $controllerPaths,
     'components' => $componentPaths,
     'helpers' => $helperPaths,
-    'locales' => $localePaths
+    'locales' => TEMP . 'cache' . DS . 'translations' . DS
 ));

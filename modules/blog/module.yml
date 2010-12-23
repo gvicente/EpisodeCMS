@@ -20,23 +20,11 @@ routes:
       [^/]+
 admin:
   Content:
-    Posts:
+    Posts|Blog items:
       _link:
         controller:admin
         action:browse
         module:blog
-    Categories:
-      _link:
-        controller:admin
-        action:browse
-        module:core
-        model:Category
-    Tags:
-      _link:
-        controller:admin
-        action:browse
-        module:core
-        model:Tag
 notifications:
   Comment:
     icon: /modules/blog/public/comments.png
