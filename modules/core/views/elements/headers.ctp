@@ -16,6 +16,7 @@ foreach($styles as $style) {
 }?>
 <script>
 	(function($) {
+        
 		$.url = function (link, themed) {
 			if(!themed) {
 				link = link.substring(1,link.length);
@@ -26,6 +27,19 @@ foreach($styles as $style) {
 
 			return url;
 		}
+        
+        $.fn.loading = function (link, id, callback) {
+            var content = $(this).html();
+            $this = $(this);
+            $this.html(content + '<span class="loading-block"><span><?php __('Loading') ?>...</span></span>');
+
+            $.getJSON($.url(link), function(html) {
+                var add = html[id];
+                $this.html(content + add);
+                callback();
+            });
+        }
+        
 	})(jQuery);
 
 	$(function(){

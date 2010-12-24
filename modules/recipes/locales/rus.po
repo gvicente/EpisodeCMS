@@ -1,6 +1,9 @@
 msgid "Recipes"
 msgstr "Рецепты"
 
+msgid "Recipe"
+msgstr "Рецепт"
+
 msgid ":genitive Recipes"
 msgstr ":genitive рецептов"
 

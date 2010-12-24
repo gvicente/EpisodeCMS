@@ -138,18 +138,10 @@ menu:
       _link:
         controller: admin
         action: index
-      Modules:
+      Restart:
         _link:
           controller: admin
-          action: index
-      Themes:
-        _link:
-          controller: admin
-          action: themes
-      Menus:
-        _link:
-          controller: admin
-          action: menus
+          action: deploy
     Content:
       Categories|Logical separation:
           _link:

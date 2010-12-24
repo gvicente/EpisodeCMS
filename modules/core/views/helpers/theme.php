@@ -38,10 +38,10 @@ class ThemeHelper extends AppHelper {
 
             $title = explode('|', $title);
 
-            $text .= $title[0];
+            $text .= __($title[0], true);
 
             if (isset($title[1]))
-                $text .= '<em>' . $title[1] . '</em>';
+                $text .= '<em>' . __($title[1], true) . '</em>';
 
             $output .= '<li>';
             $output .= $this->Html->link(__($text, true), $item['_link'], array('escape' => false));

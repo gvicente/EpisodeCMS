@@ -1,5 +1,4 @@
 $(document).ready(function () {
-	alert('d');
 	//Check if url hash value exists (for bookmark)
 	$.history.init(pageload);	
 	    

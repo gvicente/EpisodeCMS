@@ -13,10 +13,6 @@ a {
 	outline: none;	
 }
 
-.clear {
-	clear: both;
-}
-
 #authMessage, #flashMessage {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -297,30 +293,86 @@ a:hover {
 	text-align: right;
 }
 
+#modules h2 {
+    margin: 1em 0 0 0;
+    font-size: 18px;
+}
+
+#modules h2 .devider {
+    width: 20px;
+    display: inline-block;
+}
+
+#modules h2 a {
+    padding: 5px 10px;
+    background: #eee;
+    font-size: 12px;
+}
+
+#modules h2 #create span {
+    background: url("images/add.png") no-repeat 0 50%;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-left: -5px;
+    margin-bottom: -3px;
+}
+
+#modules h2 a.active {
+    display: inline-block;
+    -moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+    padding-bottom: 10px;
+    background: #369;
+    color: #fff;
+}
+
+#modules h2 a:hover {
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+}
+
+#modules .container {
+    padding: 10px;
+    border: solid 2px #369;
+    margin-top: -1px;
+    -moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 .module {
-	background: #eee;
+    background: #fff;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	margin-bottom: 5px;
 	padding: 0 5px 10px 5px;
 	clear: both;
 	overflow: hidden;
+    border: solid 1px #eee;
 }
 
 .module h3 {
 	float: left;
 	padding-top: 0;
+    margin-left: 180px;
+    margin-top: 5px;
+    font-size: 16px;
 }
 
 .module .version {
 	color: #aaa;
+    margin-top: 5px;
+    padding-left: 5px;
+    overflow: hidden;
 }
 
 .module .description {
 	float: right;
 	clear: both;
 	width: 70%;
-	margin-top: 1em;
 }
 
 .icon {
@@ -331,6 +383,7 @@ a:hover {
 
 #content .module .description p {
 	text-indent: 0;
+    margin-left: 20px;
 }
 
 #content .module.notinstalled h3 {
@@ -899,4 +952,23 @@ a:hover {
 	background-image: url(images/more-right.png);
 	background-repeat:no-repeat;
 	background-position: 100% 50%;
+}
+
+#content table td sup {
+    height: 60px;
+    display: block;
+    overflow: hidden;
+}
+
+#content table .ui-selected td:hover sup {
+    display: inline;
+}
+
+.loading-block {
+    font-size: 10px;
+    display: inline-block;
+    padding: 5px;
+    color: #333;
+    background: #fff;
+    margin: 5px;
 }

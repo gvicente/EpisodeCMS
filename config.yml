@@ -8,7 +8,6 @@ database:
 debug: 4
 modules: 
   cook2.me: 0
-  blog: 1.0.1
   core: 1
   recipes: 1.0.1
 title: cook2.me

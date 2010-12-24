@@ -25,12 +25,13 @@ models:
   Recipe:
     _default:
     _browse:
-      content:
-        column: Content
+      title:
+        column: Recipe
         content: |
-          !{photo}!
+          *{title}*
+          !(float-left margin-10){photo}:50x50!
+          ^{content}^
     photo: thumb
     title: string*
     slug: string*
-    description: html*
-    info: html*
+    content: html*

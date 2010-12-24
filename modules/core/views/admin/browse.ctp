@@ -88,7 +88,9 @@
 	<thead>
 	<tr>
 	<th class="first"><input id="checkall" type="checkbox"></th>
+    <?php if(!isset($columns['title'])): ?>
 	<th><?php __('Title') ?></th>
+    <?php endif ?>
 	<?php foreach($columns as $column): ?>
 		<th class="last"><?php echo __($column, true)?></th>
 	<?php endforeach; ?>
@@ -108,6 +110,7 @@
 <?php foreach($data as $key=>$entry): ?>
 	<tr class="<?php echo ($key % 2==0)?"even":"odd" ?>">
 		<td class="first"><input type="checkbox" num="<?php echo @$entry[$model]['id'] ?>"></td>
+        <?php if(!isset($columns['title'])): ?>
 		<td class="title">
 			<?php
 				preg_match_all('!((<[^>]+>)?([^<]+)(</[^>]+>)?)+!', @$entry[$model][$maincolumn], $matches);
@@ -115,6 +118,7 @@
 			?>
 			<strong><?php echo $html->link(@$content, array('action'=>'edit', 'module'=>$module, 'model'=>$model, 'id'=>@$entry[$model]['id']))?></strong>
 		</td>
+        <?php endif ?>
 		<?php foreach($columns as $column=>$title): ?>
 		<td class="last">
 			<?php echo $textile->process(@$entry[$model][$column]);?>

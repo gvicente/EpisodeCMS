@@ -70,6 +70,7 @@ foreach ($config['modules'] as $module => $version) {
     if($config['project'] == $module) {
         $directory = 'projects';
         $modules[$config['project']] = $project_config;
+        $modules[$config['project']]['package'] = 'project';
     } else {
         $directory = 'modules';
         $modules[$module] = load(ROOT . DS . $directory . DS . $module . DS . 'module');

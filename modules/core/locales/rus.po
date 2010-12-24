@@ -8,8 +8,32 @@ msgid "* Start with \"customize\":/controller:admin/action:customize/module:core
 msgstr "* Начните с \"настройки\":/controller:admin/action:customize/module:core/ вашего сайта\n"
 "* Найтройте \"тему\":/controller:admin/action:themes/ и \"меню\":/controller:admin/action:menus/\n"
 
+msgid "Restart"
+msgstr "Перезагрузка"
+
 msgid "Browse"
 msgstr "Список"
+
+msgid "Options"
+msgstr "Настройки"
+
+msgid "No Description"
+msgstr "Нет описания"
+
+msgid "Installed"
+msgstr "Подключенные"
+
+msgid "Not Installed"
+msgstr "Отключенные"
+
+msgid "Available"
+msgstr "Доступные"
+
+msgid "Loading"
+msgstr "Загрузка"
+
+msgid "Create New"
+msgstr "Создать"
 
 msgid "Choose"
 msgstr "Выбрать"

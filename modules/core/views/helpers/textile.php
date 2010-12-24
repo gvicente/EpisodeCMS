@@ -1119,19 +1119,18 @@ function _create_re() {
     // ------------------------------------------------------------- 
         function fBlock($m) 
         { 
-            // $this->dump($m); 
             list(, $tag, $atts, $ext, $cite, $content) = $m; 
             $atts = $this->pba($atts); 
 
             $o1 = $o2 = $c2 = $c1 = ''; 
-
-            if (preg_match("/fn(\d+)/", $tag, $fns)) { 
+            if (preg_match("/fn(\d+)/", $tag, $fns)) {
                 $tag = 'p'; 
                 $fnid = empty($this->fn[$fns[1]]) ? $fns[1] : $this->fn[$fns[1]]; 
                 $atts .= ' id="fn' . $fnid . '"'; 
                 if (strpos($atts, 'class=') === false) 
-                    $atts .= ' class="footnote"'; 
-                $content = '<sup>' . $fns[1] . '</sup> ' . $content; 
+                    $atts .= ' class="footnote"';
+
+                $content = '<sup>' . $fns[1] . '</sup> ' . $content;
             } 
 
             if ($tag == "bq") { 
@@ -1234,7 +1233,10 @@ function _create_re() {
             list(,, $tag, $atts, $cite, $content, $end) = $m; 
             $tag = $qtags[$tag]; 
             $atts = $this->pba($atts); 
-            $atts .= ($cite != '') ? 'cite="' . $cite . '"' : ''; 
+            $atts .= ($cite != '') ? 'cite="' . $cite . '"' : '';
+            
+            // @todo: Not the best idea to do that. Fixture needed here.
+            $content = str_replace('p>', '', $content);
 
             $out = "<$tag$atts>$content$end</$tag>"; 
 
@@ -1364,9 +1366,19 @@ function _create_re() {
             $size = @getimagesize($url); 
             if ($size) $atts .= " $size[3]"; 
 
-            $href = (isset($m[5])) ? $this->checkRefs($m[5]) : ''; 
-       		if(@$href[0]=='/') {
-            	$urlParts = explode('/',$href);
+            $href = (isset($m[5])) ? $this->checkRefs($m[5]) : '';
+            
+            if (preg_match_all('#(.*):([0-9]+)x([0-9]+)#i', $url, $matches)) {
+
+                $url = $matches[1][0];
+                if (!$url)
+                    $url = '/modules/core/public/no-image.png';
+                
+                $atts .= " width=".$matches[2][0]." height=".$matches[3][0];
+            }
+
+       		if (isset($href[0]) && $href[0] == '/') {
+            	$urlParts = explode('/', $href);
             	foreach($urlParts as $id=>$part) {
             		if($part) {
 	            		list($field, $value) = explode(':',$part);

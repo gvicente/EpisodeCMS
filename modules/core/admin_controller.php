@@ -55,7 +55,13 @@ class AdminController extends AppController {
 
         foreach ($modulesPaths[0] as $module) {
             if ($data = load(ROOT . DS . 'modules' . DS . $module . DS . 'module')) {
-                $haveModules[$module] = $data;
+                $haveModules[$module] = array_extend(array(
+                    'installed' => false,
+                    'content' => '* "'.__('Options', true).'":/controller:admin/action:customize/module:'.$module.'/',
+                    'old' => false,
+                    'description' => __('No Description', true),
+                    'package' => 'world'
+                ), $data);
             }
         }
 
@@ -67,15 +73,15 @@ class AdminController extends AppController {
         foreach ($installedModules as $module => $version) {
             if (isset($haveModules[$module])) {
                 $haveModules[$module]['installed'] = true;
-                if (str_replace(".", "", $haveModules[$module]['version']) > str_replace(".", "", $version)) {
-                    $haveModules[$module]['old'] = true;
-                }
                 $modules[$module] = $haveModules[$module];
             }
         }
+        
         $modules = array_merge($modules, $haveModules);
-
-        $this->set(compact('modules', 'config'));
+        
+        $buttons = $this->renderPartial('index_buttons');
+        $this->set(compact('modules', 'config', 'buttons'));
+        $this->set('json', array('buttons'));
     }
 
     function browse($module = null, $model = null) {
@@ -106,13 +112,13 @@ class AdminController extends AppController {
 
         if ($model != null) {
             $this->loadModel($model);
-            if (@$config['models'][$model]['_relations'])
+            if (isset($config['models'][$model]['_relations']))
                 foreach ($config['models'][$model]['_relations'] as $widgetModel => $params) {
                     if ($widgetModel[0] == '+') {
                         $widgetModel = Inflector::classify(str_replace('+', '', $widgetModel));
                         $this->loadModel($widgetModel);
                         foreach ($config['models'][$widgetModel] as $field => $values) {
-                            if ($field[0] != '@') {
+                            if ($field[0] != '_') {
                                 $maincolumn = $field;
                                 break;
                             }
@@ -299,7 +305,7 @@ class AdminController extends AppController {
             }
         $breadcrumbs = true;
         $this->set(compact('module', 'model', 'fields', 'ids', 'data', 'breadcrumbs'));
-        $this->set(array('multiple' => (sizeof($ids) > 1 ? true : false)));
+        $this->set('multiple', sizeof($ids) > 1 );
     }
 
     function delete($module, $model, $id = null) {
@@ -384,6 +390,7 @@ class AdminController extends AppController {
         }
 
         $this->set(compact('module', 'fields'));
+        $this->set('multiple', false );
         $this->render('/admin/edit');
     }
 
@@ -479,11 +486,9 @@ class AdminController extends AppController {
         $config = Configure::read('config');
         $config['modules'][$module] = $data['version'];
         save(ROOT . DS . 'config', $config);
-
-        clearCache(null, 'models');
-
-        if ($redirect)
-            $this->redirect(array('action' => 'index'));
+        
+        if($redirect)
+            $this->deploy($redirect, array('action' => 'index'));
     }
 
     function uninstall($module, $redirect=true) {
@@ -522,10 +527,15 @@ class AdminController extends AppController {
         unset($config['modules'][$module]);
         save(ROOT . DS . 'config', $config);
 
-        $this->deploy($redirect);
+        clearCache(null, 'models');
+        if($redirect)
+            $this->redirect(array('action' => 'index'));
     }
 
-    function deploy($redirect = true) {
+    function deploy($redirect = false) {
+        if(!$redirect)
+            $redirect = $this->referer();
+        
         $this->autoRender = false;
 
         $Folder = & new Folder();
@@ -568,7 +578,7 @@ class AdminController extends AppController {
         clearCache(null, 'views');
         
         if ($redirect)
-            $this->redirect(array('action' => 'index'));
+            $this->redirect($redirect);
     }
 
     function backup() {
