@@ -26,6 +26,9 @@ menu:
           controller:admin
           action:browse
           module:blog
+  main:
+    Blog:
+      _link: /blog
 notifications:
   Comment:
     icon: /modules/blog/public/comments.png

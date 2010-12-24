@@ -79,6 +79,27 @@ table {
 .padding-10 {
     padding: 10px;
 }
+
+pre,
+.notice,
+.error {
+	-moz-border-radius:10px;
+	border-radius:10px;
+	padding:10px;
+	margin-bottom:1em;
+	background:#9c1111;
+	color:#fff;
+}
+
+pre {
+	background:#eee;
+	color:#333;
+}
+
+.notice {
+	background:#ccc;
+	color:#333;
+}
 /* </utils> */
 
 /* <no-image> */
