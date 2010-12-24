@@ -23,7 +23,7 @@
 		<div class="holder">
 			<ul id="menu-main">
 				<li class="first"><?php echo $html->link(__('Visit Site', true), '/admin')?></li>
-				<?php echo $this->element('menu'); ?>
+				<?php echo $this->Theme->menu('admin') ?>
 			</ul>
 		</div>
 

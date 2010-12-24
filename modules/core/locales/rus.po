@@ -8,6 +8,33 @@ msgid "* Start with \"customize\":/controller:admin/action:customize/module:core
 msgstr "* Начните с \"настройки\":/controller:admin/action:customize/module:core/ вашего сайта\n"
 "* Найтройте \"тему\":/controller:admin/action:themes/ и \"меню\":/controller:admin/action:menus/\n"
 
+msgid "Browse"
+msgstr "Список"
+
+msgid "Choose"
+msgstr "Выбрать"
+
+msgid ":accusative photo"
+msgstr ":accusative фото"
+
+msgid "Photo"
+msgstr "Фотография"
+
+msgid "Slug"
+msgstr "Адрес"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Info"
+msgstr "Информация"
+
+msgid ":genitive Pages"
+msgstr ":genitive страниц"
+
+msgid "No"
+msgstr "Нет"
+
 msgid "Control Panel"
 msgstr "Панель управления"
 

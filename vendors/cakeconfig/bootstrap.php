@@ -59,12 +59,12 @@ if (isset($config['project'])) {
 
     $config['modules'][$config['project']] = $project_config['version'];
     $config = array_extend($config, $project_config);
+    $modules[$config['project']] = 1;
 } else {
     $config['project'] = false;
 }
 
-if (!@$config || !@$config['modules']['core'])
-    $config['modules']['core'] = 1;
+$modules['core'] = 1;
 
 foreach ($config['modules'] as $module => $version) {
     if($config['project'] == $module) {
@@ -83,8 +83,27 @@ foreach ($config['modules'] as $module => $version) {
     $componentPaths[] = ROOT . DS . $directory . DS . $module . DS . 'components' . DS;
 }
 
+if (!isset($config['theme'])) {
+    $config['theme'] = 'default';
+}
+
+foreach($controllerPaths as $path) {
+    if(file_exists($path . DS . 'themes' . DS . $config['theme'] . DS . 'theme.yml')) {
+        $config['theme_path'] = $path . DS . 'themes' . DS . $config['theme'];
+        break;
+    }
+}
+
+if(isset($config['theme_path'])) {
+    $theme = load($config['theme_path'].DS.'theme');
+    $theme['path'] = $config['theme_path'];
+    $theme['path'] = str_replace(ROOT . DS, '/', $theme['path']);
+    $theme['path'] = str_replace(DS, '/', $theme['path']);
+}
+
 Configure::write('modules', $modules);
 Configure::write('config', $config);
+Configure::write('theme', $theme);
 
 $Folder = & new Folder();
 $controllers = array();

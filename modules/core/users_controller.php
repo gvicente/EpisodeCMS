@@ -16,6 +16,7 @@
 			$this->set('layout_redirect', array('controller'=>'users', 'action'=>'login'));
 			$this->set(compact('menu'));
 			$this->theme = "_classic";
+            
 			if(Configure::read('config.backend.theme'))
 				$this->theme = Configure::read('config.backend.theme');
 

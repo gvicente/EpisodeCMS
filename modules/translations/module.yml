@@ -1,4 +1,4 @@
 title: Translations
 version: 1.0.1
 styles:
-	- /modules/translations/public/style
+	- style

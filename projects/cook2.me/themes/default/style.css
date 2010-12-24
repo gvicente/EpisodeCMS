@@ -1,6 +1,994 @@
-@import "content.css";
+/*
+  Theme: Social Theme for cook2.me <http://cook2.me> powered by Episode CMS <http://episodecms.com>
+  Linense: MIT License <http://en.wikipedia.org/wiki/MIT_License>
+  Authors:
+    Stanislav Termosa: termosa.stanislav@gmail.com
+    Aleksey Razbakov: razbakov.aleksey@gmail.com
+  Sheme: |
+    - layout
+    - header
+      - logo
+      - menu-main
+      - block-user
+    - wrapper
+      - dish-of-the-week
+        - dish-picture
+        - dish-description
+    ...
+*/
 
+/* <layout> */
 body {
-    background: #333;
-    color: #fff;
+	background: url('img/body_bg.png');
+	color: #5a5a5a;
+	font-family: Arial;
+	font-size: 13px;
 }
+
+h2 {
+	font-size: 24px;
+	font-style: normal;
+	color: #5a5a5a;
+	margin: 15px 6px 8px 3px;
+	font-family: "Ubuntu", "Candara", "Verdana";
+}
+
+h2 a {
+	font-size: 24px;
+	font-style: normal;
+	color: #5a5a5a;
+	margin: 15px 6px 8px 3px;
+	text-decoration: none;
+}
+
+h2 a:hover {
+	text-decoration: underline;
+}
+
+h3 {
+	font-size: 24px;
+	font-style: normal;
+	color: #ffffff;
+	margin: 15px 6px 8px 3px;
+}
+
+a {
+	color: #369;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#container {
+	width: 1000px;
+	margin: 0 auto;
+}
+/* </layout> */
+
+/* <header> */
+#header {
+	height: 135px;
+	margin: 0px;
+	padding: 0px;
+}
+
+    /* <logo> */
+
+    #logo {
+        float: left;
+        margin: 53px 0 0 45px;
+        padding: 0px;
+    }
+
+    #logo a img {
+        border: none;
+    }
+    /* </logo> */
+
+    /* <menu-main> */
+    #menu-bar {
+        display: block;
+        float: right;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #menu-bar ul {
+        display: block;
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        vertical-align: text-bottom;
+    }
+
+    #menu-bar li {
+        list-style: none;
+        float: left;
+        text-align: center;
+    }
+
+    #menu-bar img {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 15px;
+        width: 48px;
+        height: 48px;
+    }
+
+    #menu-bar li a {
+        display: block;
+        padding: 13px;
+        margin-top: 37px;
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 12px;
+        vertical-align: text-bottom;
+    }
+
+    #menu-bar li a:hover {
+        text-decoration: underline;
+    }
+
+    #selected-menu {
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+        background: url('img/selected_bg.png');
+    }
+    /* </menu-main> */
+
+    /* <block-user> */
+    #user-bar {
+        float: right;
+        margin: 0;
+        padding: 0;
+        margin-left: 2px;
+    }
+
+    #user-string {
+        margin: 0;
+        padding: 7px 15px 0 15px;
+        height: 25px;
+        background: url('img/user_bg.png');
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 13px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        -moz-border-radius-bottomright: 8px;
+        -moz-border-radius-bottomleft: 8px;
+    }
+
+    #user-string a {
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+
+    #slide {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background: url('img/user_bg.png');
+        color: #ffffff;
+        margin-top: 0;
+        margin-left: -109px;
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 140px;
+        height: 270px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        -moz-border-radius-bottomright: 5px;
+        -moz-border-radius-bottomleft: 5px;
+        -moz-border-radius-topright: 5px;
+        -moz-border-radius-topleft: 5px;
+    }
+
+    #socialLinksAuth {
+        margin: 5px 0 10px 13px;
+    }
+
+    #labelSocialLinks {
+        margin-bottom: 10px;
+    }
+
+    #slide a {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    #slide a:hover {
+        text-decoration: underline;
+    }
+
+    #slideHelp {
+        border-top: 1px solid white;
+        margin-top: 7px;
+        padding-top: 10px;
+    }
+
+    .slideLink {
+        margin-bottom: 7px;
+    }
+
+    .loginInputs {
+        width: 140px;
+    }
+    /* </block-user> */
+/* </header> */
+
+/* <wrapper> */
+#wrapper {
+	background: url('img/container_bg.png') no-repeat;
+	width: 100%;
+	margin: 0;
+	float: left;
+	dispaly: block;
+}
+
+#page {
+    background: #ffffff url('img/recipes_bg.png') no-repeat;
+    dispaly: block;
+    margin: 0;
+    padding: 15px 25px 15px 18px;
+    clear: both;
+}
+
+    /* <dish-of-the-week> */
+    #dishOfTheWeek {
+        display: bolck;
+        width: 100%;
+        float: left;
+        margin: 0px;
+        padding: 0px;
+        padding-bottom: 30px;
+        margin-bottom: 0;
+    }
+
+        /* <dish-picture> */
+        #dwPick {
+            display: block;
+            margin: 0;
+            padding: 0;
+            float: left;
+            width: 400px;
+            height: 150px;
+            padding-top: 35px;
+            padding-left: 48px;
+        }
+
+        #dishOfWeek {
+            background: url('img/dishOfTheWeek.png') no-repeat;
+            margin: 0px;
+            padding: 0px;
+            float: left;
+            owerflow: hidden;
+        }
+        /* </dish-picture> */
+
+        /* <dish-description> */
+        #dwDescription {
+            display: block;
+            float: left;
+            width: 288px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #dwDescription p {
+            color: #202020;
+        }
+
+        #dwDescription a {
+            text-decoration: none;
+        }
+
+        #dwDescription a:hover {
+            text-decoration: underline;
+        }
+        /* </dish-description> */
+
+        /* <dish-info> */
+        #dwInfo {
+            display: block;
+            float: right;
+            margin: 0;
+            padding: 0;
+            width: 240px;
+            height: 135px;
+            padding-left: 20px;
+        }
+
+        .dwInfoSpan {
+            color: #202020;
+        }
+
+        #dwNum {
+            float: left;
+            font-size: 32px;
+            color: #202020;
+        }
+
+        #dwSpans {
+            margin: 0;
+            padding: 30px 0 5px 0;
+            float: left;
+        }
+
+        #dwSpan_1 {
+            padding-top: 3px;
+            float: left;
+            width: 85px;
+        }
+
+        #dwSpan_2 {
+            padding: 11px 0 0 8px;
+            float: left;
+        }
+
+        #dwInfoDish {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        #dwInfoAuthor {
+            display: block;
+            margin-top: 15px;
+            padding: 30px 0 0 0;
+        }
+
+        #dwButton {
+            background: url('img/dwButton.png');
+            margin: 20px;
+            width: 160px;
+            height: 41px;
+        }
+
+        #dwButton:hover {
+            background: url('img/dwButtonHover.png');
+        }
+
+        #dwButton:active {
+            background: url('img/dwButtonPushed.png');
+        }
+        /* </dish-info> */
+    /* </dish-of-the-week> */
+    
+    /* <sidebar> */
+    #sidebar {
+        float: left;
+        width: 270px;
+    }
+
+        /* <search> */
+        #search {
+            padding: 0 10px 10px 15px;
+            background: #e1e1e1;
+            border: 2px solid #d9d9d9;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-topright: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            -moz-border-radius-bottomright: 5px;
+        }
+
+        #searchInputText {
+            width: 175px;
+            border: 2px solid #9f9f9f;
+            margin-bottom: 4px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-topright: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            -moz-border-radius-bottomright: 5px;
+        }
+
+        #searchButton {
+            font-size: 10pt;
+            overflow: hidden;
+            margin: 0;
+            heigth: 30px;
+            width: 58px;
+        }
+
+        #search a {
+            border-bottom: 1px dashed #369;
+            cursor: pointer;
+        }
+
+        #search a:hover {
+            border-bottom: none;
+            text-decoration: none;
+        }
+
+        #fullSearch {
+            margin: 10px 5px 10px 15px;
+            display: none;
+        }
+
+        #fullSearch li {
+            list-style: disc outside;
+            margin-bottom: 5px;
+        }
+
+        .fullSearchList {
+            display: none;
+            padding-top: 9px;
+            max-height: 175px;
+            overflow: auto;
+        }
+
+        .fullSearchList li {
+            padding: 0;
+            margin: -7px 0 0 0;
+        }
+        /* </search> */
+
+        /* <cook-of-the-week> */
+        #cookOfTheWeek img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            float: left;
+        }
+
+        #cookOfTheWeek a {
+            display: block;
+        }
+
+        #infoCookOfTheWeek {
+            padding-top: 12px;
+        }
+
+        .marginCookOfTheWeek {
+            margin-bottom: 7px;
+        }
+
+        .marginCookOfTheWeek a {
+            font-size: 15px;
+            text-decoration: underline;
+        }
+
+        .marginCookOfTheWeek a:hover {
+            text-decoration: none;
+        }
+        /* </cook-of-the-week> */
+
+        /* <banner> */
+        #sidebarBanner {
+            margin: 30px auto;
+        }
+        /* </banner> */
+    /* </sidebar> */
+
+    /* <content> */
+    .author {
+        color: #202020;
+        font-size: 13px;
+        font-family: Arial;
+        font-style: italic;
+    }
+
+    .date {
+        color: #747474;
+        font-size: 11px;
+    }
+
+    #content {
+        float: left;
+        padding: 15px 15px 25px 50px;
+        width: 618px;
+    }
+
+        /* <about> */
+        #about h3 {
+            font-size: 16px;
+            color: #333333;
+        }
+
+        .aboutImg {
+            margin: 15px;
+        }
+        /* </about> */
+
+        /* <add-recipe> */
+        #recipeAddForm h3 {
+            font-size: 11pt;
+            color: #777777;
+        }
+
+        .addRecipeInputs {
+            border: 2px solid #AAAAAA;
+            border-bottom: 2px solid #555555;
+            border-right: 2px solid #555555;
+            border-top-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-bottomright: 5px;
+            padding: 3px;
+        }
+
+        .addRecipeButton {
+            color: #000000;
+            padding: 3px 16px;
+            background: #ebebeb;
+        }
+
+        #staticIngredientBonus {
+            width: 163px;
+        }
+
+        #staticIngredient {
+            width: 190px;
+        }
+
+        #selfIngredient {
+            width: 400px;
+        }
+
+        .ingAddForm {
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ingredients {
+            width: 500px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .delLinkRAdd {
+            text-decoration: underline;
+            margin-left: 10px;
+            font-size: 11pt;
+        }
+
+        .delLinkRAdd:hover {
+            text-decoration: none;
+        }
+
+        .addRecipeButton:hover {
+            border-top: 1px solid #AAAAAA;
+            border-left: 1px solid #AAAAAA;
+            border-bottom: 1px solid #555555;
+            border-right: 1px solid #555555;
+            padding: 4px 17px;
+            text-decoration: none;
+        }
+
+        .addRecipeButton:active {
+            border-top: 2px solid #555555;
+            border-left: 2px solid #555555;
+            border-bottom: 2px solid #AAAAAA;
+            border-right: 2px solid #AAAAAA;
+            padding: 3px 16px;
+        }
+
+        #recipeAddName {
+            font-size: 22px;
+            padding: 4px;
+            width: 400px;
+        }
+
+        #recipeAddTags {
+            width: 100%;
+        }
+
+        #addRSendButton {
+            margin-top: 20px;
+        }
+
+        #recipeAddContent {
+            width: 100%;
+            height: 200px;
+        }
+
+            /* <file-input> */
+            #addRMask {
+                width: 290px; /* Эти значения чисто из-за особенностей моего рисунка */
+                height: 37px;
+                padding: 3px 100px 0 10px;
+                background: url('http://109.86.186.135/c2m/img/inputtypefile.png') no-repeat 0 0;
+            }
+            #addRFileInput {
+                width: 80px; /* вот незадача, FF не хочет задавать ширину, для этого зададим size */
+                height: 40px;
+                position: absolute;/* позиционируем настоящий input type=file */
+                opacity: 0;/* задаем нулевую видимость */
+                filter: alpha(opacity=0);
+                margin-left: 298px;
+                overflow: hidden;
+            }
+            #addRFileInputText {
+                border: 1px solid #FFF;
+                width: 100%;
+                font-size: 22px;
+            }
+            /* </file-input> */
+
+        /* </add-recipe> */
+
+        /* <for-page> */
+        #forPage h3{
+            color: black;
+            font-size: 12pt;
+        }
+
+        #forPage ol {
+            list-style: decimal;
+            margin-left: 30px;
+        }
+
+        #forPage ol li {
+            margin-top: 10px;
+        }
+
+        #forPage ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        #forPage ul li {
+            margin-top: 5px;
+        }
+
+        #forPage i {
+            color: #111111;
+            font-size: 11pt;
+        }
+        /* </for-page> */
+
+        /* <home> */
+        .recipe {
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .recipeImg {
+            overflow: hidden;
+            float: left;
+            display: block;
+            margin: 0 15px 5px 15px;
+            width: 150px;
+        }
+
+        .recipe p {
+            margin-bottom: 5px;
+            text-align: justify;
+            font-size: 13px;
+            font-family: Arial;
+        }
+
+        .recipe div {
+            overflow: hidden;
+            float: right;
+            margin-top: 15px;
+        }
+
+        .favorite {
+            background: url('img/favorite.png');
+            float: left;
+            width: 16px;
+            height: 16px;
+            margin-top: 19px;
+        }
+        .favorite:hover {
+            background: url('img/noFavorite.png');
+            margin-top: 20px;
+        }
+
+        .noFavorite {
+            background: url('img/noFavorite.png');
+            float: left;
+            width: 16px;
+            height: 16px;
+            margin-top: 20px;
+        }
+        .noFavorite:hover {
+            background: url('img/favorite.png');
+            margin-top: 19px;
+        }
+
+        .recipeHeader {
+            clear: right;
+        }
+
+        #showMuch {
+            margin-top: 35px;
+            font-size: 11pt;
+            cursor: pointer;
+            border-top: 1px solid #aaaaaa;
+            border-left: 1px solid #aaaaaa;
+            border-right: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+            text-align: center;
+            padding: 5px;
+        }
+
+        #showMuch:hover {
+            border-top: 1px solid #333333;
+            border-left: 1px solid #333333;
+            border-right: 1px solid #aaaaaa;
+            border-bottom: 1px solid #aaaaaa;
+        }
+
+        #showMuch a:hover {
+            text-decoration: none;
+        }
+
+        #showMuch img {
+            width: 13px;
+            height: 8px;
+            margin-left: 5px;
+        }
+        /* </home> */
+
+        /* <register> */
+        #registerForm div {
+            background: url('img/user_bg.png');
+            width: 400px;
+            padding: 10px 25px 25px 25px;
+            margin: 50px auto;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-top-left-radius: 8px;
+            -moz-border-radius-bottomright: 8px;
+            -moz-border-radius-bottomleft: 8px;
+            -moz-border-radius-topright: 8px;
+            -moz-border-radius-topleft: 8px;
+        }
+
+        #registerForm table {
+            margin: 0 auto;
+            color: #ffffff;
+        }
+
+        #registerForm table td {
+            padding-top: 15px;
+        }
+
+        #regButton {
+            text-align: center;
+        }
+
+        .nameColl {
+            text-align: right;
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        #retPassInfo {
+            text-align: justify;
+        }
+        /* </register> */
+
+        /* <recipe> */
+        #author {
+            font-size: 14pt;
+        }
+
+        #goRight {
+            float: right;
+            width: 150px;
+            margin-right: 20px;
+        }
+
+        #dishPhoto {
+            margin: 0;
+            width: 150px;
+            height: 150px;
+        }
+
+        #socialLinks {
+            margin: 0 17px;
+        }
+
+        #recipe h3 {
+            color: #777777;
+            font-size: 11pt;
+            margin-top: 20px;
+        }
+
+        #recipe div {
+            float: right;
+            margin-top: 15px;
+        }
+
+        #infoPoster {
+            margin-top: 20px;
+        }
+
+        #infoPoster img {
+            float: left;
+            margin: 0 10px 10px 10px;
+        }
+
+        #comments {
+            margin-top: 30px;
+        }
+
+        .comment {
+            overflow: hidden;
+            display: block;
+
+        }
+
+        .comment img {
+            overflow: hidden;
+            float: left;
+            margin: 5px;
+            margin-right: 15px;
+        }
+
+        .contentComment {
+            margin-top: 8px;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .comment .date {
+            margin-bottom: 8px;
+        }
+
+        #commentArea {
+            margin-top: 15px;
+            overflow: hidden;
+            border: 1px solid #cccccc;
+            color: #777777;
+        }
+
+        #commentSend {
+            display: none;
+        }
+        /* </recipe> */
+
+        /* <user> */
+        #userContent h3 {
+            color: #5a5a5a;
+            font-size: 13pt;
+        }
+
+        #userContent h4 {
+            margin: 10px 0 7px 10px;
+        }
+
+        #userContent h4 a {
+            color: #5a5a5a;
+        }
+
+        #userContent a {
+            color: #5a5a5a;
+            text-decoration: underline;
+        }
+
+        #userContent a:hover {
+            text-decoration: none;
+        }
+
+        #userContent img {
+            margin: 5px 10px 3px 10px;
+            float: left;
+        }
+
+        #UserContentLink {
+            display: block;
+            margin: 10px;
+        }
+
+        .editLink {
+            background: url('img/user_bg.png');
+            border: 1px solid #5a5a5a;
+            float: right;
+            padding: 10px;
+        }
+
+        #stats {
+            display: block;
+            float: left;
+        }
+
+        #stats a {
+            color: #0000ff;
+        }
+
+        #userContent {
+            clear: both;
+        }
+        /* </user> */
+
+        /* <loading> */
+        #preloaderImg {
+            background: url(img/preloader.gif);
+        }
+
+        #preloaderImg span {
+            display: none;
+        }
+
+        #downloadBox { position: fixed; width: 100%; height: 100%; display: none; z-index: 9999; }
+        #downloadBackground { width: 100%; height: 100%; background: #222222; opacity: 0.9; z-index: 9999; padding-top: 20%; }
+        #downloadBoxContent { width: 240px; height: 240px; margin: 0 auto; }
+        #inDownloadBoxContent { overflow: hidden; font-size: 12pt; color: #FFFFFF;}
+        #preloaderImg { float: left; overflow: hidden; margin-right: 10px; }
+        #preloaderCancel { float: right; margin-top: 10px; margin-right: 20px; overflow: hidden; padding-bottom: 1px; }
+        #preloaderCancel a { text-decoration: underline; color: #ffffff; width: 100%; margin: 8px 0 0 0px; cursor: pointer; }
+        #preloaderCancel a:hover { text-decoration: none; }
+        /* </loading> */
+
+    /* </content> */
+/* </wrapper> */
+
+/* <footer> */
+#footer {
+	clear: both;
+    margin-bottom: 10px;
+    overflow: hidden;
+	border-top: 2px dotted #555555;
+	clear: both;
+	background: #ffffff;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	height: 100%;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-moz-border-radius-bottomleft: 8px;
+}
+
+    /* <copyright> */
+    #copyright {
+        margin-left: 15px;
+        float: left;
+        text-align: left;
+        width: 600px;
+    }
+
+    .cc {
+        background: url(img/cc.png) no-repeat;
+        width: 15px;
+        height: 15px;
+        display: block;
+        float: left;
+        margin-right: 5px;
+    }
+
+    .cc span {
+        display: none;
+    }
+    /* </copyright> */
+
+    /* <footer-links> */
+    #footer-links {
+        float: right;
+        margin-right: 30px;
+    }
+
+    #footer-links li {
+        float: left;
+        padding: 0 5px;
+        border-left: 1px solid #aaaaaa;
+    }
+
+    #footer-links li:first-child {
+        border: none;
+    }
+    /* </footer-links> */
+/* </footer> */

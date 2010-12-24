@@ -6,7 +6,7 @@
 <body>
 	<div id="header">
 		<?php echo $html->image('/modules/core/public/logo.png', array('url'=>'/')); ?>
-		<ul id="menu"><?php echo $this->element('menu')?></ul>
+		<ul id="menu"><?php echo $this->Theme->menu('main')?></ul>
 	</div>
 
 	<div id="content" class="content">

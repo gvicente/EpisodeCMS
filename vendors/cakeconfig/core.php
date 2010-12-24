@@ -7,6 +7,6 @@
 	Configure::write('Session.timeout', '99999');
 	Configure::write('Session.start', true);
 	Configure::write('Session.checkAgent', true);
-	Configure::write('Security.level', 'low');
-	Configure::write('Security.salt', 'DYhG9SKLDJFH3b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
+	Configure::write('Security.level', 'high');
+	Configure::write('Security.salt', 'DYhG912SKLDJFH3b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
 	Cache::config('default', array('engine' => 'File'));

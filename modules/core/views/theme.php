@@ -36,17 +36,20 @@ class ThemeView extends View {
 
     function _paths($plugin = null, $cached = true) {
         $paths = parent::_paths($plugin, $cached);
+//        $paths = array();
         $modules = Configure::read('modules');
         if (!empty($this->theme)) {
 
             foreach ($modules as $module => $config) {
-                $paths = array_merge(
-                    $paths,
-                    array(ROOT . $config['path'] . DS . 'themes' . DS . $this->theme . DS)                   
-                );
+                if(file_exists(ROOT . $config['path'] . DS . 'themes' . DS . $this->theme))
+                    $paths = array_merge(
+                        $paths,
+                        array(ROOT . $config['path'] . DS . 'themes' . DS . $this->theme . DS)
+                    );
             }
 
-            $paths = array_merge(array(ROOT . DS . 'themes' . DS . $this->theme . DS), $paths);
+//            $paths = array_merge(array(ROOT . DS . 'themes' . DS . $this->theme . DS), $paths);
+//            debug($paths);
         }
 
         if (empty($this->__paths)) {

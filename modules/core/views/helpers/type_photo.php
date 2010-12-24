@@ -15,10 +15,11 @@ class TypePhotoHelper extends AppHelper {
 
         $this->output .=
         '<div class="photo-input"><label>'
-        . $fieldName.'<a class="button delete" href="#" id="delete-'.$model.$fieldName.'">Remove</a>'
-        .'</label><a id="'.$model.$fieldName.'-uploader" class="button file" href="#">'
-        .$image
-        .'Choose '.$field.'</a></div>';
+        . __($fieldName, true).'<a class="button delete" href="#" id="delete-'.$model.$fieldName.'">Remove</a>'
+        . '</label><a id="'.$model.$fieldName.'-uploader" class="button file" href="#">'
+        . $image
+        . String::insert(__(':accusative '.$field, true), array('accusative'=>__('Choose', true)))
+        . '</a></div>';
 
         return $this->output;
     }

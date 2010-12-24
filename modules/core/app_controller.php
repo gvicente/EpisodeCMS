@@ -6,7 +6,7 @@ class AppController extends Controller {
 
     var $theme = "default";
     var $layout = "page";
-    var $helpers = array('Html', 'Form', 'Session', 'Javascript', 'Textile', 'Type', 'Filter');
+    var $helpers = array('Html', 'Form', 'Session', 'Javascript', 'Textile', 'Type', 'Filter', 'Theme');
     var $components = array('RequestHandler', 'Session', 'Event', 'Cookie');
 
     function __construct() {
@@ -53,9 +53,25 @@ class AppController extends Controller {
     }
 
     function beforeFilter() {
+        $theme = Configure::read('theme');
+        $modules = Configure::read('modules');
+
+        $menus = array();
+
+        foreach ($modules as $config) {
+            if (isset($config['menu'])) {
+                $menus = array_extend($menus, $config['menu']);
+            }
+        }
+
+        if(isset($theme['menu']))
+            $menus = array_extend($menus, $theme['menu']);
+
+        $this->set(compact('menus'));
+
         if ($this->name != 'Install') {
             $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
-            $this->Auth->loginRedirect = array('controller' => 'notifications', 'action' => 'index');
+            $this->Auth->loginRedirect = array('controller' => 'admin', 'action' => 'index');
             $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
             $this->Auth->fields = array('username' => 'username', 'password' => 'password');
 

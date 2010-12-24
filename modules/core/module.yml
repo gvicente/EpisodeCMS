@@ -18,6 +18,7 @@ scripts:
   -jquery.autocompleter
 styles:
   -jquery-ui/smoothness/jquery-ui-1.8.2.custom
+  -ui
 options:
   title: string
   description: text
@@ -130,50 +131,49 @@ routes:
     pass: [model]
     model: |
       [^/]+
-admin:
-  Dashboard:
-    _link:
-      controller: admin
-      action: index
-    Modules:
+menu:
+  admin:
+    _title: Control Panel Menu
+    Dashboard:
       _link:
         controller: admin
         action: index
-    Themes:
-      _link:
-        controller: admin
-        action: themes
-    Menus:
-      _link:
-        controller: admin
-        action: menus
-  Content:
-    _link:
-      controller: admin
-      action: overview
-    Categories|Logical separation:
+      Modules:
+        _link:
+          controller: admin
+          action: index
+      Themes:
+        _link:
+          controller: admin
+          action: themes
+      Menus:
+        _link:
+          controller: admin
+          action: menus
+    Content:
+      Categories|Logical separation:
+          _link:
+            controller: admin
+            action: browse
+            module: core
+            model: Category
+      Tags|Context separation:
         _link:
           controller: admin
           action: browse
           module: core
-          model: Category
-    Tags|Context separation:
+          model: Tag
+      Pages|General information:
+        _link:
+          controller: admin
+          action: browse
+          module: core
+    Users:
       _link:
         controller: admin
         action: browse
         module: core
-        model: Tag
-    Pages|General information:
-      _link:
-        controller: admin
-        action: browse
-        module: core
-  Users:
-    _link:
-      controller: admin
-      action: browse
-      module: core
-      model: User
+        model: User
 models:
   Page:
     _default:

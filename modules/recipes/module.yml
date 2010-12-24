@@ -1,0 +1,36 @@
+title: Recipes
+version: 1.0.1
+routes:
+  /recipes:
+    controller: viewer
+    action: index
+    model: recipes
+    pass: [model]
+  /recipes/:slug:
+    controller: viewer
+    action: view
+    model: recipes
+    pass: [model, slug]
+    slug: |
+      [^/]+
+menu:
+  admin:
+    Content:
+      Recipes:
+        _link:
+          controller: admin
+          action: browse
+          module: recipes
+models:
+  Recipe:
+    _default:
+    _browse:
+      content:
+        column: Content
+        content: |
+          !{photo}!
+    photo: thumb
+    title: string*
+    slug: string*
+    description: html*
+    info: html*

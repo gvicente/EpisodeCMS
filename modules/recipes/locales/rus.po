@@ -1,0 +1,8 @@
+msgid "Recipes"
+msgstr "Рецепты"
+
+msgid ":genitive Recipes"
+msgstr ":genitive рецептов"
+
+msgid ":accusative Recipe"
+msgstr ":accusative рецепт"

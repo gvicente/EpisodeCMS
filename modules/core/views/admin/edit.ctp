@@ -58,10 +58,10 @@
 		$('.input input:first').select();
 	});
 	</script>
-	<h2><?php echo __('Edit', true).' '.__(Inflector::humanize($model), true); ?></h2>
+    <h2><?php echo String::insert(__(':accusative '.Inflector::humanize($model), true), array('accusative'=>__('Edit', true))) ?></h2>
 	<?php $customize = false;?>
 	<?php else: ?>
-	<h2><?php echo __('Edit', true).' '.__(Inflector::humanize($module), true).' '.__('Options', true); ?></h2>
+    <h2><?php echo String::insert(__(':accusative '.Inflector::humanize($model), true), array('accusative'=>__('Edit', true).' '.__('Options', true))) ?></h2>
 	<?php $model = $module;	$customize = true; endif; ?>
 </div>
 

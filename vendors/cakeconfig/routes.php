@@ -8,7 +8,9 @@ if (!$config) {
     Router::connect('/', array('controller' => 'install'));
 } else {
     Router::parseExtensions('json', 'rss', 'xml');
+    
     $routes = array();
+    $config['modules'] = array_reverse($config['modules']);
     
     foreach ($config['modules'] as $module => $version) {
         if (isset($modules[$module]['routes'])) {

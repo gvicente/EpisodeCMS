@@ -18,13 +18,14 @@ routes:
     pass: [model, slug]
     slug: |
       [^/]+
-admin:
-  Content:
-    Posts|Blog items:
-      _link:
-        controller:admin
-        action:browse
-        module:blog
+menu:
+  admin:
+    Content:
+      Posts|Blog items:
+        _link:
+          controller:admin
+          action:browse
+          module:blog
 notifications:
   Comment:
     icon: /modules/blog/public/comments.png

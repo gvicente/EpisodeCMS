@@ -13,13 +13,14 @@ routes:
     pass: [model, slug]
     slug: |
       [^/]+
-admin:
-  Content:
-    Portfolio:
-      _link:
-        controller: admin
-        action: browse
-        module: portfolio
+menu:
+  admin:
+    Content:
+      Portfolio:
+        _link:
+          controller: admin
+          action: browse
+          module: portfolio
 models:
   Portfolio:
     _default:

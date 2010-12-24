@@ -6,6 +6,8 @@ class AdminController extends AppController {
 
     function beforeFilter() {
         parent::beforeFilter();
+        $modules = Configure::read('modules');
+        
         if (Configure::read('config.backend.theme'))
             $this->theme = Configure::read('config.backend.theme');
         else
@@ -13,15 +15,6 @@ class AdminController extends AppController {
 
         $language = Configure::read('config.admin-language');
         Configure::write('Config.language', $language);
-
-        $modules = Configure::read('modules');
-
-        $menu = array();
-        foreach ($modules as $config) {
-            if (isset($config['admin'])) {
-                $menu = array_extend($config['admin'], $menu);
-            }
-        }
 
         $user_info = $this->Auth->user();
         $this->widget('status', '../users/admin', array('user' => $user_info['User']));
@@ -34,7 +27,6 @@ class AdminController extends AppController {
         $this->set(compact('site_title'));
         $this->set('layout_title', 'Control Panel');
         $this->set('layout_redirect', array('controller' => 'notifications', 'action' => 'index'));
-        $this->set(compact('menu'));
     }
 
     function beforeRender() {
@@ -401,9 +393,9 @@ class AdminController extends AppController {
 
     function install($module, $redirect=true) {
         $this->loadModel('Database');
-        $data = load(ROOT . DS . 'modules' . DS . $module . DS . $module);
-
-        if (@$data['models']) {
+        $data = load(ROOT . DS . 'modules' . DS . $module . DS . 'module');
+        
+        if (isset($data['models'])) {
             reset($data['models']);
             while (list($model, $fields) = each($data['models'])) {
                 $tableName = Inflector::tableize($model);
@@ -497,7 +489,7 @@ class AdminController extends AppController {
     function uninstall($module, $redirect=true) {
 
         $this->loadModel('Database');
-        $data = load(ROOT . DS . 'modules' . DS . $module . DS . $module);
+        $data = load(ROOT . DS . 'modules' . DS . $module . DS . 'module');
 
         if (@$data['uninstall']['method'])
             $this->requestAction($data['uninstall']['method']);
@@ -535,11 +527,14 @@ class AdminController extends AppController {
 
     function deploy($redirect = true) {
         $this->autoRender = false;
+
         $Folder = & new Folder();
         $translations = array();
+        $modules = Configure::read('modules');
 
-        foreach(App::getInstance()->controllers as $path) {
-            $path .= DS . 'locales';
+        foreach($modules as $module=>$config) {
+
+            $path = ROOT . $config['path'] . DS . 'locales';
 
             if(file_exists($path)) {
                 $Folder->cd($path);

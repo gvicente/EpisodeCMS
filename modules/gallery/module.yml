@@ -13,13 +13,14 @@ routes:
     pass: [model, slug]
     slug: |
       [^/]+
-admin:
-  Content:
-    Gallery:
-      _link:
-        controller: admin
-        action: browse
-        module: gallery
+menu:
+  admin:
+    Content:
+      Gallery:
+        _link:
+          controller: admin
+          action: browse
+          module: gallery
 models:
   Gallery:
     _default:
@@ -28,8 +29,8 @@ models:
         column: Content
         content: |
           !{photo}!
-        photo: photo
-        title: string*
-        slug: string*
-        description: html*
-        info: html*
+    photo: photo
+    title: string*
+    slug: string*
+    description: html*
+    info: html*

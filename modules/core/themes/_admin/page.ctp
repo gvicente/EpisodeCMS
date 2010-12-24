@@ -3,14 +3,14 @@
 <head>
 	<?php echo $headers; ?>
 </head>
-<body id="<?php echo($this->action)?>">
+<body id="admin" class="<?php echo $this->params['controller'].' '.$this->params['action'] ?>">
 	<div id="header">
 		<h1><?php echo $html->link(__(@$layout_title, true), @$layout_redirect); ?></h1>
 
 
 		<ul id="menu-main">
 			<li id="site"><?php echo $html->link(__('Visit Site', true), '/', array('target'=>'_blank'))?></li>
-			<?php echo $this->element('menu'); ?>
+			<?php echo $this->Theme->menu('admin'); ?>
 		</ul>
 		<div id="status-bar">
 			<?php echo @$status; ?>

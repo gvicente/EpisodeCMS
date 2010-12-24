@@ -8,6 +8,29 @@ authors:
     email: termosa.stanislav@gmail.com
 date: 23.12.2010
 description: |
-    Main theme for cook2.me project
-menus:
-    main: Main Menu
+    Social theme for cook2.me project
+menu:
+  main:
+    _title: Главное меню
+    Главная:
+      _link: /
+      _image: navigate/9.png
+    О сайте:
+      _link: /pages/about
+      _image: navigate/3.png
+    Повар недели:
+      _link: /users/best
+      _image: navigate/6.png
+    Блюдо недели:
+      _link: /resipes/best
+      _image: navigate/8.png
+    Добавить рецепт:
+      _link: /recipes/edit
+      _image: navigate/7.png
+  footer:
+    Правила:
+      _link: /pages/rules
+    Рекламодателям:
+      _link: /pages/advertisment
+    Партнерам:
+      _link: /pages/partners

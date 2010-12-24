@@ -5,11 +5,12 @@ database:
   database: cake2me
   login: root
   password: password
-debug: 0
+debug: 4
 modules: 
   cook2.me: 0
   blog: 1.0.1
   core: 1
+  recipes: 1.0.1
 title: cook2.me
 description: >
   Кулинарная
@@ -20,10 +21,13 @@ routes:
   /: 
     controller: viewer
     action: index
-    model: post
+    model: recipe
     pass: 
       - model
 styles: 
   - admin
 version: 0
 admin-language: rus
+theme: default
+theme_path: >
+  /var/www/public/cake2-me.episodecms.com/projects/cook2.me/themes/default
