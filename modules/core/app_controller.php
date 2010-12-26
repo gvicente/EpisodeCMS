@@ -4,12 +4,14 @@ include_once ('error.php');
 
 class AppController extends Controller {
 
-    var $theme = "default";
+    var $theme  = "default";
     var $layout = "page";
-    var $helpers = array('Html', 'Form', 'Session', 'Javascript', 'Textile', 'Type', 'Filter', 'Theme');
-    var $components = array('RequestHandler', 'Session', 'Event', 'Cookie');
+    var $ui     = "main";
 
     function __construct() {
+        $this->components = array('RequestHandler', 'Session', 'Event', 'Cookie');
+        $this->helpers = array('Html', 'Form', 'Session', 'Javascript', 'Textile', 'Type', 'Filter', 'Theme');
+        
         $this->view = 'Theme';
         parent::__construct();
 
@@ -43,13 +45,21 @@ class AppController extends Controller {
         else
             $title = $this->name;
 
-        $config = Configure::read('config.modules.core');
-
-        if (is_array($config['title'])) {
-            $this->set('title_for_layout', $title . ' ' . $config['title']);
-            $this->set('keywords', $config['keywords']);
-            $this->set('description', $config['description']);
+        $ui_title = Configure::read('ui.'.$this->ui.'._title');
+        $keywords = Configure::read('ui.'.$this->ui.'._keywords');
+        $description = Configure::read('ui.'.$this->ui.'._description');
+        $ui_title_template = Configure::read('ui.'.$this->ui.'._title_template');
+        if(!$ui_title_template) {
+            $ui_title_template = ':page | :ui';
         }
+
+        $title = String::insert($ui_title_template, array('ui'=>$ui_title, 'page'=>$title));
+
+        $this->set('title_for_layout', $title);
+        $this->set('keywords', $keywords);
+        $this->set('description', $description);
+        
+        $this->Event->triggerEvent('Render' . Inflector::humanize($this->ui));
     }
 
     function beforeFilter() {
@@ -81,14 +91,17 @@ class AppController extends Controller {
 
             $this->Auth->authorize = 'controller';
         }
+        $this->Event->triggerEvent('Startup' . Inflector::humanize($this->ui));
     }
 
     function widget($id, $view, $data=array(), $class=false, $filter=false) {
         if ($this->checkAction($filter)) {
-            if (!@$this->viewVars[$id])
-                $this->set($id, '');
-
-            @$this->viewVars[$id] .= $this->renderPartial($view, $data, $class);
+            $content = '';
+            if (isset($this->viewVars[$id]))
+                $content = $this->viewVars[$id];
+            
+            $this->set($id, $content.$this->renderPartial($view, $data, $class));
+//            $this->viewVars[$id] = $content.$this->renderPartial($view, $data, $class);
         }
     }
 

@@ -1,5 +1,4 @@
 <?php
-
 App::import('vendor', 'spyc');
 
 function array_extend($a, $b) {
@@ -50,6 +49,8 @@ if ($config = load(ROOT . DS . 'config'))
     Configure::write('debug', @$config['debug'] || 0);
 
 $modules = array();
+$ui = array();
+$widgets = array();
 
 if (isset($config['project'])) {
     $project_config = load(ROOT . DS . 'projects' . DS . $config['project'] . DS . 'project');
@@ -82,6 +83,12 @@ foreach ($config['modules'] as $module => $version) {
     $viewPaths[] = ROOT . DS . $directory . DS . $module . DS . 'views' . DS;
     $helperPaths[] = ROOT . DS . $directory . DS . $module . DS . 'views' . DS . 'helpers' . DS;
     $componentPaths[] = ROOT . DS . $directory . DS . $module . DS . 'components' . DS;
+
+    if (isset($modules[$module]['ui']))
+        $ui = array_extend($ui, $modules[$module]['ui']);
+
+    if (isset($modules[$module]['ui']['widgets']))
+        $widgets = array_extend($ui, $modules[$module]['ui']['widgets']);
 }
 
 if (!isset($config['theme'])) {
@@ -105,6 +112,8 @@ if(isset($config['theme_path'])) {
 Configure::write('modules', $modules);
 Configure::write('config', $config);
 Configure::write('theme', $theme);
+Configure::write('ui', $ui);
+Configure::write('widgets', $widgets);
 
 $Folder = & new Folder();
 $controllers = array();

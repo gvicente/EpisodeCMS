@@ -127,10 +127,14 @@
 	</tr>
 <?php endforeach; ?>
 <?php else:  ?>
+<?php
+    $colspan = sizeof($columns) + 1;
+    if (!isset($columns['title']))
+        $colspan++;
+?>
 	<tr>
-		<td colspan="2" class="title">
+		<td colspan="<?php echo $colspan ?>" class="title">
 			<?php echo String::insert(__(':genitive '.Inflector::pluralize($model), true), array('genitive'=>__('No', true))) ?>
-			<?php if(!$static) echo $html->link(__('Add new', true), array('controller'=>'admin', 'action'=>'edit', 'model'=>$model, 'module'=>$module), array('class'=>'button add')).'?' ?>
 		</td>
 	</tr>
 <?php endif; ?>

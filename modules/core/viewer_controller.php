@@ -10,7 +10,7 @@
 				$this->Event->triggerEvent($model.'View', $data[$id]);
 			}
 			$this->set(compact('data'));
-			$this->pageTitle = __(Inflector::humanize(Inflector::tableize($model)), true);
+			$this->set('title_for_layout', __(Inflector::humanize(Inflector::tableize($model)), true));
 			$this->set('json', array('data'));
 		}
 

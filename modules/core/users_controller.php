@@ -6,16 +6,16 @@
 
 		function logout() {
 			$this->Auth->logout();
-//            $this->Cookie->delete('Auth.User');
+            $this->Cookie->delete('Auth.User');
 			$this->redirect($this->Auth->logoutRedirect);
 		}
 
 		function login() {
-			$menu = array();
+			$menus = array();
 			$this->set('title', 'Authorization');
 			$this->set('layout_title', 'Authorization');
 			$this->set('layout_redirect', array('controller'=>'users', 'action'=>'login'));
-			$this->set(compact('menu'));
+			$this->set(compact('menus'));
 			$this->theme = "_classic";
 
             if(Configure::read('config.backend.theme'))

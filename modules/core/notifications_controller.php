@@ -1,11 +1,10 @@
 <?php
-	App::import('Controller', 'Admin');
-	
-	class NotificationsController extends AdminController {
+	class NotificationsController extends AppController {
 		var $uses = array('Notification');
-		
+		var $ui   = "admin";
+        
 		function index() {
-			$data = $this->Notification->find('all', array('conditions'=>array('read'=>0), 'order'=>'text'));
+        	$data = $this->Notification->find('all', array('conditions'=>array('read'=>0), 'order'=>'text'));
 			$ids = array();
 			$modules = array();
 			foreach($data as $key=>$notification) {

@@ -84,7 +84,7 @@ a:hover {
 
 #status-bar {
 	float: right;
-	margin-top: -30px;
+	margin-top: -25px;
 }
 
 #status-bar>div {
@@ -143,9 +143,8 @@ a:hover {
 
 #header h1 {
 	display: block;
-	width: 360px;
+	width: 18%;
 	float: left;
-	padding: 10px;
 	font-size: 16px;
 }
 
@@ -810,15 +809,15 @@ a:hover {
 	background:#fff url('images/bc_bg.png');
 }
 
-.holder ul {
-	margin: 0;
+#menu-main>ul {
+	margin: 0 auto;
 	padding: 0;
 	height: 21px;
 	display: block;
-	width: auto;
+	width: 600px;
 }
 
-.holder ul li a em {
+#menu-main ul li a em {
 	display: block;
 	font-style: normal;
 	font-size: 11px;
@@ -826,7 +825,7 @@ a:hover {
 	font-weight: normal;
 }
 
-.holder>ul>li {
+#menu-main>ul>li {
 	display: block;
 	float: left;
 	position: relative;
@@ -838,12 +837,12 @@ a:hover {
 	background: url(images/separator.gif) no-repeat 100% 0;
 }
 
-.holder ul li span {
+#menu-main ul li span {
 	display: block;
 	overflow: hidden;
 }
 
-.holder ul li a {
+#menu-main ul li a {
 	display: block;
 	position: relative;
 	height: 21px;
@@ -853,7 +852,7 @@ a:hover {
 	width: 100%''
 }
 
-.holder ul li ul {
+#menu-main ul li ul {
 	display: none;
 	position: absolute;
 	background: #eee;
@@ -861,30 +860,30 @@ a:hover {
 	height: auto !important;
 }
 
-.holder>ul>li>ul {
+#menu-main>ul>li>ul {
 	top: 27px;
 }
 
-.holder>ul>li>a {
+#menu-main>ul>li>a {
 	padding: 0 10px 10px 5px;
 }
 
-.holder>ul>li:hover {
+#menu-main>ul>li:hover {
 	background: #ddd;
 }
 
-.holder ul li li em {
+#menu-main ul li li em {
 	line-height: 10px;
 	margin-bottom: 5px;
 	font-size: 10px;
 	color: #999;
 }
 
-.holder li li ul {
+#menu-main li li ul {
 	left:130px;
 }
 
-.holder li li {
+#menu-main li li {
 	float: none !important;
 	display: block !important;
 	background: none;
@@ -894,19 +893,18 @@ a:hover {
 	
 }
 
-.holder ul li ul li a {
+#menu-main ul li ul li a {
 	color: #666;	
 	height: auto;
 	width: 120px;
 	padding: 5px;
 }
 
-
-.holder ul li:hover>ul {
+#menu-main ul li:hover>ul {
 	display: block;	
 }
 
-.holder ul li.first a {
+#menu-main ul li.first a {
 	height: 16px !important;
 	text-indent: -1000em;
 	width:16px;
@@ -916,39 +914,39 @@ a:hover {
 	background:url(images/home.gif) no-repeat 0 0;
 }
 
-.holder ul li.first:hover {
+#menu-main ul li.first:hover {
 	background-color: transparent;	
 }
 
-.holder ul li.first a:hover {
+#menu-main ul li.first a:hover {
 	background-position: 0 -16px;
 }
 
-.holder ul ul li:hover {
+#menu-main ul ul li:hover {
 	background: #333;	
 }
 
-.holder a:hover {
+#menu-main a:hover {
 	text-decoration: none;
 }
 
-.holder li li a:hover {
+#menu-main li li a:hover {
 	background: #ddd;
 }
 
-.holder ul li.last {
+#menu-main ul li.last {
 	background: none;
 	margin-right: 0;
 	padding-right: 0;
 }
 
-.holder>ul>li.childs>a {
+#menu-main>ul>li.childs>a {
 	background-image: url(images/more-down.png);
 	background-repeat:no-repeat;
 	background-position: 50% 80%;
 }
 
-.holder li li.childs>a {
+#menu-main li li.childs>a {
 	background-image: url(images/more-right.png);
 	background-repeat:no-repeat;
 	background-position: 100% 50%;
@@ -971,4 +969,86 @@ a:hover {
     color: #333;
     background: #fff;
     margin: 5px;
+}
+
+.todo {
+    border:solid 1px #666;
+    width:599px;
+    font-size: 12px;
+    overflow: hidden;
+    color:#333;
+    background: #eee;
+    margin-top: 10px;
+}
+
+.todo.active {
+    min-height: 50px;
+    background: #fff;
+}
+
+.todo .text {
+    padding:10px
+}
+
+.todo .delete {
+    display: none;
+}
+
+.todo:hover .delete {
+    position: absolute;
+    margin-top: 4px;
+    margin-left: 575px;
+    border: solid 1px #333;
+    background: #fff;
+    display: block;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.widget .menu li {
+
+}
+
+.widget .menu a {
+    display: block;
+    padding: 5px;
+    clear: both;
+    overflow: hidden;
+}
+
+.widget .menu a:hover {
+    background: #aaa;
+    text-decoration: none;
+}
+
+.widget .menu .image img {
+    float: left;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.widget .menu .image span {
+    margin-left: 10px;
+    display: inline-block;
+    margin-top: 3px;
+}
+
+.widget .menu .actions {
+    display: none;
+}
+
+.widget .menu:hover .actions {
+    display: block;
+}
+
+.widget .menu .add-menu-item {
+    width: 90%;
+    border: solid 1px #666;
+    background: #efefef;
+    padding: 3px;
+    font-family: Verdana;
+    font-size: 12px;
 }

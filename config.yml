@@ -11,6 +11,9 @@ modules:
   core: 1
   recipes: 1.0.1
   Directive: 1.0.1
+  banners: 1.0.1
+  blog: 1.0.1
+  dev: 1.0.1
 title: cook2.me
 description: >
   Кулинарная

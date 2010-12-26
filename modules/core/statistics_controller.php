@@ -1,5 +1,5 @@
 <?php 
-	class StatisticsController extends AdminController {
+	class StatisticsController extends AppController {
 		function _onAdminInit($event, $controller) {
 			$controller->widget('navigation', 'widget', array(), $this, array('Notifications/index'));
 		}

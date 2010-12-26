@@ -1,0 +1,11 @@
+msgid "Banners"
+msgstr "Банеры"
+
+msgid "Advertisment"
+msgstr "Реклама"
+
+msgid ":genitive Banners"
+msgstr ":genitive банеров"
+
+msgid ":accusative Banner"
+msgstr ":accusative банер"

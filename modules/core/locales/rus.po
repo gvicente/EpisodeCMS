@@ -7,9 +7,26 @@ msgid "* Start with \"customize\":/controller:admin/action:customize/module:core
 "* Find out \"users\":/controller:admin/action:browse/module:core/model:User/"
 msgstr "* Начните с \"настройки\":/controller:admin/action:customize/module:core/ вашего сайта\n"
 "* Найтройте \"тему\":/controller:admin/action:themes/ и \"меню\":/controller:admin/action:menus/\n"
+"* Управляйте сайтом \"добавляя страницы\":/controller:admin/action:edit/module:core/model:Page/ и \"просматривая их\":/controller:admin/action:browse/module:core/model:Page/\n"
+"* Изучите \"пользователей\":/controller:admin/action:browse/module:core/model:User/"
 
 msgid "Restart"
 msgstr "Перезагрузка"
+
+msgid "Welcome!<br>Please identify yourself."
+msgstr "Добро пожаловать!<br>Представьтесь, пожалуйста."
+
+msgid "Username"
+msgstr "Логин"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Remember Me"
+msgstr "Запомнить меня"
+
+msgid "Login"
+msgstr "Вход"
 
 msgid "Browse"
 msgstr "Список"

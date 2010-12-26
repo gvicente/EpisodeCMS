@@ -1,37 +1,31 @@
 <?php
-
 class AdminController extends AppController {
-
+    
     var $uses = array();
+    var $ui = "admin";
 
-    function beforeFilter() {
-        parent::beforeFilter();
+    function _onStartupAdmin($event, $controller) {
         $modules = Configure::read('modules');
         
         if (Configure::read('config.backend.theme'))
-            $this->theme = Configure::read('config.backend.theme');
+            $controller->theme = Configure::read('config.backend.theme');
         else
-            $this->theme = '_classic';
+            $controller->theme = '_classic';
 
         $language = Configure::read('config.admin-language');
         Configure::write('Config.language', $language);
 
-        $user_info = $this->Auth->user();
-        $this->widget('status', '../users/admin', array('user' => $user_info['User']));
-        $this->widget('status', '../admin/languages', compact('language'));
+        $user_info = $controller->Auth->user();
+        $controller->widget('status', '../users/admin', array('user' => $user_info['User']));
+        $controller->widget('status', '../admin/languages', compact('language'));
 
-        $this->Event->triggerEvent('AdminInit');
+        $controller->Event->triggerEvent('AdminInit');
 
         $config = Configure::read('config');
         $site_title = $config['title'] ? $config['title'] : __('EpisodeCMS', true);
-        $this->set(compact('site_title'));
-        $this->set('layout_title', 'Control Panel');
-        $this->set('layout_redirect', array('controller' => 'notifications', 'action' => 'index'));
-    }
-
-    function beforeRender() {
-        parent::beforeRender();
-        $this->set('title_for_layout', __('Control Panel', true) . ' → ' . __($this->name, true));
+        $controller->set(compact('site_title'));
+        $controller->set('layout_title', 'Control Panel');
+        $controller->set('layout_redirect', array('controller' => 'notifications', 'action' => 'index'));
     }
 
     function language($locale = null) {
@@ -476,12 +470,7 @@ class AdminController extends AppController {
                     $this->Database->query($sql);
         }
 
-        if (@$data['install']['method']) {
-            $method = explode('/', $data['install']['method']);
-            $controller = @$method[1];
-            if ($controller && (class_exists($controller . 'Controller') || include (ROOT . DS . 'modules' . DS . $module . DS . $controller . '_controller.php')))
-                $this->requestAction($data['install']['method']);
-        }
+        $this->Event->triggerEvent('Install' . Inflector::humanize($module));
 
         $config = Configure::read('config');
         $config['modules'][$module] = $data['version'];
@@ -496,8 +485,7 @@ class AdminController extends AppController {
         $this->loadModel('Database');
         $data = load(ROOT . DS . 'modules' . DS . $module . DS . 'module');
 
-        if (@$data['uninstall']['method'])
-            $this->requestAction($data['uninstall']['method']);
+        $this->Event->triggerEvent('Uninstall' . Inflector::humanize($module));
 
         if (@$data['uninstall']['sql']) {
             $sqls = explode(';', $data['uninstall']['sql']);

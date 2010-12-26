@@ -24,6 +24,13 @@ options:
   description: text
   keywords: text
   maintance: bool
+ui:
+  admin:
+    _title: Control Panel
+    _theme: _classic
+  main:
+    _title: Frontend
+    _theme: default
 routes:
   /:
     controller: viewer
@@ -35,7 +42,7 @@ routes:
     controller: users
     action: logout
   /admin:
-    controller: admin
+    controller: notifications
     action: index
   /admin/language/*:
     controller: admin
@@ -136,8 +143,12 @@ menu:
     _title: Control Panel Menu
     Dashboard:
       _link:
-        controller: admin
+        controller: notifications
         action: index
+      Modules:
+        _link:
+          controller: admin
+          action: index
       Restart:
         _link:
           controller: admin

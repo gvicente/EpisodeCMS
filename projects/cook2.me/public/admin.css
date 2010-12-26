@@ -1,5 +1,5 @@
-#admin.admin.index .project.module {
-    background: #333;
+#admin.admin-controller.index-action .project.module {
+    background: url('../themes/default/img/body_bg.png');
     color: #fff;
 }
 

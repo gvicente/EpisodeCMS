@@ -16,27 +16,27 @@
 	})
 	</script>
 </head>
-<body id="admin" class="<?php echo $this->params['controller'].' '.$this->params['action'] ?>">
+<body id="admin" class="<?php echo $this->params['controller'].'-controller '.$this->params['action'] ?>-action">
 	<div id="header">
-		<h1><?php echo $html->link(@$site_title, '/', array('target'=>'_blank')); ?></h1>
-
 		<div class="holder">
-			<ul id="menu-main">
-				<li class="first"><?php echo $html->link(__('Visit Site', true), '/admin')?></li>
-				<?php echo $this->Theme->menu('admin') ?>
-			</ul>
+            <h1><?php echo $html->link(@$site_title, '/', array('target'=>'_blank')); ?></h1>
+			<div id="menu-main">
+                <ul>
+                    <li class="first"><?php echo $html->link(__('Visit Site', true), '/admin')?></li>
+                    <?php echo $this->Theme->menu('admin') ?>
+                </ul>
+			</div>
+            <div id="status-bar">
+                <?php echo $status; ?>
+            </div>
 		</div>
-
-		<div id="status-bar">
-			<?php echo @$status; ?>
-		</div>
-		<br style="clear:both">
 	</div>
+    <br style="clear:both">
 	<?php echo $session->flash();?>
 	<?php echo $session->flash('auth');?>
 
 	<div id="sidebar-left">
-		<?php echo @$navigation ?>
+		<?php echo $this->Theme->widget('navigation', $this) ?>
 	</div>
 
 	<div id="content">

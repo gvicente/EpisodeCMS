@@ -2,8 +2,8 @@
 $(function(){
     $(".notinstalled").hide();
     
-    $("h2").loading('/admin/modules.json', 'buttons', function(){
-        $("h2 a").click(function(){
+    $("#center h2").loading('/admin/modules.json', 'buttons', function(){
+        $("#center h2 a").click(function(){
             var id = $(this).attr('id');
             $('#modules .module').hide();
             $('.' + id).show();
@@ -12,6 +12,7 @@ $(function(){
             return false;
         });
     });
+    
 })
 </script>
 <div id="center">

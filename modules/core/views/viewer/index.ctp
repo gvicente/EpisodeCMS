@@ -8,7 +8,7 @@
                 <?php $value = $model.$entry[$model]['id'].'before_content'; echo @$$value; ?>
                 <?php if(isset($entry[$model]['content'])): ?>
                 <div class="content">
-                    <?php if(isset($entry[$model]['photo'])): ?>
+                    <?php if(isset($entry[$model]['photo']) && !empty($entry[$model]['photo'])): ?>
                     <div class="photo float-left margin-10"><?php echo $this->Html->image($entry[$model]['photo']) ?></div>
                     <?php endif ?>
 
