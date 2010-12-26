@@ -26,9 +26,7 @@
                     <?php echo $this->Theme->menu('admin') ?>
                 </ul>
 			</div>
-            <div id="status-bar">
-                <?php echo $status; ?>
-            </div>
+            <?php echo $this->Theme->widget('status', $this, 'status-bar') ?>
 		</div>
 	</div>
     <br style="clear:both">
@@ -46,7 +44,7 @@
 	</div>
 
 	<div id="sidebar-right">
-		<?php echo $this->Type->widgets() ?>
+        <?php echo $this->Theme->widget('widgets', $this) ?>
 	</div>
 </body>
 </html>

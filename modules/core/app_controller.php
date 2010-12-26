@@ -58,7 +58,26 @@ class AppController extends Controller {
         $this->set('title_for_layout', $title);
         $this->set('keywords', $keywords);
         $this->set('description', $description);
-        
+
+        $layout = Configure::read('ui.'.$this->ui);
+        unset($layout['_title']);
+        unset($layout['_theme']);
+
+        $widgets = array();
+        foreach ($layout as $bar=>$widgets_data) {
+            foreach ($widgets_data as $filter=>$widget) {
+                if ($this->checkAction($filter)) {
+                    foreach($widget as $id=>$params) {
+                        if (!isset($widgets[$id]))
+                            $widgets[$id] = array();
+                        if ($params != 'x')
+                            $widgets[$id] = array_extend($widgets[$id], $params);
+                    }
+                }
+            }
+        }
+//        debug($widgets);
+
         $this->Event->triggerEvent('Render' . Inflector::humanize($this->ui));
     }
 
@@ -154,6 +173,8 @@ class AppController extends Controller {
     function checkAction($actions) {
         if (!$actions)
             return true;
+        if (!is_array($actions))
+            $actions = array(0 => $actions);
         foreach ($actions as $action) {
             list($controller, $action) = explode('/', $action);
             if (

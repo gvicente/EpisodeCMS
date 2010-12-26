@@ -1,6 +1,6 @@
 <?php 
 class ThemeHelper extends AppHelper {
-    var $helpers = array('Html');
+    var $helpers = array('Html', 'Type');
 
     function image($url = null, $alt = null, $link = null) {
         $path = Configure::read('theme.path');
@@ -11,12 +11,20 @@ class ThemeHelper extends AppHelper {
             return '<span class="no-image">'.$url.'</span>';
     }
 
-    function widget($widget_name, $view) {
+    function widget($widget_name, $view, $id = '') {
         if (isset($view->viewVars[$widget_name]))
             $widgets = $view->viewVars[$widget_name];
         else
             $widgets = '';
-        return '<div id="widet-'.$widget_name.'">'.$widgets.'</div>';
+        
+        if ($widget_name == 'widgets')
+            $widgets .= $this->Type->widgets();
+
+        $widget_id = $id;
+        if (!$widget_id)
+           $widget_id =  'widet-'.$widget_name;
+        
+        return '<div id="'.$widget_id.'">'.$widgets.'</div>';
     }
 
     function menu($id = null) {
