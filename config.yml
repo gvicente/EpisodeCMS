@@ -5,7 +5,6 @@ database:
   database: cake2me
   login: root
   password: password
-debug: 4
 modules: 
   cook2.me: 0
   core: 1
@@ -14,6 +13,7 @@ modules:
   banners: 1.0.1
   blog: 1.0.1
   dev: 1.0.1
+  portfolio: 1.0.1
 title: cook2.me
 description: >
   Кулинарная
