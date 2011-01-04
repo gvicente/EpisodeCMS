@@ -1,17 +1,27 @@
 <script>
 $(function(){
     $(".notinstalled").hide();
+
+    var html = $("#center h2").html();
+
+    html = html
+        + ' <span class="devider"></span>'
+        + ' <a href="#" id="installed" class="active"><span></span>' + __('Installed') + '</a>'
+        + ' <a href="#" id="notinstalled"><span></span>' + __('Not Installed') + '</a>'
+        + ' <a href="#" id="available"><span></span>' + __('Available') + '</a>'
+        + ' <a href="#" id="create"><span></span>' + __('Create New') + '</a>';
+        
+    $("#center h2").html(html);
     
-    $("#center h2").loading('/admin/modules.json', 'buttons', function(){
-        $("#center h2 a").click(function(){
-            var id = $(this).attr('id');
-            $('#modules .module').hide();
-            $('.' + id).show();
-            $('h2 a').removeClass('active');
-            $(this).addClass('active');
-            return false;
-        });
+    $("#center h2 a").click(function(){
+        var id = $(this).attr('id');
+        $('#modules .module').hide();
+        $('.' + id).show();
+        $('h2 a').removeClass('active');
+        $(this).addClass('active');
+        return false;
     });
+    
     
 })
 </script>

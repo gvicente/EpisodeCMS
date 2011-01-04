@@ -60,3 +60,7 @@ function getPage() {
 			$('#content').fadeIn('slow');		
 		});
 }
+
+function __(str) {
+    return str;
+}
