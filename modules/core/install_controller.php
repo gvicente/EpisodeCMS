@@ -117,9 +117,7 @@ class InstallController extends AppController {
                     $admin_controller->install($module, false, false);
                 }
                 
-
                 $this->user['User']['id'] = 0;
-                $this->user['User']['password'] = Security::hash($this->user['User']['password']);
                 $admin_controller->data = $this->user;
                 @$admin_controller->edit('core', 'User', null, false);
                 

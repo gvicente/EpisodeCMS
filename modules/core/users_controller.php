@@ -31,7 +31,6 @@
 
 			if (!empty($this->data)) {
 				$this->data['User']['password'] = Security::hash($_POST['data']['User']['password']);
-
 				if($this->Auth->login(@$this->data['User'])) {
 					$this->Session->delete('Message.auth');
 
