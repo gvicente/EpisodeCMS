@@ -1,3 +1,5 @@
 nbproject
 tmp/*
-
+.buildpath
+.project
+.settings/*
