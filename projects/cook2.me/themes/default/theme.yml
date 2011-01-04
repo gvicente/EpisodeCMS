@@ -27,7 +27,6 @@ menu:
     Добавить рецепт:
       _link: /recipes/edit
       _image: navigate/7.png
-    Blog: x
   user:
     _title: Меню пользователя
   footer:

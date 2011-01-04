@@ -1,58 +1,7 @@
----
 project: cook2.me
-database: 
+database:
   host: localhost
-  database: cake2me
   login: root
+  database: cake2me
   password: password
-modules: 
-  cook2.me: 0
-  core: 1
-  recipes: 1.0.1
-  Directive: 1.0.1
-  banners: 1.0.1
-  blog: 1.0.1
-  dev: 1.0.1
-  portfolio: 1.0.1
-title: cook2.me
-description: >
-  Кулинарная
-  социальная сеть
-keywords: 
-maintance: 0
-routes: 
-  /: 
-    controller: viewer
-    action: index
-    model: recipe
-    pass: 
-      - model
-  "/project/:slug": 
-    controller: directive
-    action: view
-    pass: 
-      - slug
-    slug: '[^/]+'
-  "/project/:slug:/edit": 
-    controller: directive
-    action: edit
-    pass: 
-      - slug
-    slug: '[^/]+'
-  /admin/directive: 
-    controller: directive
-    action: admin_browse
-styles: 
-  - admin
-version: 0
-admin-language: rus
-theme: default
-theme_path: >
-  /var/www/public/cake2-me.episodecms.com/projects/cook2.me/themes/default
-content: '* Manage your project, resource and tasks'
-admin: 
-  Content: 
-    Directive: 
-      _link: 
-        controller: directive
-        action: admin_browse
+debug: 4

@@ -29,11 +29,6 @@ function load($file) {
 
 function save($file, $array) {
     $string = Spyc::YAMLDump($array);
-
-    //		$f = fopen('ftp://razbakov:V3ufG0k1c@localhost'.$file, "w");
-    //		fwrite($f, $string);
-    //		fclose($f);
-
     file_put_contents($file . '.yml', $string);
 }
 
@@ -46,7 +41,7 @@ function __helperize($file) {
 }
 
 if ($config = load(ROOT . DS . 'config'))
-    Configure::write('debug', @$config['debug'] || 0);
+    Configure::write('debug', isset($config['debug']) && $config['debug'] || 0);
 
 $modules = array();
 $ui = array();
@@ -66,6 +61,7 @@ if (isset($config['project'])) {
 }
 
 $modules['core'] = 1;
+$config['modules']['core'] = 1;
 
 foreach ($config['modules'] as $module => $version) {
     if($config['project'] == $module) {
@@ -86,9 +82,6 @@ foreach ($config['modules'] as $module => $version) {
 
     if (isset($modules[$module]['ui']))
         $ui = array_extend($ui, $modules[$module]['ui']);
-
-    if (isset($modules[$module]['ui']['widgets']))
-        $widgets = array_extend($ui, $modules[$module]['ui']['widgets']);
 }
 
 if (!isset($config['theme'])) {
@@ -113,7 +106,6 @@ Configure::write('modules', $modules);
 Configure::write('config', $config);
 Configure::write('theme', $theme);
 Configure::write('ui', $ui);
-Configure::write('widgets', $widgets);
 
 $Folder = & new Folder();
 $controllers = array();

@@ -8,6 +8,7 @@ class ThemeView extends View {
     function __construct(&$controller, $register = true) {
         parent::__construct($controller, $register);
         $this->theme = & $controller->theme;
+        $this->ui = & $controller->ui;
     }
 
     function _getLayoutFileName($name = null) {
@@ -68,16 +69,16 @@ class ThemeView extends View {
         $scripts = array();
         $styles = array();
         $modules = Configure::read('modules');
-
+        
         foreach ($modules as $module => $config) {
-            if (isset($config['scripts'])) {
-                foreach ($config['scripts'] as $script) {
+            if (isset($config['ui'][$this->ui]['_js'])) {
+                foreach ($config['ui'][$this->ui]['_js'] as $script) {
                     $scripts[] = $config['path'].'/public/'.$script;
                 }
             }
 
-            if (isset($config['styles'])) {
-                foreach ($config['styles'] as $style) {
+            if (isset($config['ui'][$this->ui]['_css'])) {
+                foreach ($config['ui'][$this->ui]['_css'] as $style) {
                     $styles[] = $config['path'].'/public/'.$style;
                 }
             }
@@ -109,6 +110,7 @@ class ThemeView extends View {
                 )
             )
         );
+        
         return parent::renderLayout($content_for_layout, $layout);
     }
 }

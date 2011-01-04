@@ -59,24 +59,18 @@ class AppController extends Controller {
         $this->set('keywords', $keywords);
         $this->set('description', $description);
 
-        $layout = Configure::read('ui.'.$this->ui);
+        $layout  = Configure::read('ui.'.$this->ui);
+       
         unset($layout['_title']);
         unset($layout['_theme']);
 
-        $widgets = array();
-        foreach ($layout as $bar=>$widgets_data) {
-            foreach ($widgets_data as $filter=>$widget) {
-                if ($this->checkAction($filter)) {
-                    foreach($widget as $id=>$params) {
-                        if (!isset($widgets[$id]))
-                            $widgets[$id] = array();
-                        if ($params != 'x')
-                            $widgets[$id] = array_extend($widgets[$id], $params);
-                    }
+        foreach ($layout as $bar => $widgets_array) {
+            if ($bar[0] != '_') {
+                foreach ($widgets_array as $widget => $param) {
+                    $this->widget($bar, '../'.$widget, array(), false, $param['_allow']);
                 }
             }
         }
-//        debug($widgets);
 
         $this->Event->triggerEvent('Render' . Inflector::humanize($this->ui));
     }
@@ -113,14 +107,14 @@ class AppController extends Controller {
         $this->Event->triggerEvent('Startup' . Inflector::humanize($this->ui));
     }
 
-    function widget($id, $view, $data=array(), $class=false, $filter=false) {
-        if ($this->checkAction($filter)) {
+    function widget($id, $view, $data=array(), $controller=false, $filter=false) {
+        $allowed = $this->checkAction($filter);
+        if ($allowed) {
             $content = '';
             if (isset($this->viewVars[$id]))
                 $content = $this->viewVars[$id];
             
-            $this->set($id, $content.$this->renderPartial($view, $data, $class));
-//            $this->viewVars[$id] = $content.$this->renderPartial($view, $data, $class);
+            $this->set($id, $content.$this->renderPartial($view, $data, $controller));
         }
     }
 
@@ -132,9 +126,17 @@ class AppController extends Controller {
         $viewClassName = $this->view . 'View';
         $View = new $viewClassName($this);
         $paths = $View->_paths(Inflector::underscore($class->plugin));
+        
+        $view_path = $class->viewPath;
+        if ($view[0] == '.') {
+            $view = str_replace('../', '', $view);
+            $view_path = '';
+        }
+
         foreach ($paths as $path) {
-            if (file_exists($path . $class->viewPath . DS . $view . $class->ext)) {
-                return $View->_render($path . $class->viewPath . DS . $view . $class->ext, $data);
+            $full_path = $path . $view_path . DS . $view . $class->ext;
+            if (file_exists($full_path)) {
+                return $View->_render($full_path, $data);
             }
         }
     }
@@ -170,29 +172,28 @@ class AppController extends Controller {
         return $allowed;
     }
 
+    // @todo: Add check on all $actions
     function checkAction($actions) {
-        if (!$actions)
-            return true;
+        $result = false;
+
+        if (!$actions || $actions == '*')
+            $result = true;
+        
         if (!is_array($actions))
             $actions = array(0 => $actions);
+
         foreach ($actions as $action) {
-            list($controller, $action) = explode('/', $action);
-            if (
-                    (
-                    $controller == '*'
-                    ||
-                    $this->name == $controller
-                    )
-                    &&
-                    (
-                    $action == '*'
-                    ||
-                    $this->action == $action
-                    )
-            )
-                return true;
+            if (strstr('/', $action))
+                list($controller, $action) = explode('/', $action);
+            else
+                $controller = '*';
+        
+            if (($controller == '*' || $this->name == $controller)
+            && ($action == '*'||$this->action == $action))
+                $result = true;
         }
-        return false;
+        
+        return $result;
     }
 
 }

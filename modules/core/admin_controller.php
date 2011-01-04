@@ -473,8 +473,16 @@ class AdminController extends AppController {
         $this->Event->triggerEvent('Install' . Inflector::humanize($module));
 
         $config = Configure::read('config');
+        $path = ROOT . DS . 'config';
         $config['modules'][$module] = $data['version'];
-        save(ROOT . DS . 'config', $config);
+        if (isset($config['project']) && $project = $config['project']) {
+            $path = ROOT . DS . 'projects' . DS . $project . DS . 'project';
+            unset($config['modules'][$project]);
+            unset($config['database']);
+            unset($config['project']);
+        }
+        unset($config['modules']['core']);
+        save($path, $config);
         
         if($redirect)
             $this->deploy($redirect, array('action' => 'index'));
@@ -513,7 +521,16 @@ class AdminController extends AppController {
         }
         $config = Configure::read('config');
         unset($config['modules'][$module]);
-        save(ROOT . DS . 'config', $config);
+        $path = ROOT . DS . 'config';
+        if (isset($config['project']) && $project = $config['project']) {
+            $path = ROOT . DS . 'projects' . DS . $project . DS . 'project';
+            unset($config['modules'][$project]);
+            unset($config['database']);
+            unset($config['project']);
+        }
+        unset($config['modules']['core']);
+
+        save($path, $config);
 
         clearCache(null, 'models');
         if($redirect)

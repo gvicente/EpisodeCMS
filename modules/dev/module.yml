@@ -3,18 +3,18 @@ version: 1.0.1
 description: |
   Developer Pack designed for quick deploying modules for web applications.
 routes:
-  /admin/editor:
+  /editor:
     _title: Site Editor
     controller: editor
     action: index
-widgets:
-  editor:
-    sitemap:
-      _title: Site Navigation
+  /editor/edit:
+    _title: Site Editor
+    controller: editor
+    action: edit
 ui:
   admin:
-    notifications:
-      */*:
-        sitemap:
-          _title: Site Navigation
-          _before: *
+    navigation:
+      editor/sitemap:
+        _title: Site Navigation
+        _allow: *
+        _before: *

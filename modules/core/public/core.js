@@ -1,6 +1,20 @@
+App = {
+    widgets: {},
+    init: function() {
+        for (i in this.widgets) {
+            this.widgets[i].init();
+        }
+
+    },
+    widget: function(id, module) {
+        this.widgets[id] = module;
+    }
+};
+
 $(document).ready(function () {
+    App.init();
 	//Check if url hash value exists (for bookmark)
-	$.history.init(pageload);	
+//	$.history.init(pageload);
 	    
 	//highlight the selected link
 	$('a[href=' + document.location.hash + ']').addClass('selected');

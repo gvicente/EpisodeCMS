@@ -240,6 +240,7 @@ a:hover {
     margin: 0;
     padding: 15px 25px 15px 18px;
     clear: both;
+    min-height: 800px;
 }
 
     /* <dish-of-the-week> */
