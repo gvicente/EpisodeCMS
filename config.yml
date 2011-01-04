@@ -1,7 +1,8 @@
+---
 project: cook2.me
-database:
+database: 
   host: localhost
+  database: test
   login: root
-  database: cake2me
   password: password
 debug: 4

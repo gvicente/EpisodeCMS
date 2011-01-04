@@ -1,13 +1,12 @@
 <?php
-
 $config = Configure::read('config');
-$modules = Configure::read('modules');
-    
-if (!$config) {
+
+if ($config['setup']) {
     Router::connect('/:action', array('controller' => 'install'));
     Router::connect('/', array('controller' => 'install'));
 } else {
     Router::parseExtensions('json', 'rss', 'xml');
+    $modules = Configure::read('modules');
     
     $routes = array();
     $config['modules'] = array_reverse($config['modules']);

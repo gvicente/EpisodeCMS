@@ -9,6 +9,8 @@ content: |
 options:
   maintance: bool
 ui:
+  install:
+    _theme: _install
   admin:
     _title: Control Panel
     _theme: _classic
@@ -26,6 +28,11 @@ ui:
     _css:
       -jquery-ui/smoothness/jquery-ui-1.8.2.custom
       -ui
+    status:
+      users/admin:
+        _allow: *
+      users/languages:
+        _allow: *
   main:
     _title: Frontend
     _theme: default
@@ -42,8 +49,8 @@ routes:
   /admin:
     controller: notifications
     action: index
-  /admin/language/*:
-    controller: admin
+  /users/language/*:
+    controller: users
     action: language
   /admin/modules:
     controller: admin
@@ -181,7 +188,6 @@ models:
     _relations:
       +category: tree
       +tag: autocomplete
-    _parent: Page|tree
     _browse:
       content:
         column: Content
@@ -190,8 +196,8 @@ models:
     title: string*
     slug: string*
     content: html*
-    created: #datetime
-    modified: #datetime
+    created: datetime#
+    modified: datetime#
     draft: bool
   Tag:
     title: string*
@@ -214,5 +220,5 @@ models:
     sender: string*
     object: string*
     text: string*
-    created: #datetime
+    created: datetime#
     read: bool

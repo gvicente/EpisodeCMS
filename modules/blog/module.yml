@@ -57,8 +57,8 @@ models:
     title: string*
     slug: string*
     content: html*
-    created: #datetime
-    modified: #datetime
+    created: datetime#
+    modified: datetime#
     publish_start: datetime
     publish_end: datetime
     draft: bool

@@ -3,6 +3,14 @@
 		function index() {
 
 		}
+        
+        function language($locale = null) {
+            $this->autoRender = false;
+            if ($locale != null) {
+                $this->Cookie->write('language', $locale);
+            }
+            $this->redirect($this->referer());
+        }
 
 		function logout() {
 			$this->Auth->logout();

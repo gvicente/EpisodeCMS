@@ -1,15 +1,15 @@
 <div id="admin-user-info">
-	<?php echo String::insert(
+    <?php echo String::insert(
 		__('You logined as :name',true), 
 		array(
 			'name' => $html->link(
-						$user['username'], 
+						$this->viewVars['user']['User']['username'],
 						array(
 							'controller'=>'admin', 
 							'action'=>'edit',
 							'module'=>'core',
 							'model'=>'User', 
-							'id'=>$user['id']
+							'id'=>$this->viewVars['user']['User']['id']
 						)
 					)
 			)

@@ -5,37 +5,7 @@ class AdminController extends AppController {
     var $ui = "admin";
 
     function _onStartupAdmin($event, $controller) {
-        $modules = Configure::read('modules');
         
-        if (Configure::read('config.backend.theme'))
-            $controller->theme = Configure::read('config.backend.theme');
-        else
-            $controller->theme = '_classic';
-
-        $language = Configure::read('config.admin-language');
-        Configure::write('Config.language', $language);
-
-        $user_info = $controller->Auth->user();
-        $controller->widget('status', '../users/admin', array('user' => $user_info['User']));
-        $controller->widget('status', '../admin/languages', compact('language'));
-
-        $controller->Event->triggerEvent('AdminInit');
-
-        $config = Configure::read('config');
-        $site_title = $config['title'] ? $config['title'] : __('EpisodeCMS', true);
-        $controller->set(compact('site_title'));
-        $controller->set('layout_title', 'Control Panel');
-        $controller->set('layout_redirect', array('controller' => 'notifications', 'action' => 'index'));
-    }
-
-    function language($locale = null) {
-        $this->autoRender = false;
-        if ($locale != null) {
-            $config = Configure::read('config');
-            $config['admin-language'] = $locale;
-            save(ROOT . DS . 'config', $config);
-        }
-        $this->redirect($this->referer());
     }
 
     function overview() {
@@ -211,7 +181,7 @@ class AdminController extends AppController {
                         unset($this->data[$model][$field]);
                 }
             }
-
+            
             $this->$model->save($this->data);
             $entryId = $this->$model->id;
 
@@ -392,7 +362,7 @@ class AdminController extends AppController {
      * TODO: Fix saving with dashes.
      */
 
-    function install($module, $redirect=true) {
+    function install($module, $redirect = true, $update_config = true) {
         $this->loadModel('Database');
         $data = load(ROOT . DS . 'modules' . DS . $module . DS . 'module');
         
@@ -436,6 +406,7 @@ class AdminController extends AppController {
                             $default = "";
                             $type = str_replace('*', '', $type);
                             $type = str_replace('#', '', $type);
+                            
                             switch ($type) {
                                 case('html'):
                                     $type = 'TEXT';
@@ -452,6 +423,7 @@ class AdminController extends AppController {
                                     break;
                                 case('datetime'):
                                     $default = '0000-00-00';
+                                    $type = 'DATETIME';
                                     break;
                             }
                             $fieldsSQL .= ",\n\t`$field` $type DEFAULT '$default'";
@@ -475,14 +447,17 @@ class AdminController extends AppController {
         $config = Configure::read('config');
         $path = ROOT . DS . 'config';
         $config['modules'][$module] = $data['version'];
+        
         if (isset($config['project']) && $project = $config['project']) {
             $path = ROOT . DS . 'projects' . DS . $project . DS . 'project';
             unset($config['modules'][$project]);
             unset($config['database']);
             unset($config['project']);
         }
+
         unset($config['modules']['core']);
-        save($path, $config);
+        if ($update_config)
+            save($path, $config);
         
         if($redirect)
             $this->deploy($redirect, array('action' => 'index'));

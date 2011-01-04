@@ -40,8 +40,12 @@ function __helperize($file) {
     return Inflector::camelize(str_replace('.php', '', $file));
 }
 
-if ($config = load(ROOT . DS . 'config'))
+if ($config = load(ROOT . DS . 'config')) {
     Configure::write('debug', isset($config['debug']) && $config['debug'] || 0);
+    $config['setup'] = false;
+} else {
+    $config['setup'] = true;
+}
 
 $modules = array();
 $ui = array();
@@ -102,11 +106,6 @@ if(isset($config['theme_path'])) {
     $theme['path'] = str_replace(DS, '/', $theme['path']);
 }
 
-Configure::write('modules', $modules);
-Configure::write('config', $config);
-Configure::write('theme', $theme);
-Configure::write('ui', $ui);
-
 $Folder = & new Folder();
 $controllers = array();
 foreach ($controllerPaths as $path) {
@@ -114,7 +113,7 @@ foreach ($controllerPaths as $path) {
     $controllers = am(array_map('__controllerize', $Folder->find('.+_controller\.php$')), $controllers);
 }
 
-Configure::write(compact('modules', 'controllers'));
+Configure::write(compact('modules', 'controllers', 'config', 'theme', 'ui'));
 
 App::build(array(
     'models' => $modelPaths,

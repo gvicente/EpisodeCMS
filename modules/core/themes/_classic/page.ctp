@@ -38,8 +38,7 @@
 	</div>
 
 	<div id="content">
-
-		<?php $session->error();?>
+		<?php echo $session->error();?>
 		<?php echo $content_for_layout; ?>
 	</div>
 

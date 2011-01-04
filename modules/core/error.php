@@ -56,9 +56,9 @@
 
 	    function missingAction($params) {
 	    	$config = Configure::read('config');
-	    	if(!$config) {
+	    	if($config['setup']) {
 	    		$this->controller->redirect('/');
-	    	} elseif(@!$config['debug'])
+	    	} elseif(!isset($config['debug']) && $config['debug']<1)
 	    		$this->error404();
 	    	else
 	    		parent::missingAction($params);
@@ -70,7 +70,7 @@
 
 	    function missingController($params) {
 	    	$config = Configure::read('config');
-	    	if(@!$config['debug'])
+	    	if(!isset($config['debug']) && $config['debug']<1)
 	    		$this->error404();
 	    	else
 	    		parent::missingController($params);
@@ -78,14 +78,8 @@
 
 	    function missingTable($params) {
 	    	$config = Configure::read('config');
-	    	if(@!$config['debug']) {
-//	    		$x = file_get_contents(ROOT.DS.'config.yml');
-//	    		file_put_contents(TMP.DS.'config.bak.yml',$x);
-//	    		file_put_contents(ROOT.DS.'config.yml', '');
-//	    		$this->controller->redirect('/');
-//	    	} else {
+	    	if(!isset($config['debug']) && $config['debug']<1)
 	    		$this->maintance('Page');
-	    	}
 	    }
 
 	    function maintance($type='Site', $time = null) {

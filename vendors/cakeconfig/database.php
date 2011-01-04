@@ -1,19 +1,21 @@
 <?php
+class DATABASE_CONFIG {
+
+    var $default = array(
+        'driver' => 'mysql',
+        'persistent' => false,
+        'host' => '',
+        'login' => '',
+        'password' => '',
+        'database' => '',
+        'prefix' => '',
+        'encofing' => 'utf-8'
+    );
+
+}
 
 $config = Configure::read('config');
-
-eval("
-	class DATABASE_CONFIG {
-	
-		var \$default = array(
-			'driver' => 'mysql',
-			'persistent' => false,
-			'host' => '".$config['database']['host']."',
-			'login' => '".$config['database']['login']."',
-			'password' => '".$config['database']['password']."',
-			'database' => '".$config['database']['database']."',
-			'prefix' => '',
-		);
-		
-	}
-");
+if (!$config['setup']) {
+    $_this =& ConnectionManager::getInstance();
+    $_this->config->{'default'} = array_merge($_this->config->{'default'}, $config['database']);
+}

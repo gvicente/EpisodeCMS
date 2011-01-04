@@ -15,19 +15,13 @@ class AppController extends Controller {
         $this->view = 'Theme';
         parent::__construct();
 
-        $menu = Configure::read('config.menus');
-        $this->set(compact('menu'));
-
         $config = Configure::read('config');
+        
+        $ui = Configure::read('ui');
+        $this->theme = $ui[$this->ui]['_theme'];
 
-        if (Configure::read('config.frontend.theme'))
-            $this->theme = $config['frontend']['theme'];
-
-        $this->set('site_theme', $this->theme);
-        $this->set('widgets', '');
-
-        $maintance = isset($config['modules']) && is_array($config['modules']['core']) && $config['modules']['core']['maintance'];
-        if ($maintance && $this->name != 'Admin') {
+        $maintance = isset($ui[$this->ui]['_maintance']) && $ui[$this->ui]['_maintance'];
+        if ($maintance && $this->ui == 'main') {
             $this->cakeError('maintance');
         }
 
@@ -36,6 +30,7 @@ class AppController extends Controller {
     }
 
     function beforeRender() {
+        $config = Configure::read('config');
         if ($this->RequestHandler->isAjax()) {
             $this->view = 'Json';
         }
@@ -53,11 +48,12 @@ class AppController extends Controller {
             $ui_title_template = ':page | :ui';
         }
 
-        $title = String::insert($ui_title_template, array('ui'=>$ui_title, 'page'=>$title));
+        $title_for_layout = String::insert($ui_title_template, array('ui'=>$ui_title, 'page'=>$title));
 
-        $this->set('title_for_layout', $title);
-        $this->set('keywords', $keywords);
-        $this->set('description', $description);
+        if (!$config['setup'])
+            $user = $this->Auth->user();
+
+        $this->set(compact('title_for_layout', 'keywords', 'description', 'user'));
 
         $layout  = Configure::read('ui.'.$this->ui);
        
@@ -71,7 +67,7 @@ class AppController extends Controller {
                 }
             }
         }
-
+        
         $this->Event->triggerEvent('Render' . Inflector::humanize($this->ui));
     }
 
@@ -90,8 +86,6 @@ class AppController extends Controller {
         if(isset($theme['menu']))
             $menus = array_extend($menus, $theme['menu']);
 
-        $this->set(compact('menus'));
-
         if ($this->name != 'Install') {
             $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
             $this->Auth->loginRedirect = array('controller' => 'admin', 'action' => 'index');
@@ -104,7 +98,10 @@ class AppController extends Controller {
 
             $this->Auth->authorize = 'controller';
         }
+        $language = $this->Cookie->read('language');
+        Configure::write('Config.language', $language);
         $this->Event->triggerEvent('Startup' . Inflector::humanize($this->ui));
+        $this->set(compact('language', 'menus'));
     }
 
     function widget($id, $view, $data=array(), $controller=false, $filter=false) {
