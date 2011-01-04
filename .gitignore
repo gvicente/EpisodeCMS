@@ -3,4 +3,4 @@ tmp/*
 .buildpath
 .project
 .settings/*
-*.yml
+./*.yml
