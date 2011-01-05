@@ -1,19 +1,22 @@
-modules:
+---
+setup: false
+modules: 
   blog: 1.0.1
   dev: 1.0.1
+  recipes: 1.0.1
 title: cook2.me
 description: >
   Кулинарная
   социальная сеть
-keywords:
-routes:
-  /:
+keywords: 
+routes: 
+  /: 
     controller: viewer
     action: index
     model: recipe
-    pass:
+    pass: 
       - model
 version: 0
 theme: default
 theme_path: >
-  /var/www/public/cake2-me.episodecms.com/projects/cook2.me/themes/default
+  /var/www/episode/projects/cook2.me/themes/default

@@ -458,9 +458,11 @@ class AdminController extends AppController {
         unset($config['modules']['core']);
         if ($update_config)
             save($path, $config);
-        
+
         if($redirect)
-            $this->deploy($redirect, array('action' => 'index'));
+            $redirect = array('action' => 'index');
+        
+        $this->deploy($redirect);
     }
 
     function uninstall($module, $redirect=true) {
