@@ -1,0 +1,457 @@
+@import "reset.css";
+
+/* typography for headers and text */
+body {
+	font-family:"Times New Roman", Times, serif;
+	color:#333;
+	width:100%;
+}
+
+#page-caption {
+	font-style:italic;
+	font-weight:bold;
+	color:#C1272D;
+	font-size:30pt;
+	line-height:36pt;
+	text-align:left;
+	margin-top:10pt;
+}
+
+
+p {
+	font-size:14pt;
+	line-height:18pt;
+	text-indent:30pt;
+	margin-top:8pt;
+	text-align:justify;	
+}
+
+a {
+	text-decoration:underline;
+	color:#3FA9F5;
+}
+
+a:hover {
+	color:#C1272D;
+}
+
+#content ul {
+	list-style:disc;
+	margin-left:20pt;	
+}
+
+#content ol {
+	list-style:decimal;
+	margin-left:20pt;	
+}
+
+#content>ul,
+#content>ol {
+	margin-left:50pt;
+}
+
+#content ul li,
+#content ol li {
+	line-height:20pt;	
+}
+
+em {
+	font-style:italic;
+	color:#333;	
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-style:italic;
+	font-weight:bold;
+	color:#3FA9F5;
+	font-size:20pt;
+	line-height:22pt;
+	text-align:center;	
+	margin-top:10pt;
+}
+
+h1 strong {
+	color:#3FA9F5;
+}
+
+h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
+	color:#C1272D;
+}
+
+h1 {
+	color:#C1272D;
+	font-size:22pt;
+	line-height:24pt;
+}
+
+h3 {
+	font-size:18pt;
+	line-height:20pt;
+}
+
+h4 {
+	font-size:16pt;
+	line-height:18pt;
+}
+
+h5 {
+	font-size:16pt;
+	line-height:18pt;
+	font-weight:normal;
+}
+
+h6 {
+	font-size:16pt;
+	line-height:18pt;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:underline;
+}
+
+/* design for header */
+body {
+	background:url(img/body_bg.jpg) repeat #EDE3D3;
+}
+
+#main {
+	background:url(img/header_bg.png) repeat-x;
+	position:absolute;
+	width:100%;
+}
+
+#header {
+	position:relative;;
+	display:block;
+	height:200px;
+	width:100%;
+}
+
+#logo {
+	text-indent:150px;
+	position:absolute;
+	display:block;
+	background:url(img/logo.png) no-repeat;
+	width:auto;
+	height:116px;
+	margin-left:22%;
+	margin-top:10px;
+	font-style:italic;
+	font-weight:bold;
+	color:#C1272D;
+	font-size:72pt;
+	line-height:62pt;
+	text-align:left;
+}
+
+#logo em {
+	font-style:italic;
+	font-weight:bold;
+	color:#C1272D;
+	font-size:18pt;
+	line-height:21pt;
+	display:block;
+	margin-left:40pt;
+}
+
+#contact {
+	width:204px;
+	height:107px;
+	position:absolute;
+	left:2%;
+	top:50pt;
+	background:url(img/contact.png) no-repeat;
+	overflow:hidden;
+	font-size:12pt;
+	text-align:center;
+	padding-top:44px;
+}
+
+#contact em {
+	font-size:14pt;
+	font-weight:bold;
+	color:#C1272D;	
+}
+
+/* design for menu */
+
+#menu-main {
+	position:absolute;
+	left:25%;
+	top:100pt;
+	margin-left:150px;
+}
+
+#menu-main li ul {
+	display:none;	
+	position:absolute;
+}
+
+#menu-main li {
+	float:left;
+}
+
+#menu-main li a {
+	display:block;
+	width:101px;
+	height:39px;
+	text-align:center;
+	margin:0 2pt;
+	background:url(img/menu.png) no-repeat;
+	color:#fff;
+	text-decoration:none;
+	padding-top:12px;
+	font-size:12pt;
+	font-weight:bold;
+}
+
+#menu-main li a:hover,
+#menu-main li:hover a {
+	background:url(img/menu-hover.png) no-repeat;
+	color:#C1272D;
+}
+
+#menu-main li:hover ul {
+	display:block;
+}
+
+#menu-main li:hover ul li a {
+	padding:0;
+	margin:2pt;
+	display:inline;
+	background:none;
+	text-decoration:underline;
+	color:#3FA9F5;
+	font-weight:normal;
+}
+
+#menu-main li:hover ul li a:hover {
+	color:#C1272D;
+}
+
+/* design for content */
+#content {
+	width:49%;
+	position:relative;
+	float:left;
+}
+
+#panel_left {
+	float:left;
+	width:24%;
+	margin-right:1%;
+	position:relative;
+	margin-top:1em;
+	text-align:right;
+}
+
+#photo-album {
+	padding:1em;
+	text-align:center;
+}
+
+#photo-album img {
+	margin:5px;
+}
+
+#photo-album li{
+	
+	display:inline;
+}
+
+#photo-album li a{
+	
+}
+
+#panel_right {
+	float:right;
+	width:24%;
+	position:relative;
+	margin-top:1em;
+}
+
+#panel_right fieldset,
+#panel_right div {
+	padding-top:5pt;
+	padding-bottom:15pt;
+}
+
+#panel_right fieldset legend,
+#panel_right div h1 {
+	font-style:italic;
+	font-weight:bold;
+	color:#C1272D;
+	font-size:20pt;
+	line-height:20pt;
+	text-align:center;	
+	clear:both;
+	text-align:left;	
+}
+
+#panel_right ul {
+	margin-left:2pt;
+}
+
+#panel_right li {
+	line-height:12pt;
+	margin:8pt 0;
+}
+
+#panel_right li strong {
+	font-weight:bold;
+}
+
+#panel_right fieldset dl {
+	clear:both;
+	line-height:22pt;
+}
+
+#panel_right fieldset dl dt {
+	float:left;
+	width:130px;
+}
+
+#panel_right fieldset .check dt, .check dd {
+	display:inline;
+}
+
+#panel_right fieldset .check dd {
+	float:left;
+}
+
+#panel_right fieldset .actions {
+	text-align:center;
+}
+
+#panel_right fieldset .actions a {
+	padding:2pt;
+}
+
+#panel_right fieldset .submit {
+	float:right;	
+	margin-right:2em;
+}
+
+#tag-cloud {
+	width:100%;
+}
+
+#tag-cloud li {
+	display:inline;
+}
+
+#tag-cloud a {
+	text-decoration:none;
+	padding:6pt;
+	line-height:20pt;
+}
+
+#tag-cloud .rt0 {
+	color:#89C9F7;
+	font-size:0.9em;
+}
+
+#tag-cloud .rt1 {
+	color:#89C9F7;
+	font-size:1.1em;
+}
+
+#tag-cloud .rt2 {
+	color:#3FA9F5;
+	font-size:1.5em;
+}
+
+#tag-cloud .rt3 {
+	color:#3FA9F5;
+	font-size:1.7em;
+}
+
+#tag-cloud .rt4 {
+	color:#3FA9F5;
+	font-size:1.9em;
+}
+
+#tag-cloud .rt5 {
+	color:#3FA9F5;
+	font-size:2.3em;
+}
+
+#tag-cloud a:hover {
+	color:#C1272D;	
+}
+
+/* design for footer */
+#footer {
+	margin:0 auto;
+	width:50%;
+	clear:both;
+}
+
+#fun h1 {
+	text-indent:-20000px;
+	width:25%;
+	height:112px;
+	background:url(img/c1.png) no-repeat center;
+	float:left;
+	display:block;
+	overflow:hidden;
+}
+
+#fun h2 {
+	text-indent:-20000px;
+	width:25%;
+	height:112px;
+	background:url(img/c2.png) no-repeat center;
+	float:left;
+	display:block;
+	overflow:hidden;
+}
+
+#fun h3 {
+	text-indent:-20000px;
+	width:25%;
+	height:112px;
+	background:url(img/c3.png) no-repeat center;
+	float:left;
+	display:block;
+	overflow:hidden;
+}
+
+#fun h4 {
+	text-indent:-20000px;
+	width:25%;
+	height:112px;
+	background:url(img/c4.png) no-repeat center;
+	float:left;
+	display:block;
+	overflow:hidden;
+}
+
+#menu-footer {
+	padding-top:2em;
+	width:100%;
+	text-align: center;
+	clear:both;
+}
+
+#menu-footer li {
+	display:inline;
+}
+
+#menu-footer li a {
+	padding:0 3pt;	
+}
+
+#copyright {
+	clear:both;
+	float:left;
+}
+
+#copyright, #designed {
+	font-size:10pt;
+	color:#666;
+	padding:1em;
+}
+
+#designed {
+	float:right;
+}

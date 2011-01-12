@@ -1,0 +1,254 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+body {
+	line-height: 1;
+}
+
+ol,ul {
+	list-style: none;
+}
+
+blockquote,q {
+	quotes: none;
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a {
+	font-size: 11px;
+	font-family: "Verdana";
+	color: #369;
+	display: inline-block;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+body {
+	font-family: "Georgia";
+	color: #333;
+	background: url(img/bg.png);
+}
+
+#content {
+	max-width: 600px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background: #fff;
+	padding: 10px;
+	overflow: hidden;
+	position:absolute;
+	z-index:1000;
+	left:25%;
+	margin-top: 10px;
+}
+
+#content h1 {
+	margin:-9px;
+	margin-bottom: 10px;
+	background: #369;
+	padding: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	color: #fff;
+}
+
+#content h1 a {
+	color: #fff;
+	text-decoration: none;
+}
+
+#content h1 a:hover {
+	text-decoration: underline;	
+}
+
+#content p {
+	margin-bottom: 5px;
+}
+
+#content p img {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#content p a img {
+	margin-right: 3px;
+	opacity: 0.8;
+}
+
+#content p a:hover img {
+	opacity: 1;
+}
+
+#content h2 {
+	color: #999;
+	font-size: 20px;
+	font-style: italic;
+}
+
+#menu {
+	clear: both;
+	padding: 0 5px;
+	margin-left: -10px;
+	margin-right: -10px;
+	margin-bottom: 20px;
+	overflow:hidden;
+}
+
+#menu li {
+	display: block;
+	float:left;
+	width:100px;
+	height:37px;
+	margin-right:5px;
+}
+
+#menu li ul {
+	display: none;
+}
+
+#menu li.active {
+	background:url(img/selected.png) no-repeat 50% 5px;
+}
+
+#menu li.active a:hover,
+#menu li.active a {
+	-moz-border-radius: 0;
+	border-radius: 0;
+	background:none;
+	text-shadow:0px 0px 3px #fff;
+}
+
+#menu li a {
+	display: block;
+	padding: 5px 5px;
+	background: #333;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	text-decoration: none;
+	color: #fff;
+	font-size: 14px;
+	text-align:center;
+	margin: 5px 0;
+}
+
+#menu li a:hover {
+	background: #666;
+}
+
+#inner-content {
+	padding: 10px;
+}
+#inner-content h2,
+#inner-content h3 a {
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+#inner-content h2 {
+	color: #666;	
+}
+
+#inner-content .post {
+	background: #f0f0f0;
+	padding: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+#inner-content .post img {
+	border:solid 5px #ccc;
+}
+
+#studio {
+	display: block;
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px;
+	background: #fff;
+	text-decoration: none;
+	opacity:0.5;
+	width:250px
+}
+
+#studio:hover {
+	opacity:1;
+}
+
+#inner-content .bottom {
+	clear: both;	
+}
+
+#supersize{
+	position:fixed;
+	width:100%;
+	height:100%;
+}
+#supersize>img{
+	height:100%;
+	width:100%;
+	position:absolute;
+	z-index: 0;
+}
+
+#photo img {
+	-moz-border-radius: 5px;
+	border-radius: 5px;	
+}
+
+#portfolios li {color:#333;font-size:16px;float:left;clear:both;margin-bottom:1em;font-weight:bold}
+#portfolios li a {color:#369;float:left;clear:both;font-size:12px;width:100%;display:block;font-weight:normal}
+
+.post h3 {
+    line-height: 24px;
+    margin-top: 15px;
+}
+
+.post ul {
+    list-style: square;
+    padding: 10px;
+}
+
+.post li {
+    margin-left: 20px;
+}

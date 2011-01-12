@@ -187,10 +187,9 @@ a:hover {
 }
 
 #content>table {
-	-moz-border-radius: 5px;
-	border-radius: 5px;
 	border: solid 1px #999;
 	width: 100%;
+    margin-top: 1em;
 }
 
 #content table p {

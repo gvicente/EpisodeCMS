@@ -14,8 +14,8 @@
 			$this->set('json', array('data'));
 		}
 
-		function blank() {
-			$this->set('title_for_layout', 'Welcome');
+		function home() {
+			$this->set('title_for_layout', __('Welcome', true));
 		}
 
 		function view($model, $slug) {

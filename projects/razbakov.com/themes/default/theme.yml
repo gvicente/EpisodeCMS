@@ -1,0 +1,17 @@
+title: Aleksey Razbakov
+authors:
+  -
+    name: Aleksey Razbakov
+    email: razbakov.aleksey@gmail.com
+date: 12.01.2011
+description: |
+    Simple theme for razbakov.com
+menu:
+  main:
+    _title: Главное меню
+    Home:
+      _link: /
+    Resume:
+      _link: /page/resume
+    Portfolio:
+      _link: /page/portfolio
