@@ -1,0 +1,23 @@
+msgid "Developer Pack"
+msgstr "Пакет разработчика"
+
+msgid "Module"
+msgstr "Модуль"
+
+msgid "Model"
+msgstr "Модeль"
+
+msgid "Controller"
+msgstr "Контроллер"
+
+msgid "Action"
+msgstr "Действие"
+
+msgid "List"
+msgstr "Список"
+
+msgid "View"
+msgstr "Просмотр"
+
+msgid "Browser"
+msgstr "Обозреватель"
