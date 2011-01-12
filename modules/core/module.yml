@@ -36,6 +36,15 @@ ui:
   main:
     _title: Frontend
     _theme: default
+actions:
+  viewer:
+    _title: Browser
+    index:
+      _title: List
+      module: %modules%
+      model: %models%
+    view:
+      _title: View
 routes:
   /:
     controller: viewer

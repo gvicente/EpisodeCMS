@@ -16,6 +16,9 @@ msgstr "Перезагрузка"
 msgid "Welcome!<br>Please identify yourself."
 msgstr "Добро пожаловать!<br>Представьтесь, пожалуйста."
 
+msgid "Remove"
+msgstr "Удалить"
+
 msgid "Username"
 msgstr "Логин"
 

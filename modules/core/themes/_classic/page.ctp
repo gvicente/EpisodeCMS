@@ -22,11 +22,11 @@
             <h1><?php echo $html->link(@$site_title, '/', array('target'=>'_blank')); ?></h1>
 			<div id="menu-main">
                 <ul>
-                    <li class="first"><?php echo $html->link(__('Visit Site', true), '/admin')?></li>
+                    <li class="first"><?php echo $html->link(__('Control Panel', true), '/admin', array('title'=>__('Control Panel', true)))?></li>
                     <?php echo $this->Theme->menu('admin') ?>
                 </ul>
 			</div>
-            <?php echo $this->Theme->widget('status', $this, 'status-bar') ?>
+            <?php echo $this->Theme->wrapper('status', $this, 'status-bar') ?>
 		</div>
 	</div>
     <br style="clear:both">
@@ -34,7 +34,7 @@
 	<?php echo $session->flash('auth');?>
 
 	<div id="sidebar-left">
-		<?php echo $this->Theme->widget('navigation', $this) ?>
+		<?php echo $this->Theme->wrapper('navigation', $this) ?>
 	</div>
 
 	<div id="content">
@@ -43,7 +43,7 @@
 	</div>
 
 	<div id="sidebar-right">
-        <?php echo $this->Theme->widget('widgets', $this) ?>
+        <?php echo $this->Theme->wrapper('widgets', $this) ?>
 	</div>
 </body>
 </html>

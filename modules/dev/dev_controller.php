@@ -8,10 +8,10 @@
 		}
 		
 		function _onInstallDev() {
-			Configure::write('config.debug', 4);			
+			
 		}
 	
 		function _onUninstallDev() {
-			Configure::delete('config.debug');
+			
 		}
 	}

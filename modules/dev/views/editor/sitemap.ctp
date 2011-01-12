@@ -5,7 +5,7 @@ unset($menus['admin']);
 foreach ($menus as $menu=>$data) {
     foreach ($data as $title=>$options) {
         if (is_array($options)) {
-            $menus[$menu][$title]['_link'] = '/editor/edit/'.$options['_link'];
+            $menus[$menu][$title]['_link'] = '/editor/edit/'.$menu.'/'.$options['_link'];
         }
     }
 }
@@ -19,7 +19,7 @@ foreach ($menus as $menu=>$data) {
     <?php endif ?>
     <div class="content menu">
         <ul>
-        <?php echo $this->Theme->render_menu($data) ?>
+        <?php echo $this->Theme->render_menu($data, array('rel'=>'ajax')) ?>
         </ul>
         <div class="actions">
             <input class="add-menu-item" value="Добавить пункт меню...">

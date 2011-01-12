@@ -11,7 +11,7 @@ class ThemeHelper extends AppHelper {
             return '<span class="no-image">'.$url.'</span>';
     }
 
-    function widget($widget_name, $view, $id = '') {
+    function wrapper($widget_name, $view, $id = '') {
         if (isset($view->viewVars[$widget_name]))
             $widgets = $view->viewVars[$widget_name];
         else
@@ -41,7 +41,7 @@ class ThemeHelper extends AppHelper {
         return $output;
     }
 
-    function render_menu($menu_items = array()) {
+    function render_menu($menu_items = array(), $params = array()) {
         $output = '';
         if(is_array($menu_items))
         foreach ($menu_items as $title => $item)
@@ -65,7 +65,7 @@ class ThemeHelper extends AppHelper {
                 $text .= '<em>' . __($title[1], true) . '</em>';
 
             $output .= "<li class='$class'>";
-            $output .= $this->Html->link(__($text, true), $item['_link'], array('escape' => false));
+            $output .= $this->Html->link(__($text, true), $item['_link'], array_extend(array('escape' => false), $params));
 
             unset($item['_image']);
             unset($item['_link']);

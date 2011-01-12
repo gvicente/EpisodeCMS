@@ -177,10 +177,6 @@ a:hover {
 	margin: 10px;
 }
 
-#content h2 {
-	margin: 0 0 1em 0;
-}
-
 #content h3 a {
 	color: #333;
 	text-decoration: none;
@@ -220,7 +216,7 @@ a:hover {
 	border-left: solid 1px #999;
 }
 
-#content>table th {
+#content table th {
 	font-weight: normal;
 	border-bottom: solid 1px #999;
 }
@@ -309,13 +305,16 @@ a:hover {
     font-size: 12px;
 }
 
-#modules h2 #create span {
-    background: url("images/add.png") no-repeat 0 50%;
+#modules h2 a span {
     width: 16px;
     height: 16px;
     display: inline-block;
     margin-left: -5px;
     margin-bottom: -3px;
+}
+
+#modules h2 #create span {
+    background: url("images/add.png") no-repeat 0 50%;
 }
 
 #modules h2 a.active {
@@ -591,6 +590,13 @@ a:hover {
 
 #content tfoot td {
 	padding: 5px;
+}
+
+#content h2 {
+    margin-top: 10px;
+    color: #333;
+    font-size: 16px;
+    display: inline-block;
 }
 
 .multiple-list {

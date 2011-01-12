@@ -11,53 +11,62 @@ App = {
     }
 };
 
-$(document).ready(function () {
+$(document).ready(function() {
     App.init();
-	//Check if url hash value exists (for bookmark)
+    
+    $('#content').before('<div id="loading">Loading</div>');
+    $('#loading').hide();
+
+	// Check if url hash value exists (for bookmark)
 //	$.history.init(pageload);
 	    
-	//highlight the selected link
+	// Highlight the selected link
 	$('a[href=' + document.location.hash + ']').addClass('selected');
 	
-	//Seearch for link with REL set to ajax
+	// Search for link with REL set to ajax
 	$('a[rel=ajax]').click(function () {
 		
-		//grab the full url
+		// Grab the full url
 		var hash = this.href;
 		
-		//remove the # value
+		// Remove the # value
 		hash = hash.replace(/^.*#/, '');
 		
-		//for back button
-	 	$.history.load(hash);	
+		// For back button
+//	 	$.history.load(hash);
 	 	
-	 	//clear the selected class and add the class class to the selected link
+	 	// Clear the selected class and add the class class to the selected link
 	 	$('a[rel=ajax]').removeClass('selected');
 	 	$(this).addClass('selected');
 	 	
-	 	//hide the content and show the progress bar
+	 	// Hide the content and show the progress bar
 	 	$('#content').hide();
 	 	$('#loading').show();
 	 	
-	 	//run the ajax
-		getPage();
+	 	// Run the ajax
+		getPage($(this).attr('href'));
 	
-		//cancel the anchor tag behaviour
+		// Cancel the anchor tag behaviour
 		return false;
 	});	
 });
 
 function pageload(hash) {
-	//if hash value exists, run the ajax
-	if (hash) getPage();    
+	// If hash value exists, run the ajax
+	if (hash)
+        getPage();
 }
 		
-function getPage() {
-	page = document.location.hash.replace(/^.*#/, '')+'.json?html';
-	if(page[0]=='/')
-		$('#content').load(page, function () {
-			$('#loading').hide();	
-			$('#content').fadeIn('slow');		
+function getPage(page) {
+    if(!page)
+        page = document.location.hash.replace(/^.*#/, '');
+
+    page += '.json?html';
+
+	if (page[0]=='/')
+        $('#content').load(page, function () {
+			$('#loading').hide();
+			$('#content').show();
 		});
 }
 

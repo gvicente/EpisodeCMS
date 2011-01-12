@@ -22,7 +22,10 @@ foreach($styles as $style) {
 				link = link.substring(1,link.length);
 				url = 'http://<?php echo $_SERVER['SERVER_NAME'].$html->url('/');?>'+link;
 			} else {
+                <?php /*
 				url = 'http://<?php echo $_SERVER['SERVER_NAME'].$html->url('/themes/'.$site_theme.'/'); ?>'+link;
+                */?>
+                url = 'http://<?php echo $_SERVER['SERVER_NAME'].$html->url('/');?>'+link;
 			}
 
 			return url;
