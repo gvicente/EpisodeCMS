@@ -19,7 +19,7 @@ class AppController extends Controller {
         
         $ui = Configure::read('ui');
         $this->theme = $ui[$this->ui]['_theme'];
-
+        
         $maintance = isset($ui[$this->ui]['_maintance']) && $ui[$this->ui]['_maintance'];
         if ($maintance && $this->ui == 'main') {
             $this->cakeError('maintance');

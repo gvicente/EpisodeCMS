@@ -35,7 +35,7 @@
 	        $this->_stop();
 	    }
 
-	    function error404($params) {
+	    function error404($params = array()) {
 				extract($params, EXTR_OVERWRITE);
 
 				if (!isset($url)) {
@@ -70,10 +70,11 @@
 
 	    function missingController($params) {
 	    	$config = Configure::read('config');
-	    	if(!isset($config['debug']) && $config['debug']<1)
-	    		$this->error404();
-	    	else
+	    	if(isset($config['debug']) && $config['debug']>1)
 	    		parent::missingController($params);
+	    	else
+                $this->error404();
+	    		
 	    }
 
 	    function missingTable($params) {

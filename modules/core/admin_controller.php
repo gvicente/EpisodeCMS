@@ -515,9 +515,6 @@ class AdminController extends AppController {
     }
 
     function deploy($redirect = false) {
-        if(!$redirect)
-            $redirect = $this->referer();
-        
         $this->autoRender = false;
 
         $Folder = & new Folder();

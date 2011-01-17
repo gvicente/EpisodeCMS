@@ -4,6 +4,7 @@ class InstallController extends AppController {
 	var $uses = array('Database', 'User');
 
 	function beforeFilter() {
+
         if (!$database = $this->Session->read('database'))
             $database = array(
                 'host'=>'localhost',
@@ -96,6 +97,7 @@ class InstallController extends AppController {
             }
 
             if($connected && $database_exists) {
+                
                 $cachePaths = array('views', 'persistent', 'models');
                 foreach($cachePaths as $cache) {
                     clearCache(null, $cache);
@@ -119,6 +121,7 @@ class InstallController extends AppController {
                 
                 $this->user['User']['id'] = 0;
                 $admin_controller->data = $this->user;
+                
                 @$admin_controller->edit('core', 'User', null, false);
                 
                 save(ROOT.DS.'config', $config);

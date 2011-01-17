@@ -25,7 +25,7 @@
 	<?php echo $session->flash('auth');?>
 
 	<div id="sidebar-left">
-		<?php echo $this->Theme->widget('navigation', $this) ?>
+		<?php echo $this->Theme->wrapper('navigation', $this) ?>
 	</div>
 
 	<div id="content">
@@ -35,7 +35,7 @@
 	</div>
 
 	<div id="sidebar-right">
-        <?php echo $this->Theme->widget('widgets', $this) ?>
+        <?php echo $this->Theme->wrapper('widgets', $this) ?>
 	</div>
 </body>
 </html>
