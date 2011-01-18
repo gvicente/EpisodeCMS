@@ -6,7 +6,8 @@ class WikiHelper extends Helper {
     function process($text) {
         $result = $text;
         $result = $this->Textile->process($result);
-        $result = preg_replace('/\[\[(.+)\]\]/i', '<a href="\\1">\\1</a>', $result);
+        $title = $this->params['title'];
+        $result = preg_replace('/\[\[(.+)\]\]/i', '<a href="'.$title.'/\\1">\\1</a>', $result);
         return $result;
     }
 

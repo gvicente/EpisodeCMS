@@ -26,9 +26,13 @@ class AppController extends Controller {
 
         if ($this->name != 'Install')
             $this->components[] = 'Auth';
+        
+        $this->module = $this->viewPath;
+        $this->breadcrumbs = array();
     }
 
     function beforeFilter() {
+        $this->addBreadcrumb(__('Content', true), '/admin/overview', 'root');
         $theme = Configure::read('theme');
         $modules = Configure::read('modules');
 
@@ -58,10 +62,11 @@ class AppController extends Controller {
         $language = $this->Cookie->read('language');
         Configure::write('Config.language', $language);
         $this->Event->triggerEvent('Startup' . Inflector::humanize($this->ui));
-        $this->set(compact('language', 'menus'));
+        Configure::write(compact('menus'));
     }
 
     function beforeRender() {
+        Configure::write('breadcrumbs', $this->breadcrumbs);
         $config = Configure::read('config');
         if ($this->RequestHandler->isAjax()) {
             $this->view = 'Json';
@@ -104,12 +109,27 @@ class AppController extends Controller {
         $this->Event->triggerEvent('Render' . Inflector::humanize($this->ui));
     }
 
-    function loadConsole($sender) {
-        App::import('Controller', 'Admin');
-        $admin_controller = new AdminController();
-        $admin_controller->data = $sender->data;
-        $admin_controller->constructClasses();
-        return $admin_controller;
+    function request($request_string, $redirect = false) {
+        if (!empty($this->data)) {
+            list($model, $action) = explode('/', $request_string);
+            App::import('Controller', 'Admin');
+            $admin_controller = new AdminController();
+            $admin_controller->constructClasses();
+            $admin_controller->data = $this->data;
+            @$admin_controller->$action($this->module, $model, $this->data[$model]['id'], false);
+            $this->redirect($redirect);
+        }
+    }
+
+    function addBreadcrumb($text, $link, $id=false) {
+        if (!$id)
+            $id = sizeof($this->breadcrumbs);
+        $this->breadcrumbs[$id] = compact('link', 'text');
+        return $id;
+    }
+
+    function removeBreadcrumb($id) {
+        unset($this->breadcrumbs[$id]);
     }
 
     function loadHelper($helper_name) {

@@ -1,13 +1,9 @@
-<div id="wiki-breadcrumbs">
-    <?php echo $this->Html->link(__('Wiki', true), '/admin/wiki') ?>
-    <?php if($title): ?>
-    <?php echo $html->link($title, '/admin/wiki/view/'.$title) ?>
-    <?php endif ?>
-</div>
 <?php echo $this->Form->create('Wiki', array('url'=>'/admin/wiki/edit/')) ?>
 <input type="hidden" value="<?php echo $wiki['Wiki']['id'] ?>" name="data[Wiki][id]"/>
+<input type="hidden" value="<?php echo $parent_id ?>" name="data[Wiki][parent_id]"/>
+<input type="hidden" value="<?php echo $redirect ?>" name="data[redirect]"/>
 <h2>
-    <input value="<?php echo $title ?>" name="data[Wiki][title]"/>
+    <input value="<?php echo $current_title ?>" name="data[Wiki][title]"/>
 </h2>
 <textarea name="data[Wiki][content]" class="editor"><?php echo $wiki['Wiki']['content'] ?></textarea>
 <div class="submit">

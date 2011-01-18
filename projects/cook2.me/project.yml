@@ -1,4 +1,5 @@
 ---
+debug: 4
 setup: false
 modules: 
   blog: 1.0.1

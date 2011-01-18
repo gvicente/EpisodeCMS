@@ -2,6 +2,21 @@
 class ThemeHelper extends AppHelper {
     var $helpers = array('Html', 'Type');
 
+    function breadcrumbs($devider = false, $id = "main") {
+        $breadcrumbs = Configure::read('breadcrumbs');
+        $result = '';
+        if ($breadcrumbs) {
+            if (!$devider)
+                $devider = ' ';
+            $crumbs = array();
+            foreach ($breadcrumbs as $breadcrumb) {
+                $crumbs[] = '<a href="'.$breadcrumb['link'].'">'.$breadcrumb['text'].'</a>';
+            }
+            $result .= '<div id="breadcrumbs-'.$id.'">'.join($devider, $crumbs).'</div>';
+        }
+        return $result;
+    }
+
     function image($url = null, $alt = null, $link = null) {
         $path = Configure::read('theme.path');
         $real_path = Configure::read('config.theme_path');
@@ -28,13 +43,11 @@ class ThemeHelper extends AppHelper {
     }
 
     function menu($id = null) {
-        $view =& ClassRegistry::getObject('view');
+        $menu_items = Configure::read('menus.'.$id);
         $output = '';
 
-        if (isset($view->viewVars['menus'][$id])) {
-            $menu_items = $view->viewVars['menus'][$id];
+        if ($menu_items) {
             unset($menu_items['_title']);
-            
             $output = $this->render_menu($menu_items);
         }
         

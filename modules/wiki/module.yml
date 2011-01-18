@@ -9,22 +9,25 @@ routes:
     action: admin_view
     pass: [title]
     title: |
-      [^/]+
+      .+
   /admin/wiki/edit/:title:
     controller: wiki
     action: admin_edit
     pass: [title]
     title: |
-      [^/]+
+      .+
   /admin/wiki/delete/:title:
     controller: wiki
     action: admin_delete
     pass: [title]
     title: |
-      [^/]+
+      .+
   /admin/wiki/edit:
     controller: wiki
     action: admin_edit
+  /admin/wiki/view:
+    controller: wiki
+    action: admin_view
   /wiki:
     controller: wiki
     action: index
@@ -45,10 +48,6 @@ menu:
         _link: /admin/wiki
 models:
   Wiki:
-    _default:
-    _browse:
-      content:
-        column: Content
-        content: 
     title: string*
     content: html*
+    parent_id: int

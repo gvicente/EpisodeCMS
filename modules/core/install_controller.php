@@ -108,21 +108,21 @@ class InstallController extends AppController {
                 $_this =& ConnectionManager::getInstance();
                 $_this->config->{'default'} = array_merge($_this->config->{'default'}, $config['database']);
 
-                $admin_controller = $this->loadConsole();
                 $project = load(ROOT.DS.'projects'.DS.$this->project.DS.'project');
 
+                App::import('Controller', 'Admin');
+                $admin_controller = new AdminController();
+                $admin_controller->constructClasses();
                 $admin_controller->install('core', false, false);
                 foreach ($project['modules'] as $module => $version) {
                     $admin_controller->install($module, false, false);
                 }
                 
                 $this->user['User']['id'] = 0;
-                $admin_controller->data = $this->user;
-                
-                @$admin_controller->edit('core', 'User', null, false);
-                
+                $this->data = $this->user;
+
                 save(ROOT.DS.'config', $config);
-                $this->redirect('/admin/');
+                $this->request('User/edit', '/admin/');
             } else {
                 $this->Session->setFlash('There was problem to work with database');
                 $this->redirect('/');

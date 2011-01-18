@@ -5,7 +5,7 @@ class AdminController extends AppController {
     var $ui = "admin";
 
     function overview() {
-
+        $this->removeBreadcrumb('root');
     }
 
     function index() {

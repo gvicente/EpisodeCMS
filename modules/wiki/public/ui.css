@@ -43,3 +43,12 @@
     border: solid 1px #666;
     padding: 3px;
 }
+
+.wiki-controller #content .content a {
+    text-decoration: underline;
+    color: #369;
+}
+
+.wiki-controller #content .content a:hover {
+    text-decoration: none;
+}

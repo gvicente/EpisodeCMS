@@ -1,8 +1,5 @@
-<div id="wiki-breadcrumbs">
-    <?php echo $this->Html->link(__('Wiki', true), '/admin/wiki') ?>
-</div>
 <h2>
-<?php echo $title ?> 
+<?php echo $current_title ?> 
 <?php echo $this->Html->link(__('Edit', true), array('action'=>'admin_edit', 'title'=>$title), array('class'=>'button edit')) ?> 
 <?php echo $this->Html->link(__('Remove', true), array('action'=>'admin_delete', 'title'=>$title), array('class'=>'button delete')) ?>
 </h2>

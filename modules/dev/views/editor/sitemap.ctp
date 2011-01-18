@@ -1,6 +1,6 @@
 <script src="<?php echo $html->url('/modules/dev/views/editor/sitemap.js') ?>"></script>
 <?php
-$menus = $this->viewVars['menus'];
+$menus = Configure::read('menus');
 unset($menus['admin']);
 foreach ($menus as $menu=>$data) {
     foreach ($data as $title=>$options) {
