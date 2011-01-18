@@ -1,8 +1,0 @@
----
-project: cook2.me
-debug: 4
-database: 
-  host: localhost
-  database: site
-  login: root
-  password: password
