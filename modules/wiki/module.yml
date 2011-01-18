@@ -1,0 +1,54 @@
+title: Wiki
+version: 1.0.1
+routes:
+  /admin/wiki:
+    controller: wiki
+    action: admin_index
+  /admin/wiki/view/:title:
+    controller: wiki
+    action: admin_view
+    pass: [title]
+    title: |
+      [^/]+
+  /admin/wiki/edit/:title:
+    controller: wiki
+    action: admin_edit
+    pass: [title]
+    title: |
+      [^/]+
+  /admin/wiki/delete/:title:
+    controller: wiki
+    action: admin_delete
+    pass: [title]
+    title: |
+      [^/]+
+  /admin/wiki/edit:
+    controller: wiki
+    action: admin_edit
+  /wiki:
+    controller: wiki
+    action: index
+  /wiki/:title:
+    controller: wiki
+    action: view
+    pass: [title]
+    title: |
+      [^/]+
+ui:
+  admin:
+    _css:
+      -ui
+menu:
+  admin:
+    Content:
+      Wiki:
+        _link: /admin/wiki
+models:
+  Wiki:
+    _default:
+    _browse:
+      content:
+        column: Content
+        content: 
+    title: string*
+    content: html*

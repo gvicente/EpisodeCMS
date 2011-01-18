@@ -108,10 +108,7 @@ class InstallController extends AppController {
                 $_this =& ConnectionManager::getInstance();
                 $_this->config->{'default'} = array_merge($_this->config->{'default'}, $config['database']);
 
-                App::import('Controller', 'Admin');
-
-                $admin_controller = new AdminController();
-                $admin_controller->constructClasses();
+                $admin_controller = $this->loadConsole();
                 $project = load(ROOT.DS.'projects'.DS.$this->project.DS.'project');
 
                 $admin_controller->install('core', false, false);

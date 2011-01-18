@@ -1,0 +1,45 @@
+.wiki-controller.admin_edit-action #content * {
+    font-family: Verdana;
+}
+
+.wiki-controller.admin_edit-action #content h2 {
+    display: block;
+    width: 100%;
+    float: none;
+}
+.wiki-controller.admin_edit-action #content h2 input {
+    display: block;
+    width: 100%;
+    float: none;
+    border: none;
+    border-bottom: solid 1px #333;
+    padding: 5px 0;
+    font-size: 16px;
+}
+
+.wiki-controller.admin_edit-action #content textarea {
+    border: none;
+    margin-bottom: 10px;
+    width: 100%;
+    min-height: 500px;
+}
+
+.wiki-controller #content .content {
+    padding: 10px;
+    margin-top: 10px;
+    border: solid 1px #eee;
+}
+
+.wiki-controller #content li {
+    list-style: square;
+    margin-left: 2em;
+}
+
+.wiki-controller #content table {
+    margin: 1em 2em;
+}
+
+.wiki-controller #content table td {
+    border: solid 1px #666;
+    padding: 3px;
+}

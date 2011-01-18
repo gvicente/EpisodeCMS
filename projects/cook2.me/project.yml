@@ -4,6 +4,7 @@ modules:
   blog: 1.0.1
   dev: 1.0.1
   recipes: 1.0.1
+  wiki: 1.0.1
 title: cook2.me
 description: >
   Кулинарная

@@ -18,7 +18,6 @@ class AppController extends Controller {
         $config = Configure::read('config');
         
         $ui = Configure::read('ui');
-        $this->theme = $ui[$this->ui]['_theme'];
         
         $maintance = isset($ui[$this->ui]['_maintance']) && $ui[$this->ui]['_maintance'];
         if ($maintance && $this->ui == 'main') {
@@ -27,48 +26,6 @@ class AppController extends Controller {
 
         if ($this->name != 'Install')
             $this->components[] = 'Auth';
-    }
-
-    function beforeRender() {
-        $config = Configure::read('config');
-        if ($this->RequestHandler->isAjax()) {
-            $this->view = 'Json';
-        }
-
-        if (isset($this->viewVars['title_for_layout']))
-            $title = __($this->viewVars['title_for_layout'], true);
-        else
-            $title = $this->name;
-
-        $ui_title = Configure::read('ui.'.$this->ui.'._title');
-        $keywords = Configure::read('ui.'.$this->ui.'._keywords');
-        $description = Configure::read('ui.'.$this->ui.'._description');
-        $ui_title_template = Configure::read('ui.'.$this->ui.'._title_template');
-        if(!$ui_title_template) {
-            $ui_title_template = ':page | :ui';
-        }
-
-        $title_for_layout = String::insert($ui_title_template, array('ui'=>$ui_title, 'page'=>$title));
-
-        if (!$config['setup'])
-            $user = $this->Auth->user();
-
-        $this->set(compact('title_for_layout', 'keywords', 'description', 'user'));
-
-        $layout  = Configure::read('ui.'.$this->ui);
-       
-        unset($layout['_title']);
-        unset($layout['_theme']);
-
-        foreach ($layout as $bar => $widgets_array) {
-            if ($bar[0] != '_') {
-                foreach ($widgets_array as $widget => $param) {
-                    $this->widget($bar, '../'.$widget, array(), false, $param['_allow']);
-                }
-            }
-        }
-        
-        $this->Event->triggerEvent('Render' . Inflector::humanize($this->ui));
     }
 
     function beforeFilter() {
@@ -102,6 +59,61 @@ class AppController extends Controller {
         Configure::write('Config.language', $language);
         $this->Event->triggerEvent('Startup' . Inflector::humanize($this->ui));
         $this->set(compact('language', 'menus'));
+    }
+
+    function beforeRender() {
+        $config = Configure::read('config');
+        if ($this->RequestHandler->isAjax()) {
+            $this->view = 'Json';
+        }
+
+        if (isset($this->viewVars['title_for_layout']))
+            $title = __($this->viewVars['title_for_layout'], true);
+        else
+            $title = $this->name;
+
+        $ui_title = Configure::read('ui.'.$this->ui.'._title');
+        $keywords = Configure::read('ui.'.$this->ui.'._keywords');
+        $description = Configure::read('ui.'.$this->ui.'._description');
+        $ui_title_template = Configure::read('ui.'.$this->ui.'._title_template');
+        if(!$ui_title_template) {
+            $ui_title_template = ':page | :ui';
+        }
+
+        $title_for_layout = String::insert($ui_title_template, array('ui'=>$ui_title, 'page'=>$title));
+
+        if (!$config['setup'])
+            $user = $this->Auth->user();
+
+        $this->set(compact('title_for_layout', 'keywords', 'description', 'user'));
+
+        $layout  = Configure::read('ui.'.$this->ui);
+        $this->theme = $layout['_theme'];
+
+        unset($layout['_title']);
+        unset($layout['_theme']);
+
+        foreach ($layout as $bar => $widgets_array) {
+            if ($bar[0] != '_') {
+                foreach ($widgets_array as $widget => $param) {
+                    $this->widget($bar, '../'.$widget, array(), false, $param['_allow']);
+                }
+            }
+        }
+
+        $this->Event->triggerEvent('Render' . Inflector::humanize($this->ui));
+    }
+
+    function loadConsole($sender) {
+        App::import('Controller', 'Admin');
+        $admin_controller = new AdminController();
+        $admin_controller->data = $sender->data;
+        $admin_controller->constructClasses();
+        return $admin_controller;
+    }
+
+    function loadHelper($helper_name) {
+        $this->helpers = array_extend($this->helpers, array($helper_name));
     }
 
     function widget($id, $view, $data=array(), $controller=false, $filter=false) {

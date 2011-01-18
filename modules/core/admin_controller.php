@@ -4,10 +4,6 @@ class AdminController extends AppController {
     var $uses = array();
     var $ui = "admin";
 
-    function _onStartupAdmin($event, $controller) {
-        
-    }
-
     function overview() {
 
     }
@@ -218,8 +214,9 @@ class AdminController extends AppController {
                         }
                     }
                 }
-            if ($redirect)
+            if ($redirect) {
                 $this->redirect(array('controller' => 'admin', 'action' => 'browse', 'model' => $model, 'module' => $module));
+            }
         }
 
         $data = array();

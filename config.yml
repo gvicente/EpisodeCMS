@@ -1,4 +1,5 @@
 ---
+debug: 4
 project: cook2.me
 database: 
   host: localhost
