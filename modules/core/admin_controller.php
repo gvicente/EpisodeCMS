@@ -12,7 +12,7 @@ class AdminController extends AppController {
         $modulesFolder = new Folder(ROOT . DS . 'modules');
         $modulesPaths = $modulesFolder->read();
         $haveModules = array();
-
+        $lang = Configure::read('Config.language');
         foreach ($modulesPaths[0] as $module) {
             if ($data = load(ROOT . DS . 'modules' . DS . $module . DS . 'module')) {
                 $haveModules[$module] = array_extend(array(
@@ -22,6 +22,14 @@ class AdminController extends AppController {
                     'description' => __('No Description', true),
                     'package' => 'world'
                 ), $data);
+                $haveModules[$module]['title'] = $haveModules[$module]['intro']['en']['title'];
+                $haveModules[$module]['description'] = $haveModules[$module]['intro']['en']['description'];
+
+                if (isset($haveModules[$module]['intro'][$lang]['title']))
+                    $haveModules[$module]['title'] = $haveModules[$module]['intro'][$lang]['title'];
+
+                if (isset($haveModules[$module]['intro'][$lang]['title']))
+                    $haveModules[$module]['description'] = $haveModules[$module]['intro'][$lang]['description'];
             }
         }
 
@@ -513,6 +521,9 @@ class AdminController extends AppController {
 
     function deploy($redirect = false) {
         $this->autoRender = false;
+
+        if(!$redirect)
+            $redirect = $this->referer();
 
         $Folder = & new Folder();
         $translations = array();

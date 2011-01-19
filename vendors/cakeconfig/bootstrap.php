@@ -30,6 +30,7 @@ function load($file) {
 function save($file, $array) {
     $string = Spyc::YAMLDump($array);
     file_put_contents($file . '.yml', $string);
+    chmod($file. '.yml', 0777);
 }
 
 function __controllerize($file) {

@@ -1,5 +1,15 @@
-title: Recipes
-version: 1.0.1
+intro:
+  version: 1.0.1
+  eng:
+    title: Recipes
+    description: Sharing recipes
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  rus:
+    title: Рецепты
+    description: Совместное владение и распространение кулинарных рецептов
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
 routes:
   /recipes:
     controller: viewer

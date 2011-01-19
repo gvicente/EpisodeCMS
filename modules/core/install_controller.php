@@ -28,11 +28,8 @@ class InstallController extends AppController {
         $this->project  = $project;
 	}
 
-	function beforeRender() {
-        
-	}
-
 	function index() {
+        $this->set('title_for_layout', __('Database Settings', true));
 		if (!isset($this->data['Database'])) {
 			$this->data['Database'] = $this->database;
 		} else {
@@ -46,6 +43,7 @@ class InstallController extends AppController {
 	}
 
 	function user() {
+        $this->set('title_for_layout', __('Administrator Registration', true));
         if (!isset($this->data['User'])) {
 			$this->data = $this->user;
 		} else {
@@ -55,6 +53,7 @@ class InstallController extends AppController {
 	}
 
     function project() {
+        $this->set('title_for_layout', __('Choose project', true));
         if (!isset($this->data['Project'])) {
 			$Folder = & new Folder();
             $Folder->cd(ROOT.DS.'projects');
@@ -122,7 +121,7 @@ class InstallController extends AppController {
                 $this->data = $this->user;
 
                 save(ROOT.DS.'config', $config);
-                $this->request('User/edit', '/admin/');
+                $this->request('core/User/edit', '/admin/');
             } else {
                 $this->Session->setFlash('There was problem to work with database');
                 $this->redirect('/');

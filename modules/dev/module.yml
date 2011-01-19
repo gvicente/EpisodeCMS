@@ -1,7 +1,15 @@
-title: Developer Pack
-version: 1.0.1
-description: |
-  Developer Pack designed for quick deploying modules for web applications.
+intro:
+  version: 1.0.1
+  eng:
+    title: Developer Pack
+    description: Quick and easy customizing and management
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  rus:
+    title: Пакет разработчика
+    description: Быстрая и простая настройка и управление
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
 routes:
   /editor:
     _title: Site Editor

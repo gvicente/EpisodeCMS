@@ -44,7 +44,7 @@ $(function(){
 <?php foreach ($modules as $module=>$data): ?>
 	<div class="module <?php echo $data['installed']?'installed':'notinstalled' ?> <?php echo $data['old']?'old':'' ?>">
 		<?php if ($data['installed']): ?>
-		<h3><?php echo $html->link(__($data['title'], true), array('controller'=>'admin', 'action'=>'browse', 'module'=>$module)) ?></h3>
+		<h3><?php echo $html->link($data['title'], array('controller'=>'admin', 'action'=>'browse', 'module'=>$module)) ?></h3>
 		<?php else:?>
 		<h3><?php echo $data['title'] ?></h3>
 		<?php endif ?>
@@ -59,7 +59,7 @@ $(function(){
 			<?php endif ?>
 		</div>
 		<div class="version">
-            <?php echo $data['version'] ?>
+            <?php echo $data['intro']['version'] ?>
 		</div>
 		<div class="description">
 			<?php

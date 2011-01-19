@@ -1,6 +1,16 @@
-title: Content
-version: 1.0.1
-package: core
+intro:
+  version: 1.0.1
+  package: core
+  eng:
+    title: Content
+    description: EpisodeCMS Content Management System
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  rus:
+    title: Контент
+    description: Система управления контентом EpisodeCMS
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
 content: |
   * Start with "customize":/controller:admin/action:customize/module:core/ your site
   * Change appearence with "themes":/controller:admin/action:themes/ and "describe navigation":/controller:admin/action:menus/
@@ -11,6 +21,10 @@ options:
 ui:
   install:
     _theme: _install
+    _title: Install Wizard
+  login:
+    _theme: _classic
+    _title: Autorization
   admin:
     _title: Control Panel
     _theme: _classic

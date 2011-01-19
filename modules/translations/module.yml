@@ -1,4 +1,14 @@
-title: Translations
-version: 1.0.1
+intro:
+  version: 1.0.1
+  eng:
+    title: Translations
+    description: Social translations
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  rus:
+    title: Переводы
+    description: Социальные переводы
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
 styles:
 	- style

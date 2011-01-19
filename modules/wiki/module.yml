@@ -1,5 +1,15 @@
-title: Wiki
-version: 1.0.1
+intro:
+  version: 1.0.1
+  eng:
+    title: Wiki
+    description: Social content
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  rus:
+    title: Вики
+    description: Социальный контент
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
 routes:
   /admin/wiki:
     controller: wiki

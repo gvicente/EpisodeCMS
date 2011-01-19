@@ -1,7 +1,15 @@
-title: Blog
-version: 1.0.1
-description: |
-  Blog management system
+intro:
+  version: 1.0.1
+  eng:
+    title: Blog
+    description: Blog management system
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  rus:
+    title: Блог
+    description: Система управления блогом
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
 content: |
   * Manage blog by "adding post":/controller:admin/action:edit/module:blog/model:Post/ and "browse posts":/controller:admin/action:browse/module:blog/model:Post/
   * "Customize":/controller:admin/action:customize/module:blog/ it and move on

@@ -1,6 +1,16 @@
-title: Console
-version: 1.0.1
-package: console
+intro:
+  version: 1.0.1
+  package: console
+  eng:
+    title: Console
+    description: Alternative Management System
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  rus:
+    title: Консоль
+    description: Альтернативная система управления
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
 content: |
   * Manage quickly 
 routes:

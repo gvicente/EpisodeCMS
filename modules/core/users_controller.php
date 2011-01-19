@@ -1,5 +1,7 @@
 <?php
 	class UsersController extends AppController {
+        var $ui = 'login';
+
 		function index() {
 
 		}
@@ -19,12 +21,14 @@
 		}
 
 		function login() {
-			$menus = array();
-			$this->set('title', 'Authorization');
-			$this->set('layout_title', 'Authorization');
+            $this->removeBreadcrumb('root');
+            $menus = array();
+            Configure::write(compact('menus'));
+
+			$this->set('title_for_layout', __('Authorization', true));
+			$this->set('layout_title', __('Authorization', true));
 			$this->set('layout_redirect', array('controller'=>'users', 'action'=>'login'));
-			$this->set(compact('menus'));
-			$this->theme = "_classic";
+			
 
             if(Configure::read('config.backend.theme'))
 				$this->theme = Configure::read('config.backend.theme');

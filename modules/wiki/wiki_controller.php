@@ -40,7 +40,7 @@ class WikiController extends AppController {
             $redirect = $this->data['redirect'];
         else
             $redirect = '/admin/wiki';
-        $this->request('Wiki/edit', $redirect);
+        $this->request('wiki/Wiki/edit', $redirect);
         $this->admin_view($title);
     }
 

@@ -1,5 +1,15 @@
-title: Photo Gallery
-version: 1.0.1
+intro:
+  version: 1.0.1
+  eng:
+    title: Photo Gallery
+    description: Albums, galleries and photos
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  rus:
+    title: Фото галлерея
+    description: Альбомы, галлереи и фотографии
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
 routes:
   /gallery:
     controller: viewer

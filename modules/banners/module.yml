@@ -1,5 +1,15 @@
-title: Banners
-version: 1.0.1
+intro:
+  version: 1.0.1
+  eng:
+    title: Banners
+    description: Simplest way to share advertisment
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  rus:
+    title: Баннеры
+    description: Простейший способ делиться рекламой
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
 routes:
   /banners:
     controller: viewer
