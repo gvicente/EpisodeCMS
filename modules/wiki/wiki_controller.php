@@ -14,8 +14,6 @@ class WikiController extends AppController {
     }
 
     function admin_view($title=null) {
-        if (!$title)
-            $this->redirect('/admin/wiki');
         $this->loadHelper('Wiki');
         $this->ui = "admin";
         
