@@ -4,3 +4,4 @@ tmp/*
 .project
 .settings/*
 ./*.yml
+public/*
