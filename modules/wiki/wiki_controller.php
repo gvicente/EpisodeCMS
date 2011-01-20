@@ -13,7 +13,9 @@ class WikiController extends AppController {
         $this->set('wikis', $this->Wiki->find('all', array('conditions'=>array('parent_id'=>0))));
     }
 
-    function admin_view($title=null) {
+    function admin_view($title=null, $editor=false) {
+        if (!$title && !$editor)
+            $this->redirect('/admin/wiki');
         $this->loadHelper('Wiki');
         $this->ui = "admin";
         
@@ -39,7 +41,7 @@ class WikiController extends AppController {
         else
             $redirect = '/admin/wiki';
         $this->request('wiki/Wiki/edit', $redirect);
-        $this->admin_view($title);
+        $this->admin_view($title, true);
     }
 
     function admin_delete($title=null) {
