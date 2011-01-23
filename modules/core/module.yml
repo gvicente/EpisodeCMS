@@ -1,12 +1,12 @@
 intro:
   version: 1.0.1
   package: core
-  eng:
+  en:
     title: Content
     description: EpisodeCMS Content Management System
     authors:
       - Aleksey Razbakov <razbakov.aleksey@gmail.com>
-  rus:
+  ru:
     title: Контент
     description: Система управления контентом EpisodeCMS
     authors:

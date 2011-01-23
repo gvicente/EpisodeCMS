@@ -1,11 +1,11 @@
 intro:
   version: 1.0.1
-  eng:
+  en:
     title: Photo Gallery
     description: Albums, galleries and photos
     authors:
       - Aleksey Razbakov <razbakov.aleksey@gmail.com>
-  rus:
+  ru:
     title: Фото галлерея
     description: Альбомы, галлереи и фотографии
     authors:

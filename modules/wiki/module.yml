@@ -1,11 +1,11 @@
 intro:
   version: 1.0.1
-  eng:
+  en:
     title: Wiki
     description: Social content
     authors:
       - Aleksey Razbakov <razbakov.aleksey@gmail.com>
-  rus:
+  ru:
     title: Вики
     description: Социальный контент
     authors:

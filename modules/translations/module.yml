@@ -1,11 +1,11 @@
 intro:
   version: 1.0.1
-  eng:
+  en:
     title: Translations
     description: Social translations
     authors:
       - Aleksey Razbakov <razbakov.aleksey@gmail.com>
-  rus:
+  ru:
     title: Переводы
     description: Социальные переводы
     authors:

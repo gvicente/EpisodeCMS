@@ -1,11 +1,11 @@
 intro:
   version: 1.0.1
-  eng:
+  en:
     title: Developer Pack
     description: Quick and easy customizing and management
     authors:
       - Aleksey Razbakov <razbakov.aleksey@gmail.com>
-  rus:
+  ru:
     title: Пакет разработчика
     description: Быстрая и простая настройка и управление
     authors:

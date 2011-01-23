@@ -1,12 +1,12 @@
 intro:
   version: 1.0.1
   package: console
-  eng:
+  en:
     title: Console
     description: Alternative Management System
     authors:
       - Aleksey Razbakov <razbakov.aleksey@gmail.com>
-  rus:
+  ru:
     title: Консоль
     description: Альтернативная система управления
     authors:

@@ -59,7 +59,8 @@ class AppController extends Controller {
             $this->Auth->authorize = 'controller';
         }
         $language = $this->Cookie->read('language');
-        Configure::write('Config.language', $language);
+        if ($language)
+            Configure::write('Config.language', $language);
         $this->Event->triggerEvent('Startup' . Inflector::humanize($this->ui));
         Configure::write(compact('menus'));
     }

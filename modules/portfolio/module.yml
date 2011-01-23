@@ -1,11 +1,11 @@
 intro:
   version: 1.0.1
-  eng:
+  en:
     title: Portfolio
     description: Self promotion - portfolios and works
     authors:
       - Aleksey Razbakov <razbakov.aleksey@gmail.com>
-  rus:
+  ru:
     title: Портфолио
     description: Самореклама - портфолио и работы
     authors:

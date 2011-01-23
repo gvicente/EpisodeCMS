@@ -1,11 +1,11 @@
 intro:
   version: 1.0.1
-  eng:
+  en:
     title: Banners
     description: Simplest way to share advertisment
     authors:
       - Aleksey Razbakov <razbakov.aleksey@gmail.com>
-  rus:
+  ru:
     title: Баннеры
     description: Простейший способ делиться рекламой
     authors:
