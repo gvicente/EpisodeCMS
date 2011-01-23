@@ -22,14 +22,18 @@ class AdminController extends AppController {
                     'description' => __('No Description', true),
                     'package' => 'world'
                 ), $data);
-                $haveModules[$module]['title'] = $haveModules[$module]['intro']['en']['title'];
-                $haveModules[$module]['description'] = $haveModules[$module]['intro']['en']['description'];
-
+                
                 if (isset($haveModules[$module]['intro'][$lang]['title']))
                     $haveModules[$module]['title'] = $haveModules[$module]['intro'][$lang]['title'];
+                elseif (isset($haveModules[$module]['intro']['en']['title']))
+                    $haveModules[$module]['title'] = $haveModules[$module]['intro']['en']['title'];
+                else
+                    $haveModules[$module]['title'] = $module;
 
-                if (isset($haveModules[$module]['intro'][$lang]['title']))
+                if (isset($haveModules[$module]['intro'][$lang]['description']))
                     $haveModules[$module]['description'] = $haveModules[$module]['intro'][$lang]['description'];
+                elseif (isset($haveModules[$module]['intro']['en']['description']))
+                    $haveModules[$module]['description'] = $haveModules[$module]['intro']['en']['description'];
             }
         }
 
