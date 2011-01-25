@@ -37,7 +37,6 @@ class ThemeView extends View {
 
     function _paths($plugin = null, $cached = true) {
         $paths = parent::_paths($plugin, $cached);
-//        $paths = array();
         $modules = Configure::read('modules');
         if (!empty($this->theme)) {
 
@@ -48,9 +47,6 @@ class ThemeView extends View {
                         array(ROOT . $config['path'] . DS . 'themes' . DS . $this->theme . DS)
                     );
             }
-
-//            $paths = array_merge(array(ROOT . DS . 'themes' . DS . $this->theme . DS), $paths);
-//            debug($paths);
         }
 
         if (empty($this->__paths)) {
@@ -82,6 +78,21 @@ class ThemeView extends View {
                     $styles[] = $config['path'].'/public/'.$style;
                 }
             }
+
+            if (file_exists(ROOT . $config['path'] . DS . 'public' . DS . $module . '.css'))
+                $styles[] = $config['path'] . '/public/' . $module;
+
+            if (file_exists(ROOT . $config['path'] . DS . 'public' . DS . $module . '.' . $this->ui . '.css'))
+                $styles[] = $config['path'] . '/public/' . $module . '.' . $this->ui;
+
+            if (file_exists(ROOT . $config['path'] . DS . 'public' . DS . $module . '.js'))
+                $scripts[] = $config['path'] . '/public/' . $module;
+
+            if (file_exists(ROOT . $config['path'] . DS . 'public' . DS . $module . '.' . $this->ui . '.js'))
+                $scripts[] = $config['path'] . '/public/' . $module . '.' . $this->ui;
+            
+            if (file_exists(ROOT . $config['path'] . DS . 'themes' . DS . $this->theme . DS . 'default.js'))
+                $scripts[] = $config['path'] . '/themes/' . $this->theme . '/default';
         }
 
         foreach ($modules as $module => $config) {

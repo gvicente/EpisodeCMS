@@ -61,7 +61,10 @@
             $modules_list = Configure::read('modules');
             $modules = array();
             foreach ($modules_list as $module => $data) {
-                $modules[$module] = __($data['title'], true);
+                if (isset($data['intro'][Configure::read('Config.language')]['title']))
+                    $modules[$module] = $data['intro'][Configure::read('Config.language')]['title'];
+                else
+                    $modules[$module] = $module;
             }
             return $modules;
         }

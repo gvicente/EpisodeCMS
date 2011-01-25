@@ -23,11 +23,11 @@ ui:
     _theme: _install
     _title: Install Wizard
   login:
-    _theme: _classic
+    _ui: admin
     _title: Autorization
   admin:
     _title: Control Panel
-    _theme: _classic
+    _theme: _default
     _js:
       -jquery
       -jquery-ui/jquery-ui
@@ -38,10 +38,8 @@ ui:
       -tinymce/jquery.tinymce
       -ajaxupload
       -jquery.autocompleter
-      -core
     _css:
       -jquery-ui/smoothness/jquery-ui-1.8.2.custom
-      -ui
     status:
       users/admin:
         _allow: *

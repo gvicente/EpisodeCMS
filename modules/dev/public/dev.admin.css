@@ -1,0 +1,95 @@
+.toolbar {
+    padding: 5px;
+    background: #eee;
+    border-radius: 10px;
+}
+
+.dev-editor-select {
+    float: left;
+    border: solid 1px #666;
+    margin: 2px;
+}
+
+.dev-editor-options:hover {
+    position: absolute;
+    background: #eee;
+    border: solid 1px #666;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.dev-editor-options:hover li.active span {
+    background: #369;
+    color: #fff;
+}
+
+.dev-editor-options li span {
+    padding: 5px;
+    display: none;
+}
+
+.dev-editor-options li.title span {
+    font-weight: bold;
+}
+
+.dev-editor-options li.active span {
+    display: block;
+}
+
+.dev-editor-options:hover li span {
+    display: block;
+}
+
+.dev-editor-options li span:hover {
+    text-decoration: underline;
+    color: #369;
+    cursor: pointer;
+}
+
+#menu-icon {
+    border: solid 1px #aaa;
+    display: block;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
+
+.menu-wrapper input {
+    border: solid 1px #333;
+    padding: 3px;
+    font-family: Verdana;
+    color: #333;
+    width: 50%;
+}
+
+.menu-wrapper {
+    width: 400px;
+    float: left;
+}
+
+.menu-wrapper label {
+    width: 100%;
+    display: block;
+    margin-left: 10px;
+}
+
+.menu-wrapper label span {
+    width: 80px;
+    display: inline-block;
+
+}
+
+.menu-selector {
+    clear: both;
+}
+
+.menu-options {
+    clear: both;
+}
+
+.dev-editor .delete,
+.dev-editor .save {
+    float: right;
+    margin-left: 5px;
+}

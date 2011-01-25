@@ -455,7 +455,7 @@ class AdminController extends AppController {
 
         $config = Configure::read('config');
         $path = ROOT . DS . 'config';
-        $config['modules'][$module] = $data['version'];
+        $config['modules'][$module] = $data['intro']['version'];
         
         if (isset($config['project']) && $project = $config['project']) {
             $path = ROOT . DS . 'projects' . DS . $project . DS . 'project';

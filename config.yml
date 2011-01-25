@@ -1,10 +1,19 @@
 ---
+project: cook2.me
+database: 
+  host: localhost
+  database: episodecms_demo
+  login: root
+  password: password
 setup: false
 modules: 
+  cook2.me: 0
   blog: 1.0.1
   dev: 1.0.1
   recipes: 1.0.1
   wiki: 1.0.1
+  core: 
+    maintance: 1
   portfolio: 
   translations: 
   banners: 1.0.1

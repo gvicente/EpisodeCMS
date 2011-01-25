@@ -5,7 +5,7 @@ include_once ('error.php');
 class AppController extends Controller {
 
     var $theme  = "default";
-    var $layout = "page";
+    var $layout = "default";
     var $ui     = "main";
 
     function __construct() {
@@ -93,7 +93,12 @@ class AppController extends Controller {
         $this->set(compact('title_for_layout', 'keywords', 'description', 'user'));
 
         $layout  = Configure::read('ui.'.$this->ui);
-        $this->theme = $layout['_theme'];
+        if (isset($layout['_theme']))
+            $this->theme = $layout['_theme'];
+        elseif (isset($layout['_ui'])) {
+            $layout_support = Configure::read('ui.'.$layout['_ui']);
+            $this->theme = $layout_support['_theme'];
+        }
 
         unset($layout['_title']);
         unset($layout['_theme']);

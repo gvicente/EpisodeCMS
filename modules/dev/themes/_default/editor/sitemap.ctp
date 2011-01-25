@@ -1,4 +1,3 @@
-<script src="<?php echo $html->url('/modules/dev/views/editor/sitemap.js') ?>"></script>
 <?php
 $menus = Configure::read('menus');
 unset($menus['admin']);

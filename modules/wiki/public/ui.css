@@ -30,16 +30,16 @@
     border: solid 1px #eee;
 }
 
-.wiki-controller #content li {
+.wiki-controller #content .content li {
     list-style: square;
     margin-left: 2em;
 }
 
-.wiki-controller #content table {
+.wiki-controller #content .content table {
     margin: 1em 2em;
 }
 
-.wiki-controller #content table td {
+.wiki-controller #content .content table td {
     border: solid 1px #666;
     padding: 3px;
 }

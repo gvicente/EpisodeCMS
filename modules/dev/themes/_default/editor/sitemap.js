@@ -1,4 +1,4 @@
-App.widget('dev-editor-sitemap', {
+App.add('widget', '*', {
     init: function() {
         $('.widget .add-menu-item')
             .focus(function(){
@@ -16,10 +16,8 @@ App.widget('dev-editor-sitemap', {
                    $this.val($this.attr('default'));
                }
             })
-//            .hotkey({
-//                'Enter':function() {
-//                    alert('Enter');
-//                }
+//            .enter(function() {
+//                alert('Enter');
 //            })
     }
 });
