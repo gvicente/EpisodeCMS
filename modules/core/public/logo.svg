@@ -9,12 +9,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="246.31613"
-   height="43.059723"
+   width="251.37549"
+   height="38.439999"
    id="svg2"
    version="1.1"
-   inkscape:version="0.47 r22583"
-   sodipodi:docname="Новый документ 1">
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/var/www/demo/web4life/img/episode.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <inkscape:perspective
@@ -47,16 +50,20 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="125.63441"
-     inkscape:cy="-7.9847241"
+     inkscape:cx="152.43299"
+     inkscape:cy="-4.5558147"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1176"
      inkscape:window-height="818"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
-     inkscape:window-maximized="0" />
+     inkscape:window-x="163"
+     inkscape:window-y="203"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -73,33 +80,26 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-33.607979,-336.08429)">
+     transform="translate(-33.61488,-334.53648)">
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="66.64286"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="62.64286"
        y="365.57648"
-       id="text2816"><tspan
+       id="text2816"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/var/www/demo/episode/img/logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan2818"
-         x="66.64286"
+         x="62.64286"
          y="365.57648"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS"><tspan
-           style="fill:#333333"
+         style="font-size:40px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Italic"><tspan
+           style="font-size:40px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#333333;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Italic"
            id="tspan2826">Episode</tspan><tspan
-           style="font-style:italic;font-weight:bold;fill:#336699"
+           style="font-size:40px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#336699;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Bold Italic"
            id="tspan2820">CMS</tspan></tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="131.23567"
-       y="376.64792"
-       id="text2828"><tspan
-         sodipodi:role="line"
-         id="tspan2830"
-         x="131.23567"
-         y="376.64792"
-         style="font-size:12px;font-style:italic;fill:#666666">accessible management</tspan></text>
     <path
        sodipodi:type="arc"
        style="fill:#333333;fill-opacity:1;stroke:#eeeeee"
@@ -109,7 +109,10 @@
        sodipodi:rx="8.2142859"
        sodipodi:ry="8.2142859"
        d="m 39.285714,337.71933 c 0,4.53662 -3.677661,8.21429 -8.214286,8.21429 -4.536625,0 -8.214286,-3.67767 -8.214286,-8.21429 0,-4.53662 3.677661,-8.21429 8.214286,-8.21429 4.536625,0 8.214286,3.67767 8.214286,8.21429 z"
-       transform="matrix(-0.73281625,0.68042659,-0.68042659,-0.73281625,303.57759,581.94312)" />
+       transform="matrix(-0.73281625,0.68042659,-0.68042659,-0.73281625,303.57759,581.94312)"
+       inkscape:export-filename="/var/www/demo/episode/img/logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        sodipodi:type="arc"
        style="fill:#333333;fill-opacity:1;stroke:#eeeeee"
@@ -119,7 +122,10 @@
        sodipodi:rx="8.2142859"
        sodipodi:ry="8.2142859"
        d="m 39.285714,337.71933 c 0,4.53662 -3.677661,8.21429 -8.214286,8.21429 -4.536625,0 -8.214286,-3.67767 -8.214286,-8.21429 0,-4.53662 3.677661,-8.21429 8.214286,-8.21429 4.536625,0 8.214286,3.67767 8.214286,8.21429 z"
-       transform="matrix(-0.73281625,0.68042659,-0.68042659,-0.73281625,304.68083,572.63369)" />
+       transform="matrix(-0.73281625,0.68042659,-0.68042659,-0.73281625,304.68083,572.63369)"
+       inkscape:export-filename="/var/www/demo/episode/img/logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        sodipodi:type="arc"
        style="fill:#336699;fill-opacity:1;stroke:#eeeeee"
@@ -129,6 +135,9 @@
        sodipodi:rx="8.2142859"
        sodipodi:ry="8.2142859"
        d="m 39.285714,337.71933 c 0,4.53662 -3.677661,8.21429 -8.214286,8.21429 -4.536625,0 -8.214286,-3.67767 -8.214286,-8.21429 0,-4.53662 3.677661,-8.21429 8.214286,-8.21429 4.536625,0 8.214286,3.67767 8.214286,8.21429 z"
-       transform="matrix(-0.73281625,0.68042659,-0.68042659,-0.73281625,294.88516,577.83022)" />
+       transform="matrix(-0.73281625,0.68042659,-0.68042659,-0.73281625,294.88516,577.83022)"
+       inkscape:export-filename="/var/www/demo/episode/img/logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
 </svg>
