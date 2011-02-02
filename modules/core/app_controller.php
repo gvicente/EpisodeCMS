@@ -31,7 +31,6 @@ class AppController extends Controller {
     }
 
     function beforeFilter() {
-        $this->addBreadcrumb(__('Content', true), '/admin/overview', 'root');
         $theme = Configure::read('theme');
         $modules = Configure::read('modules');
 
@@ -129,6 +128,7 @@ class AppController extends Controller {
     function addBreadcrumb($text, $link, $id=false) {
         if (!$id)
             $id = sizeof($this->breadcrumbs);
+        $link = Router::url($link);
         $this->breadcrumbs[$id] = compact('link', 'text');
         return $id;
     }

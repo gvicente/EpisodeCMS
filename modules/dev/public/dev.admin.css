@@ -1,49 +1,11 @@
+#dev-editor-selector {
+    
+}
+
 .toolbar {
     padding: 5px;
     background: #eee;
     border-radius: 10px;
-}
-
-.dev-editor-select {
-    float: left;
-    border: solid 1px #666;
-    margin: 2px;
-}
-
-.dev-editor-options:hover {
-    position: absolute;
-    background: #eee;
-    border: solid 1px #666;
-    margin-top: -1px;
-    margin-left: -1px;
-}
-
-.dev-editor-options:hover li.active span {
-    background: #369;
-    color: #fff;
-}
-
-.dev-editor-options li span {
-    padding: 5px;
-    display: none;
-}
-
-.dev-editor-options li.title span {
-    font-weight: bold;
-}
-
-.dev-editor-options li.active span {
-    display: block;
-}
-
-.dev-editor-options:hover li span {
-    display: block;
-}
-
-.dev-editor-options li span:hover {
-    text-decoration: underline;
-    color: #369;
-    cursor: pointer;
 }
 
 #menu-icon {

@@ -4,6 +4,12 @@ class AdminController extends AppController {
     var $uses = array();
     var $ui = "admin";
 
+    function  beforeFilter() {
+        parent::beforeFilter();
+        $this->addBreadcrumb(__('Content', true), '/admin/overview', 'root');
+    }
+
+
     function overview() {
         $this->removeBreadcrumb('root');
     }
@@ -523,10 +529,10 @@ class AdminController extends AppController {
             $this->redirect(array('action' => 'index'));
     }
 
-    function deploy($redirect = false) {
+    function deploy($redirect = null) {
         $this->autoRender = false;
 
-        if(!$redirect)
+        if($redirect === null)
             $redirect = $this->referer();
 
         $Folder = & new Folder();

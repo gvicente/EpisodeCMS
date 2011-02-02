@@ -1058,3 +1058,90 @@ a:hover {
     font-family: Verdana;
     font-size: 12px;
 }
+
+
+/* <select> */
+.select {
+    display: inline-block;
+    height: 1.3em;
+    margin-top: 0.2em;
+}
+
+.select ul {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: #fff;
+    padding-right: 10px;
+    position: absolute;
+}
+
+.select ul li ul {
+    display: none;
+}
+
+.select li.filter-active>ul {
+    display: block;
+}
+
+.select li {
+    display: none;
+}
+
+.select ul:hover {
+    position: absolute;
+    z-index: 1000;
+}
+
+.select li ul {
+    display: block;
+    margin-left: 60px;
+    margin-top: -22px;
+}
+
+.select ul:hover li {
+    display: block;
+}
+
+.select li.filter-active {
+    display: block;
+    padding-right: 15px;
+    background: url(images/more-down.png) no-repeat right;
+}
+
+.select li a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.select li:hover>a {
+    color: #369;
+}
+li.childs,
+.select.tree ul li.filter-active {
+    background: url(images/more-right.png) no-repeat right;
+}
+/* </select> */
+
+/* <tooltip> */
+.tooltip {
+    background: #333;
+    color: #fff;
+    padding: 5px;
+    display: block;
+    position: absolute;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    width: 200px;
+    z-index: 1000;
+}
+
+.tooltip.success {
+   background: #339c33 url(images/success.png) no-repeat 2% 50%;
+   padding-left: 55px;
+}
+
+.tooltip.error {
+   background: #9c0000;
+}
+/* </tooltip> */

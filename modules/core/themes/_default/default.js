@@ -5,7 +5,7 @@ App.add('action', '*', {
                 $(this).prepend('<span>');
         });
 
-        $('#menu-main li').each(function(){
+        $('li').each(function(){
             var $this = $(this);
             if ($('ul li', $this).length > 0)
                 $this.addClass('childs');

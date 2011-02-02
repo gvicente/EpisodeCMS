@@ -60,8 +60,10 @@ class InstallController extends AppController {
             $paths = $Folder->read(true);
             $paths = $paths[0];
 
-            foreach ($paths as $path)
-                $projects[$path] = load(ROOT.DS.'projects'.DS.$path.DS.'project');
+            foreach ($paths as $path) {
+                if($data = load(ROOT.DS.'projects'.DS.$path.DS.'project'))
+                    $projects[$path] = $data;
+            }
 
             $this->set(compact('projects'));
 		} else {
