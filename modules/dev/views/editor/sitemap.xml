@@ -1,0 +1,25 @@
+<php>
+    $menus = Configure::read('menus');
+    unset($menus['admin']);
+    foreach ($menus as $menu=>$data) {
+        foreach ($data as $title=>$options) {
+            if (is_array($options)) {
+                $menus[$menu][$title]['_link'] = '/editor/edit/'.$menu.'/'.$options['_link'];
+            }
+        }
+    }
+</php>
+<foreach data="{$menus}" key="{$menu}" as="$items">
+    <div class="widget" widget="dev-editor-sitemap">
+        <h2><translate data="{$data._title}||{$menu}|humanize" /></h2>
+        <div class="content menu">
+            <ul>
+                <theme:list data="{$items}" rel="ajax" />
+            </ul>
+            <div class="actions">
+                <theme:input class="add-menu-item">Добавить пункт меню...</input>
+            </div>
+        </div>
+        <theme:placeholder name="menu_after_{$menu}" />
+    </div>
+</foreach>
