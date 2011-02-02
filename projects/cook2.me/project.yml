@@ -8,6 +8,8 @@ modules:
   portfolio: 
   translations: 
   banners: 1.0.1
+  console: 1.0.1
+  gallery: 1.0.1
 debug: 4
 title: cook2.me
 description: >
