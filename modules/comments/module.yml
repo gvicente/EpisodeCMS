@@ -1,0 +1,37 @@
+intro:
+  version: 1.0.1
+  en:
+    title: Comments
+    description: Comments management system
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  ru:
+    title: Обсуждения
+    description: Система управления комментариями
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
+options:
+  have_parent: bool
+  controllers: controllers
+menu:
+  admin:
+    Content:
+      Comments|Discussions management:
+        _link:
+          controller:admin
+          action:browse
+          module:comments
+notifications:
+  Comment:
+    icon: /modules/blog/public/comments.png
+    text: % new comments
+    content: |
+      Some users have opinion about information stored in your blog. Be connected with your audience:
+      * "Answer comments":/controller:admin/action:customize/module:blog/
+      * And keep writing "new posts":/controller:admin/action:customize/module:blog/
+models:
+  Comment:
+    _default:
+    parent: string
+    content: html*
+    created: datetime#

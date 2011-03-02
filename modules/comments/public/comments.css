@@ -1,0 +1,21 @@
+.comment {
+    padding: 10px;
+    border-bottom: solid 1px #eee;
+}
+
+.comment-add {
+    margin: 10px;
+}
+
+.comment-add textarea {
+    width: 100%;
+    font-family: tahoma, verdana, arial;
+    padding: 2px;
+}
+
+.comment-add .submit input {
+    font-family: tahoma, verdana, arial;
+    background: #369;
+    color: #fff;
+    border: none;
+}
