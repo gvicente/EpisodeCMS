@@ -83,7 +83,7 @@ echo $this->Type->render($fields, $model, $multiple);
 ?>
 </fieldset>
 <div class="submit">
-	<?php echo $html->link(__('Cancel', true), array('controller'=>'admin', 'action'=>'browse', 'model'=>$model, 'module'=>$module), array('class'=>'button cancel')) ?>
+	<?php echo $html->link(__('Cancel', true), $referrer, array('class'=>'button cancel')) ?>
 	<button type="submit" class="button save"><?php echo __('Save', true)?></button>
 </div>
 <?php $this->Form->end('') ?>

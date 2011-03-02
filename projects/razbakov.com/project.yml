@@ -1,8 +1,15 @@
 ---
-title: Aleksey Razbakov
-description: >
-  Личный сайт
-keywords:
-modules:
+setup: false
+modules: 
   blog: 1
   dev: 1
+  wiki: 1.0.1
+  comments: 1.0.1
+debug: 4
+title: Aleksey Razbakov
+description: Личный сайт
+keywords: 
+version: 0
+theme: default
+theme_path: >
+  C:\projects\episode\projects\razbakov.com\themes\default

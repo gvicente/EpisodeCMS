@@ -26,7 +26,7 @@
 
 	<div id="content">
         <?php echo $this->Theme->breadcrumbs(' → ') ?>
-		<?php echo $session->error();?>
+		<?php echo $session->error(); ?>
 		<?php echo $content_for_layout; ?>
 	</div>
 

@@ -70,8 +70,3 @@ models:
     publish_start: datetime
     publish_end: datetime
     draft: bool
-  Comment:
-    _relations:
-      post: tree
-      content: html*
-      created: #datetime

@@ -70,8 +70,8 @@ a:hover {
 /* <header> */
 #header {
 	height: 135px;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
     /* <logo> */
@@ -79,7 +79,7 @@ a:hover {
     #logo {
         float: left;
         margin: 53px 0 0 45px;
-        padding: 0px;
+        padding: 0;
     }
 
     #logo a img {
@@ -92,16 +92,16 @@ a:hover {
         display: block;
         float: right;
         height: 100%;
-        margin: 0px;
-        padding: 0px;
+        margin: 0;
+        padding: 0;
     }
 
     #menu-bar ul {
         display: block;
         height: 100%;
         width: 100%;
-        margin: 0px;
-        padding: 0px;
+        margin: 0;
+        padding: 0;
         vertical-align: text-bottom;
     }
 
@@ -231,12 +231,12 @@ a:hover {
 	width: 100%;
 	margin: 0;
 	float: left;
-	dispaly: block;
+	display: block;
 }
 
 #page {
     background: #ffffff url('img/recipes_bg.png') no-repeat;
-    dispaly: block;
+    display: block;
     margin: 0;
     padding: 15px 25px 15px 18px;
     clear: both;
@@ -245,11 +245,11 @@ a:hover {
 
     /* <dish-of-the-week> */
     #dishOfTheWeek {
-        display: bolck;
+        display: block;
         width: 100%;
         float: left;
-        margin: 0px;
-        padding: 0px;
+        margin: 0;
+        padding: 0;
         padding-bottom: 30px;
         margin-bottom: 0;
     }
@@ -268,10 +268,10 @@ a:hover {
 
         #dishOfWeek {
             background: url('img/dishOfTheWeek.png') no-repeat;
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
             float: left;
-            owerflow: hidden;
+            overflow: hidden;
         }
         /* </dish-picture> */
 
@@ -403,7 +403,7 @@ a:hover {
             font-size: 10pt;
             overflow: hidden;
             margin: 0;
-            heigth: 30px;
+            height: 30px;
             width: 58px;
         }
 
@@ -929,7 +929,7 @@ a:hover {
         #inDownloadBoxContent { overflow: hidden; font-size: 12pt; color: #FFFFFF;}
         #preloaderImg { float: left; overflow: hidden; margin-right: 10px; }
         #preloaderCancel { float: right; margin-top: 10px; margin-right: 20px; overflow: hidden; padding-bottom: 1px; }
-        #preloaderCancel a { text-decoration: underline; color: #ffffff; width: 100%; margin: 8px 0 0 0px; cursor: pointer; }
+        #preloaderCancel a { text-decoration: underline; color: #ffffff; width: 100%; margin: 8px 0 0 0; cursor: pointer; }
         #preloaderCancel a:hover { text-decoration: none; }
         /* </loading> */
 

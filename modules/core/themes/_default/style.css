@@ -978,34 +978,67 @@ a:hover {
 }
 
 .todo {
-    border:solid 1px #666;
-    width:599px;
+    border: solid 1px #aaa;
+    width: 599px;
     font-size: 12px;
     overflow: hidden;
-    color:#333;
+    color: #333;
+    background: #fefefe;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.todo .mark {
+    background: #fbff92;
+    width: 20px;
+    height: 60px;
+    display: block;
+    float: left;
+    cursor: move;
+}
+
+.todo .actions {
     background: #eee;
+    display: none;
     margin-top: 10px;
 }
 
+.todo .actions a {
+    display: inline-block;
+    padding: 5px;
+    background: #ccc;
+}
+
+.todo .actions a:hover {
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+}
+
 .todo.active {
-    min-height: 50px;
     background: #fff;
 }
 
+.todo.active .text {
+    min-height: 30px;
+}
+
 .todo .text {
-    padding:10px
+    padding: 10px 10px 10px 30px;
 }
 
 .todo .delete {
     display: none;
+}
+.todo.changed:hover .actions {
+    display: block;
 }
 
 .todo:hover .delete {
     position: absolute;
     margin-top: 4px;
     margin-left: 575px;
-    border: solid 1px #333;
-    background: #fff;
+    background: url(images/delete.png) no-repeat;
     display: block;
     width: 16px;
     height: 16px;
@@ -1065,6 +1098,7 @@ a:hover {
     display: inline-block;
     height: 1.3em;
     margin-top: 0.2em;
+    margin-bottom: 10px;
 }
 
 .select ul {
@@ -1072,7 +1106,6 @@ a:hover {
     -moz-border-radius: 5px;
     background: #fff;
     padding-right: 10px;
-    position: absolute;
 }
 
 .select ul li ul {

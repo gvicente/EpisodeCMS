@@ -22,6 +22,7 @@
 			$this->loadModel($model);
 			$data['model'] = $model;
 			$data['entry'] = $this->$model->findBySlug($slug);
+            $this->Event->triggerEvent('ViewerView', $data['entry']);
 			$this->Event->triggerEvent($model.'View', $data['entry']);
 
 			if(@$data['entry'][$model]['title'])

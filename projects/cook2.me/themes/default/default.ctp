@@ -29,7 +29,7 @@
 			<div id="user-bar">
 				<div id="user-string">
 					<!--<a href="#" id="slideButton" onclick="slide();">Моя страница</a> | -->
-					<a href="#" id="slideButton" onclick="slide();">Вход</a>
+					<a href="#" id="slideButton" onclick="$('#slide').toggle();return false">Вход</a>
 				</div>
 				<div id="slide">
 					<div id="labelSocialLinks">
@@ -103,7 +103,7 @@
 						<form>
 							<input id="searchInputText" type="text" />
 							<input type="submit"  value="Найти" />
-							<a onclick="showElement('fullSearch');">Расширеный поиск</a>
+							<a onclick="$('#fullSearch').toggle(200);return false;">Расширеный поиск</a>
 							<div id="fullSearch">
 								<ul>
 									<?php $i = 0; ?>
@@ -174,6 +174,7 @@
 					</div>
 				</div>
 				<div id="content">
+                    <?php echo $session->flash() ?>
 					<?php echo $content_for_layout ?>
 				</div>
                 <br class="clear">

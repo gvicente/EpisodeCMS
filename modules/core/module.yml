@@ -48,6 +48,16 @@ ui:
   main:
     _title: Frontend
     _theme: default
+    _js:
+      -jquery
+      -jquery-ui/jquery-ui
+      -jquery.quicksearch
+      -jquery.synctranslit
+      -jquery.promo-slider
+      -jquery.right-click
+      -tinymce/jquery.tinymce
+      -ajaxupload
+      -jquery.autocompleter
 actions:
   viewer:
     _title: Browser
@@ -150,20 +160,6 @@ routes:
       [^/]+
     model: |
       [^/]+
-  /:model/:slug:
-    controller: viewer
-    action: view
-    pass: [model, slug]
-    model: |
-      [^/]+
-    slug: |
-      [^/]+
-  /:model:
-    controller: viewer
-    action: index
-    pass: [model]
-    model: |
-      [^/]+
 menu:
   admin:
     _title: Control Panel Menu
@@ -180,12 +176,15 @@ menu:
           controller: admin
           action: deploy
     Content:
+      _link:
+          controller: admin
+          action: overview
       Categories|Logical separation:
-          _link:
-            controller: admin
-            action: browse
-            module: core
-            model: Category
+        _link:
+          controller: admin
+          action: browse
+          module: core
+          model: Category
       Tags|Context separation:
         _link:
           controller: admin
@@ -237,6 +236,7 @@ models:
     password: password*
     photo: thumb
     email: string
+    language: language
   Notification:
     sender: string*
     object: string*

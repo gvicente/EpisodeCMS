@@ -1,4 +1,5 @@
 <?php
+uses('l10n'); 
 class ThemeView extends View {
 
     var $themeElement = null;
@@ -65,7 +66,11 @@ class ThemeView extends View {
         $scripts = array();
         $styles = array();
         $modules = Configure::read('modules');
-        
+
+        $locale = Configure::read('language');
+        if (file_exists( TEMP . 'cache' . DS . 'translations' . DS . $locale . '.js'))
+            $scripts[] = '/tmp/cache/translations/' . $locale;
+
         foreach ($modules as $module => $config) {
             if (isset($config['ui'][$this->ui]['_js'])) {
                 foreach ($config['ui'][$this->ui]['_js'] as $script) {

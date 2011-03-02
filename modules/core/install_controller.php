@@ -1,4 +1,4 @@
-    <?php
+<?php
 class InstallController extends AppController {
 	var $ui = "install";
 	var $uses = array('Database', 'User');
@@ -73,7 +73,6 @@ class InstallController extends AppController {
     }
 
     function isAbleToConnect($config) {
-
         $connected = @mysql_connect($config['host'], $config['login'], $config['password']);
         return $connected;
     }

@@ -1,6 +1,9 @@
 msgid "Content"
 msgstr "Контент"
 
+msgid "Do you want to do something? Click here and start typing..."
+msgstr "Желаете что-то сделать? Нажмите здесь и начните набирать текст..."
+
 msgid "* Start with \"customize\":/controller:admin/action:customize/module:core/ your site\n"
 "* Change appearence with \"themes\":/controller:admin/action:themes/ and \"describe navigation\":/controller:admin/action:menus/\n"
 "* Manage site by \"adding page\":/controller:admin/action:edit/module:core/model:Page/ and \"browse pages\":/controller:admin/action:browse/module:core/model:Page/\n"

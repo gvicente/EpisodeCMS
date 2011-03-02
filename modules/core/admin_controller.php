@@ -23,7 +23,7 @@ class AdminController extends AppController {
             if ($data = load(ROOT . DS . 'modules' . DS . $module . DS . 'module')) {
                 $haveModules[$module] = array_extend(array(
                     'installed' => false,
-                    'content' => '* "'.__('Options', true).'":/controller:admin/action:customize/module:'.$module.'/',
+                    'content' => '',
                     'old' => false,
                     'description' => __('No Description', true),
                     'package' => 'world'
@@ -175,6 +175,10 @@ class AdminController extends AppController {
 
     function edit($module, $model, $id = null, $redirect = true) {
         $fields = Configure::read('modules.' . $module . '.models');
+        
+        $referrer = $this->referer();
+        if($referrer == '/')
+            $referrer = array('action'=>'browse', $module, $model);
 
         if (!$fields[$model]) {
             $this->Session->setFlash('There is no model called <strong>' . $model . '</strong>');
@@ -283,7 +287,7 @@ class AdminController extends AppController {
                 }
             }
         $breadcrumbs = true;
-        $this->set(compact('module', 'model', 'fields', 'ids', 'data', 'breadcrumbs'));
+        $this->set(compact('module', 'model', 'fields', 'ids', 'data', 'breadcrumbs', 'referrer'));
         $this->set('multiple', sizeof($ids) > 1 );
     }
 
@@ -348,7 +352,9 @@ class AdminController extends AppController {
     }
 
     function customize($module = 'core') {
-
+        $referrer = $this->referer();
+        if($referrer == '/')
+            $referrer = array('action'=>'index');
         if (!empty($this->data)) {
             $config = Configure::read('config');
 
@@ -363,12 +369,13 @@ class AdminController extends AppController {
 
         if (is_array($options = Configure::read('config.modules.' . $module)))
             $this->data[$module] = $options;
+
         if (!$fields[$module] = Configure::read('modules.' . $module . '.options')) {
             $this->Session->setFlash('Module <strong>' . $module . '</strong> has no options to customize');
             $this->redirect(array('controller' => 'admin', 'action' => 'index'));
         }
 
-        $this->set(compact('module', 'fields'));
+        $this->set(compact('module', 'fields', 'referrer'));
         $this->set('multiple', false );
         $this->render('/admin/edit');
     }
@@ -426,12 +433,6 @@ class AdminController extends AppController {
                                 case('html'):
                                     $type = 'TEXT';
                                     break;
-                                case('thumb'):
-                                case('photo'):
-                                case('string'):
-                                case('password'):
-                                    $type = 'VARCHAR(255)';
-                                    break;
                                 case('bool'):
                                 case('int'):
                                     $default = 0;
@@ -439,6 +440,13 @@ class AdminController extends AppController {
                                 case('datetime'):
                                     $default = '0000-00-00';
                                     $type = 'DATETIME';
+                                    break;
+                                case('thumb'):
+                                case('photo'):
+                                case('string'):
+                                case('password'):
+                                default:
+                                    $type = 'VARCHAR(255)';
                                     break;
                             }
                             $fieldsSQL .= ",\n\t`$field` $type DEFAULT '$default'";
@@ -539,10 +547,9 @@ class AdminController extends AppController {
         $translations = array();
         $modules = Configure::read('modules');
 
+        $js_translations = new Object;
         foreach($modules as $module=>$config) {
-
             $path = ROOT . $config['path'] . DS . 'locales';
-
             if(file_exists($path)) {
                 $Folder->cd($path);
                 $localeFiles = $Folder->find('.+\.po$');
@@ -551,10 +558,15 @@ class AdminController extends AppController {
                     if(!isset($translations[$locale])) {
                         $translations[$locale] = "# Updated at ".date("Y.m.d H:i:s")."\n";
                     }
+                    $content = file_get_contents($path . DS . $file);
 
+                    preg_match_all('/msgid "(.+?)"\s*msgstr "(.+?)"\s+/is', $content, $matches);
+                    foreach($matches[1] as $key => $slug) {
+                        $js_translations->{$slug} = $matches[2][$key];
+                    };
                     $translations[$locale] .=
                         "\n# ".$path."\n".
-                        file_get_contents($path . DS . $file);
+                        $content;
                 }
             }
         }
@@ -568,6 +580,7 @@ class AdminController extends AppController {
             }
             
             file_put_contents($folder . DS . 'default.po', $data);
+            file_put_contents(TEMP . 'cache' . DS . 'translations' . DS . $locale . '.js', 'var language = '.json_encode($js_translations));
         }
 
         clearCache(null, 'persistent');

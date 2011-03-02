@@ -10,28 +10,34 @@
 			foreach($data as $key=>$notification) {
 				list($senderModel, $senderId) = explode('/', $notification['Notification']['sender']);
 				$this->loadModel($senderModel);
-				
+
 				list($objectModel, $objectId) = explode('/', $notification['Notification']['object']);
 				$this->loadModel($objectModel);
-				
+
 				list($textModel, $textId) = explode('/', $notification['Notification']['text']);
 				$this->loadModel($textModel);
-				
-				$data[$textModel][] = array(
+
+				$current = array(
 					'Sender' => $this->$senderModel->findById($senderId),
 					'Object' => $this->$objectModel->findById($objectId),
 					'Text' => $this->$textModel->findById($textId),
 					'id' => $notification['Notification']['id']
 				);
+                if(!$current['Text']) {
+                    $this->Notification->delete($notification['Notification']['id']);
+                } else {
+                    $data[$textModel][] = $current;
+                }
+
 				$ids[$textModel][] = $notification['Notification']['id'];
-				
+
 				unset($data[$key]);
 			}
-			
+
 			foreach($ids as $model=>$id) {
 				$ids[$model] = join(',', $id);
 			}
-				
+
 			$notifications = array();
 			$modules = Configure::read('modules');
 			foreach($modules as $config) {
@@ -39,7 +45,7 @@
 					$notifications = array_extend($notifications, $config['notifications']);
 				}
 			}
-			
+
 			$this->set(compact('data', 'notifications', 'ids'));
 		}
 		

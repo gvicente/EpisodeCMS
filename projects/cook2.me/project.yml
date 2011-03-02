@@ -1,21 +1,21 @@
 ---
+debug: 4
 setup: false
 modules: 
+  banners: 1.0.1
   blog: 1.0.1
   dev: 1.0.1
   recipes: 1.0.1
-  wiki: 1.0.1
-  portfolio: 
-  translations: 
-  banners: 1.0.1
-  console: 1.0.1
-  gallery: 1.0.1
-debug: 4
+  comments: 1.0.1
 title: cook2.me
 description: >
   Кулинарная
   социальная сеть
 keywords: 
+ui: 
+  admin: 
+    _css: 
+      - admin
 routes: 
   /: 
     controller: viewer
@@ -26,4 +26,4 @@ routes:
 version: 0
 theme: default
 theme_path: >
-  /var/www/episode/projects/cook2.me/themes/default
+  C:\projects\episode\projects\cook2.me\themes\default

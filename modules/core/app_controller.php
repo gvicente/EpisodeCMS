@@ -11,7 +11,9 @@ class AppController extends Controller {
     function __construct() {
         $this->components = array('RequestHandler', 'Session', 'Event', 'Cookie');
         $this->helpers = array('Html', 'Form', 'Session', 'Javascript', 'Textile', 'Type', 'Filter', 'Theme');
-        
+        App::import('Core', 'l10n');
+        $this->L10n = new L10n();
+
         $this->view = 'Theme';
         parent::__construct();
 
@@ -60,6 +62,8 @@ class AppController extends Controller {
         $language = $this->Cookie->read('language');
         if ($language)
             Configure::write('Config.language', $language);
+        $language = $this->L10n->map($language);
+        Configure::write(compact('language'));
         $this->Event->triggerEvent('Startup' . Inflector::humanize($this->ui));
         Configure::write(compact('menus'));
     }
@@ -113,6 +117,24 @@ class AppController extends Controller {
         $this->Event->triggerEvent('Render' . Inflector::humanize($this->ui));
     }
 
+    function notify($text, $object = null, $sender = null) {
+        $this->loadModel('Notification');
+        $data = array('Notification' => array(
+            'sender' => 'User/1',
+            'object' => $object->name.'/'.$object->id,
+            'text' => $object->name.'/'.$object->id
+        ));
+        $this->Notification->save($data);
+    }
+
+    function save() {
+        $model = Inflector::singularize($this->name);
+        if (!empty($this->data)) {
+            $this->$model->save($this->data);
+            $this->notify($this->$model);
+        }
+    }
+
     function request($request_string, $redirect = false) {
         if (!empty($this->data)) {
             list($module, $model, $action) = explode('/', $request_string);
@@ -147,7 +169,6 @@ class AppController extends Controller {
             $content = '';
             if (isset($this->viewVars[$id]))
                 $content = $this->viewVars[$id];
-            
             $this->set($id, $content.$this->renderPartial($view, $data, $controller));
         }
     }
@@ -217,11 +238,10 @@ class AppController extends Controller {
             $actions = array(0 => $actions);
 
         foreach ($actions as $action) {
-            if (strstr('/', $action))
+            if (strstr($action, '/')) {
                 list($controller, $action) = explode('/', $action);
-            else
+            } else
                 $controller = '*';
-        
             if (($controller == '*' || $this->name == $controller)
             && ($action == '*'||$this->action == $action))
                 $result = true;

@@ -1,3 +1,10 @@
+function __(str) {
+    if (typeof(language) != 'undefined' && language[str])
+        return language[str];
+    else
+        return str;
+}
+
 (function($){
     $.fn.tooltip = function() {
         var id = $(this).attr('id');
@@ -56,6 +63,19 @@ App = {
 
 App.add('action', '*', {
     init: function() {
+        $('[placeholder]').each(function(){
+            var $this = $(this);
+            var minimal = {'height':'1.3em', overflow: 'hidden', resize: 'none'};
+            
+            $this.css(minimal);
+            $this.next().hide();
+
+            $this.focus(function(){
+                $(this).css({'height':'3em'});
+                $(this).next().show();
+            })
+        });
+
         $('[switch]').focus(function(){
             var switchText = $(this).val();
             var tipTitle = $(this).attr('tooltip');
@@ -71,21 +91,22 @@ App.add('action', '*', {
             var $this = $(this);
             var title = $this.attr('tooltip');
             var id = $this.attr('id');
+
             if (!id) {
                 $.tips_id = $.tips_id || 1;
                 id = 'tip-' + ++$.tips_id;
                 $this.attr('id', id);
             }
-            var tip_id = 'tooltip-for-'+id;
-            $this.after('<span id="'+tip_id+'" class="tooltip" style="display:none">'+title+'</span>');
-            var elem = document.getElementById(id);
             
+            var tip_id = 'tooltip-for-'+id;
+            $this.before('<span id="'+tip_id+'" class="tooltip" style="display:none">'+title+'</span>');
+
             $(this).tooltip().css({
                 position: 'absolute',
-                left:  elem.offsetLeft,
-                top:   elem.offsetTop + elem.offsetHeight + 2,
-                width: elem.offsetWidth
+                'margin-top': $this.height()*2,
+                width: $this.css('width')
             });
+
             if (this.tagName == 'INPUT' || this.tagName == 'TEXTAREA') {
                 $this.focus(function(){
                     $this.tooltip().show();
@@ -106,6 +127,7 @@ App.add('action', '*', {
             var window = $(this).attr('window');
             var id = $(this).attr('id');
             var $this = $(this);
+
             $this.window().css({position:'absolute', top: $this.offset().top + $this.height() + 9, left: $this.offset().left, 'z-index': 9000, display: 'none'});
             $this.click(function(){
                 $this.window().css({position:'absolute', top: $this.offset().top + $this.height() + 9, left: $this.offset().left, 'z-index': 9000, display: 'none'});
@@ -131,24 +153,19 @@ App.add('action', '*', {
     }
 })
 
-// usage: log('inside coolFunc',this,arguments);
-// paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
 window.log = function(){
-  log.history = log.history || [];   // store logs to an array for reference
+  log.history = log.history || [];
   log.history.push(arguments);
   if(this.console){
     console.log( Array.prototype.slice.call(arguments) );
   }
 };
 
-
-
-// catch all document.write() calls
 (function(doc){
   var write = doc.write;
   doc.write = function(q){
-    log('document.write(): ',arguments);
-    if (/docwriteregexwhitelist/.test(q)) write.apply(doc,arguments);
+    log('document.write(): ', arguments);
+    if (/docwriteregexwhitelist/.test(q)) write.apply(doc, arguments);
   };
 })(document);
 
