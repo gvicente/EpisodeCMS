@@ -1,0 +1,7 @@
+---
+project: EpisodeCMS
+database: 
+  host: localhost
+  database: site
+  login: root
+  password: 123123

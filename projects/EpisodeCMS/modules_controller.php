@@ -1,6 +1,5 @@
 <?php
-
-class MOdulesController extends AppController {
+class ModulesController extends AppController {
     
     function admin_browse() {
         $this->autoRender = false;
