@@ -14,15 +14,9 @@
 
   <div id="container">
     <header>
-        <h1><a href="#">EpisodeCMS</a></h1>
+        <h1><a href="/">EpisodeCMS</a></h1>
         <div id="menu-main">
-        <ul>
-            <li><a href="#">Обзор</a></li>
-            <li><a href="#">Модули</a></li>
-            <li><a class="active" href="#">Документация</a></li>
-            <li><a href="#">Блог</a></li>
-            <li><a href="#">Скачать</a></li>
-        </ul>
+        <ul><?php echo $this->Theme->menu('main') ?></ul>
         </div>
         <input id="search" class="search" tooltip switch title="Введите ключевые слова для поиска и нажмите Enter" value="Найти на сайте">
     </header>

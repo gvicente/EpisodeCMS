@@ -2,6 +2,7 @@
 setup: false
 modules: 
   dev: 1.0.1
+  blog: 1.0.1
 title: EpisodeCMS
 version: 1.0.1
 description: EpisodeCMS official site
