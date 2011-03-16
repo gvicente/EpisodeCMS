@@ -114,9 +114,10 @@ class InstallController extends AppController {
                 $admin_controller = new AdminController();
                 $admin_controller->constructClasses();
                 $admin_controller->install('core', false, false);
-                foreach ($project['modules'] as $module => $version) {
-                    $admin_controller->install($module, false, false);
-                }
+                if(isset($project['modules']))
+                    foreach ($project['modules'] as $module => $version) {
+                        $admin_controller->install($module, false, false);
+                    }
                 
                 $this->user['User']['id'] = 0;
                 $this->data = $this->user;

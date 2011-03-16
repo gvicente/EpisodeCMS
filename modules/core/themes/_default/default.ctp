@@ -9,7 +9,7 @@
             <h1><?php echo $html->link(@$site_title, '/', array('target'=>'_blank')); ?></h1>
 			<div id="menu-main">
                 <ul>
-                    <li class="first"><?php echo $html->link(__('Control Panel', true), '/admin', array('title'=>__('Control Panel', true)))?></li>
+                    <li class="first"><?php echo $html->link(__('Home Page', true), '/', array('title'=>__('Home Page', true), 'target'=>'_blank'))?></li>
                     <?php echo $this->Theme->menu('admin') ?>
                 </ul>
 			</div>

@@ -8,26 +8,3 @@ menu:
     _title: Главное меню
     Главная:
       _link: /
-      _image: navigate/9.png
-    О сайте:
-      _link: /pages/about
-      _image: navigate/3.png
-    Повар недели:
-      _link: /users/best
-      _image: navigate/6.png
-    Блюдо недели:
-      _link: /resipes/best
-      _image: navigate/8.png
-    Добавить рецепт:
-      _link: /recipes/edit
-      _image: navigate/7.png
-  user:
-    _title: Меню пользователя
-  footer:
-    _title: Дополнительная информация
-    Правила:
-      _link: /pages/rules
-    Рекламодателям:
-      _link: /pages/advertisment
-    Партнерам:
-      _link: /pages/partners

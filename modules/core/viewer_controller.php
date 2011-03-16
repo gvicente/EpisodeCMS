@@ -16,6 +16,7 @@
 
 		function home() {
 			$this->set('title_for_layout', __('Welcome', true));
+            $this->render('/pages/home');
 		}
 
 		function view($model, $slug) {

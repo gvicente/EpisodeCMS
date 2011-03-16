@@ -44,8 +44,8 @@ class ThemeView extends View {
             foreach ($modules as $module => $config) {
                 if(file_exists(ROOT . $config['path'] . DS . 'themes' . DS . $this->theme))
                     $paths = array_merge(
-                        $paths,
-                        array(ROOT . $config['path'] . DS . 'themes' . DS . $this->theme . DS)
+                        array(ROOT . $config['path'] . DS . 'themes' . DS . $this->theme . DS),
+                        $paths
                     );
             }
         }
