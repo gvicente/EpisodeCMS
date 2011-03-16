@@ -52,6 +52,7 @@ models:
         +category: tree
         +tag: autocomplete
         parent: Page|tree
+    _view: [title, content]
     _browse:
         content:
             column: Content

@@ -9,6 +9,10 @@ class AppController extends Controller {
     var $ui     = "main";
 
     function __construct() {
+        $info = new ReflectionClass($this);
+        $this->module = basename(dirname($info->getFileName()));
+        $this->module = 'blog';
+
         $this->components = array('RequestHandler', 'Session', 'Event', 'Cookie');
         $this->helpers = array('Html', 'Form', 'Session', 'Javascript', 'Textile', 'Type', 'Filter', 'Theme');
         App::import('Core', 'l10n');
@@ -16,8 +20,6 @@ class AppController extends Controller {
 
         $this->view = 'Theme';
         parent::__construct();
-
-        $config = Configure::read('config');
         
         $ui = Configure::read('ui');
         
@@ -171,6 +173,55 @@ class AppController extends Controller {
                 $content = $this->viewVars[$id];
             $this->set($id, $content.$this->renderPartial($view, $data, $controller));
         }
+    }
+
+    function template() {
+        $this->autoRender = false;
+        $files = func_get_args();
+        App::import('View', $this->view);
+//        echo '<pre>';
+//        print_r($files);
+//        die;
+        $viewClassName = $this->view . 'View';
+        $View = new $viewClassName($this);
+        $paths = $View->_paths();
+
+        foreach ($paths as $path) {
+            foreach ($files as $file) {
+                if($file) {
+                    $full_path = $path . $file . $this->ext;
+                    if (file_exists($full_path)) {
+                        return parent::render('/'.$file, null, null, false);
+                        break;
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
+
+    function render($action = null, $layout = null, $file = null, $template_call = true) {
+        if ($template_call) {
+            $model = '';
+
+            if($this->name == 'Viewer')
+                $model = 'page';
+
+            if (isset($this->params['model']))
+                $model = $this->params['model'];
+            
+            $slug = '';
+            if (isset($this->params['slug']))
+                $slug = $this->params['slug'];
+
+            $result = $this->template( $slug ? $model . '-' . $slug : '', $this->action ? $model . '-' . $this->action : '', $model);
+            if($result)
+                return $result;
+            else
+                return parent::render($action, $layout, $file);
+        } else
+            return parent::render($action, $layout, $file);
     }
 
     function renderPartial($view, $data=array(), $class=false) {

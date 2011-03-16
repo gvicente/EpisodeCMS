@@ -6,9 +6,9 @@
 			$this->loadModel($model);
 			$this->set(compact('model'));
 			$data = $this->$model->find('all');
-			foreach($data as $id=>$entry) {
-				$this->Event->triggerEvent($model.'View', $data[$id]);
-			}
+//			foreach($data as $id=>$entry) {
+//				$this->Event->triggerEvent($model.'View', $data[$id]);
+//			}
 			$this->set(compact('data'));
 			$this->set('title_for_layout', __(Inflector::humanize(Inflector::tableize($model)), true));
 			$this->set('json', array('data'));
@@ -16,22 +16,27 @@
 
 		function home() {
 			$this->set('title_for_layout', __('Welcome', true));
-            $this->render('/pages/home');
 		}
 
 		function view($model, $slug) {
 			$this->loadModel($model);
 			$data['model'] = $model;
 			$data['entry'] = $this->$model->findBySlug($slug);
-            $this->Event->triggerEvent('ViewerView', $data['entry']);
-			$this->Event->triggerEvent($model.'View', $data['entry']);
+            $config = Configure::read('modules.'.$this->module.'.models');
+
+            if(isset($config[Inflector::humanize($model)]['_view']))
+                $visible = $config[Inflector::humanize($model)]['_view'];
+//            $this->Event->triggerEvent('ViewerView', $data['entry']);
+//			$this->Event->triggerEvent($model.'View', $data['entry']);
 
 			if(@$data['entry'][$model]['title'])
 				$this->set('title_for_layout', $data['entry'][$model]['title']);
 			else
 				$this->set('title_for_layout', Inflector::humanize($slug));
-
-			$this->set(compact('data'));
+			$this->set(compact('data', 'visible'));
+            foreach($data['entry'][$model] as $field=>$content) {
+                $this->set($field, $content);
+            }
 			return $data;
 		}
 

@@ -53,6 +53,7 @@ class ThemeView extends View {
         if (empty($this->__paths)) {
             $this->__paths = $paths;
         }
+        
         return $paths;
     }
 

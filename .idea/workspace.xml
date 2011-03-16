@@ -22,44 +22,7 @@
     <favorites_list name="episode" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="theme.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/core/views/theme.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="9" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="viewer_controller.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/core/viewer_controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="41" selection-start="551" selection-end="593" vertical-scroll-proportion="0.18149467">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.ctp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projects/empty/themes/default/viewer/home.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.ctp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projects/empty/themes/default/pages/home.ctp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -69,20 +32,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/modules/core/views/admin/choose-language.ctp" />
-        <option value="$PROJECT_DIR$/modules/core/themes/_default/style.css" />
-        <option value="$PROJECT_DIR$/modules/core/notifications_controller.php" />
-        <option value="$PROJECT_DIR$/modules/core/admin_controller.php" />
-        <option value="$PROJECT_DIR$/modules/core/install_controller.php" />
-        <option value="$PROJECT_DIR$/modules/core/themes/default/theme.yml" />
-        <option value="$PROJECT_DIR$/modules/core/themes/_default/default.ctp" />
-        <option value="$PROJECT_DIR$/projects/empty/project.yml" />
-        <option value="$PROJECT_DIR$/modules/core/views/viewer/home.ctp" />
-        <option value="$PROJECT_DIR$/modules/core/app_controller.php" />
-        <option value="$PROJECT_DIR$/modules/core/views/theme.php" />
-        <option value="$PROJECT_DIR$/projects/empty/themes/default/viewer/home.ctp" />
+        <option value="$PROJECT_DIR$/projects/empty/page-home.ctp" />
         <option value="$PROJECT_DIR$/projects/empty/themes/default/pages/home.ctp" />
+        <option value="$PROJECT_DIR$/projects/empty/theme/page.ctp" />
+        <option value="$PROJECT_DIR$/projects/empty/theme/page-home.ctp" />
+        <option value="$PROJECT_DIR$/projects/empty/project.yml" />
+        <option value="$PROJECT_DIR$/modules/core/views/theme.php" />
+        <option value="$PROJECT_DIR$/projects/empty/views/page-second.ctp" />
+        <option value="$PROJECT_DIR$/modules/core/views/viewer/index.ctp" />
+        <option value="$PROJECT_DIR$/projects/empty/views/page-home.ctp" />
+        <option value="$PROJECT_DIR$/modules/core/themes/default/style.css" />
+        <option value="$PROJECT_DIR$/modules/core/themes/default/content.css" />
+        <option value="$PROJECT_DIR$/modules/blog/module.yml" />
+        <option value="$PROJECT_DIR$/modules/core/admin_controller.php" />
+        <option value="$PROJECT_DIR$/modules/core/app_controller.php" />
         <option value="$PROJECT_DIR$/modules/core/viewer_controller.php" />
+        <option value="$PROJECT_DIR$/modules/core/views/viewer/view.ctp" />
       </list>
     </option>
   </component>
@@ -112,8 +77,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="Scope" />
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -182,45 +147,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="viewer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="episode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="episode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -278,6 +205,98 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="episode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="episode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viewer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="episode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="episode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="episode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="episode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="episode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="episode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -286,8 +305,28 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
+  <component name="PublishConfig">
+    <servers>
+      <server id="9320c7f2-4d55-4acc-b2b7-62e5713a5dd2">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="c94bb42c-1b21-435c-8579-dee855c06fe3">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+    </servers>
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/projects/empty/views" />
+      <recent name="$PROJECT_DIR$/projects/empty/theme" />
       <recent name="C:\projects\episode\projects\empty\themes\default\pages" />
     </key>
   </component>
@@ -336,14 +375,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="25" width="1680" height="1000" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5059423" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24969697" sideWeight="0.51990634" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.4804754" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24969697" sideWeight="0.47072598" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -389,108 +428,112 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/core/admin_controller.php">
+    <entry file="file://$PROJECT_DIR$/modules/core/views/viewer/home.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="5" selection-start="326" selection-end="327" vertical-scroll-proportion="0.4335155" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/core/themes/_default/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1184" column="16" selection-start="17127" selection-end="17127" vertical-scroll-proportion="0.90925264" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/core/views/admin/choose-language.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="9" selection-start="9" selection-end="24" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/core/notifications_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="26" selection-start="150" selection-end="150" vertical-scroll-proportion="0.03024911">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projects/EpisodeCMS/project.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="648" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/core/install_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="21" selection-start="3950" selection-end="4101" vertical-scroll-proportion="0.42348754">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/core/themes/default/theme.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="14" selection-start="155" selection-end="155" vertical-scroll-proportion="0.27224198">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/core/module.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="0" selection-start="3764" selection-end="3764" vertical-scroll-proportion="0.9380692">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/core/themes/_default/default.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="144" selection-start="502" selection-end="502" vertical-scroll-proportion="0.3575526">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projects/empty/project.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="3" selection-start="3" selection-end="3" vertical-scroll-proportion="0.0">
+        <state line="1" column="12" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/core/views/viewer/home.ctp">
+    <entry file="file://$PROJECT_DIR$/modules/core/notifications_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="5" column="26" selection-start="150" selection-end="150" vertical-scroll-proportion="0.09079903">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projects/empty/themes/default/viewer/home.ctp">
+    <entry file="file://$PROJECT_DIR$/vendors/cake/libs/controller/controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projects/empty/themes/default/pages/home.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/core/app_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="29" selection-start="2386" selection-end="2386" vertical-scroll-proportion="0.21174377">
+        <state line="865" column="13" selection-start="23274" selection-end="23274" vertical-scroll-proportion="0.3329298">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/core/views/theme.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="9" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0">
+        <state line="44" column="91" selection-start="1396" selection-end="1396" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/empty/views/page.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="8" selection-start="8" selection-end="8" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/empty/views/page-home.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="18" selection-start="38" selection-end="38" vertical-scroll-proportion="0.018159807">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/empty/views/page-second.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="49" selection-start="71" selection-end="71" vertical-scroll-proportion="0.018159807">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/core/views/viewer/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="39" selection-start="322" selection-end="322" vertical-scroll-proportion="0.11406844">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/core/themes/default/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/core/themes/default/content.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="8" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/blog/module.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="26" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/core/admin_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="176" column="68" selection-start="8666" selection-end="8726" vertical-scroll-proportion="0.42435426">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/core/app_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="31" selection-start="332" selection-end="332" vertical-scroll-proportion="0.23607749">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/core/viewer_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="41" selection-start="551" selection-end="593" vertical-scroll-proportion="0.18149467">
+        <state line="27" column="73" selection-start="924" selection-end="924" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/core/views/viewer/view.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="38" selection-start="449" selection-end="449" vertical-scroll-proportion="0.16832918">
           <folding />
         </state>
       </provider>

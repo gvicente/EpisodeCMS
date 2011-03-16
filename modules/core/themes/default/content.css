@@ -1,0 +1,12 @@
+a {
+    text-decoration: none;
+    color: #369;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 200%;
+}
