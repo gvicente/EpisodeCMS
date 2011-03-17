@@ -11,7 +11,6 @@ class AppController extends Controller {
     function __construct() {
         $info = new ReflectionClass($this);
         $this->module = basename(dirname($info->getFileName()));
-        $this->module = 'blog';
 
         $this->components = array('RequestHandler', 'Session', 'Event', 'Cookie');
         $this->helpers = array('Html', 'Form', 'Session', 'Javascript', 'Textile', 'Type', 'Filter', 'Theme');

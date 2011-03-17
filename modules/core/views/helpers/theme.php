@@ -90,4 +90,9 @@ class ThemeHelper extends AppHelper {
         }
         return $output;
     }
+
+    function widget($name) {
+        $app = new AppController();
+        return $app->renderPartial('../'.$name);
+    }
 } 

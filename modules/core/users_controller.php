@@ -17,7 +17,8 @@
 		function logout() {
 			$this->Auth->logout();
             $this->Cookie->delete('Auth.User');
-			$this->redirect($this->Auth->logoutRedirect);
+//			$this->redirect($this->Auth->logoutRedirect);
+            $this->redirect($this->referer());
 		}
 
 		function login() {
@@ -48,7 +49,8 @@
 						$this->Cookie->delete('Auth.User');
 					}
                     
-					$this->redirect($this->Auth->redirect());
+//					$this->redirect($this->Auth->redirect());
+                    $this->redirect($this->referer());
 				} else {
 					$this->data['User']['password'] = '';
 				}

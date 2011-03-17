@@ -23,7 +23,7 @@ class ThemeView extends View {
         }
 
         $paths = $this->_paths(Inflector::underscore($this->plugin));
-        $file = $subDir . $name;
+        $file = 'layout-' . $subDir . $name;
 
         $exts = array($this->ext, '.ctp', '.html');
         foreach ($exts as $ext) {
@@ -102,6 +102,10 @@ class ThemeView extends View {
         }
 
         foreach ($modules as $module => $config) {
+            if ($this->theme == 'default' && file_exists(ROOT . $config['path'] . DS . 'views' . DS . 'style.css')) {
+                $styles[] = $config['path'] . '/views/style';
+                break;
+            }
             if (file_exists(ROOT . $config['path'] . DS . 'themes' . DS . $this->theme . DS . 'style.css')) {
                 $styles[] = $config['path'] . '/themes/' . $this->theme . '/style';
                 break;

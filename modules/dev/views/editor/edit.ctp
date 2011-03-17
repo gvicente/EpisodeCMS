@@ -31,7 +31,7 @@
         </label>
     </div>
     <div class="menu-selector">
-        <? /*
+        <?php /*
         <div class="select">
             <ul>
                 <li class="title <?php if(!isset($current['module'])):?>filter-active<?php endif ?>">

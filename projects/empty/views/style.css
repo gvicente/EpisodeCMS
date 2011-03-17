@@ -1,0 +1,15 @@
+.login {
+    padding: 20px;
+    background: #aaa;
+    width: 200px;
+    float: left;
+}
+
+.login input {
+    padding: 4px;
+}
+
+#content {
+    padding: 20px;
+    overflow: hidden;
+}
