@@ -1,0 +1,18 @@
+intro:
+  en:
+    title: Newsletter
+menu:
+  admin:
+    Content:
+      Newsletter:
+        _link:
+          controller: admin
+          action: browse
+          module: newsletter
+          model: subscriber
+models:
+  Subscriber:
+    _default:
+    name: string
+    email: string
+    verfied: bool

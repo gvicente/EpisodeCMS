@@ -39,7 +39,7 @@ models:
         column: Content
         content: |
           {content|teaser}
-        thumb: photo
-        title: string*
-        slug: string*
-        content: html*
+    thumb: photo
+    title: string*
+    slug: string*
+    content: html*
