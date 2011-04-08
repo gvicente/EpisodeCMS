@@ -9,9 +9,6 @@ class AppController extends Controller {
     var $ui     = "main";
 
     function __construct() {
-        $info = new ReflectionClass($this);
-        $this->module = basename(dirname($info->getFileName()));
-
         $this->components = array('RequestHandler', 'Session', 'Event', 'Cookie');
         $this->helpers = array('Html', 'Form', 'Session', 'Javascript', 'Textile', 'Type', 'Filter', 'Theme');
         App::import('Core', 'l10n');
@@ -51,7 +48,7 @@ class AppController extends Controller {
         if ($this->name != 'Install') {
             $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
             $this->Auth->loginRedirect = array('controller' => 'admin', 'action' => 'index');
-            $this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
+            $this->Auth->logoutRedirect = '/';
             $this->Auth->fields = array('username' => 'username', 'password' => 'password');
 
             if ($this->Auth->user() || ($this->name != 'Admin' && $this->name != 'Notifications')) {
@@ -178,16 +175,13 @@ class AppController extends Controller {
         $this->autoRender = false;
         $files = func_get_args();
         App::import('View', $this->view);
-//        echo '<pre>';
-//        print_r($files);
-//        die;
         $viewClassName = $this->view . 'View';
         $View = new $viewClassName($this);
         $paths = $View->_paths();
 
         foreach ($paths as $path) {
             foreach ($files as $file) {
-                if($file) {
+                if ($file) {
                     $full_path = $path . $file . $this->ext;
                     if (file_exists($full_path)) {
                         return parent::render('/'.$file, null, null, false);
@@ -238,9 +232,16 @@ class AppController extends Controller {
             $view_path = '';
         }
 
+        $widget_view = 'widgets/'.str_replace('/', '.', $view);
+
         foreach ($paths as $path) {
+
+            $full_widget_path = $path . $view_path . DS . $widget_view . $class->ext;
             $full_path = $path . $view_path . DS . $view . $class->ext;
-            if (file_exists($full_path)) {
+
+            if (file_exists($full_widget_path)) {
+                return $View->_render($full_widget_path, $data);
+            } elseif (file_exists($full_path)) {
                 return $View->_render($full_path, $data);
             }
         }

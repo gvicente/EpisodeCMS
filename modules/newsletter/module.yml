@@ -10,6 +10,10 @@ menu:
           action: browse
           module: newsletter
           model: subscriber
+routes:
+  /newsletter:
+    controller: newsletter
+    action: subscribe
 models:
   Subscriber:
     _default:

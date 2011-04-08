@@ -5,6 +5,7 @@ modules:
   dev: 1.0.1
   portfolio: 1.0.1
   newsletter: 
+  comments: 1.0.1
 title: empty
 description: empty project
 version: 0

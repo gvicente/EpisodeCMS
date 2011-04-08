@@ -179,6 +179,12 @@ menu:
       _link:
           controller: admin
           action: overview
+      Blocks|Static text blocks:
+        _link:
+          controller: admin
+          action: browse
+          module: core
+          model: Block
       Categories|Logical separation:
         _link:
           controller: admin
@@ -203,6 +209,10 @@ menu:
         module: core
         model: User
 models:
+  Block:
+    title: string*
+    slug: string*
+    content: html*
   Page:
     _default:
     _relations:

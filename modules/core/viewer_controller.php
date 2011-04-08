@@ -1,14 +1,19 @@
 <?php
-	class ViewerController extends AppController {
+    class ViewerController extends AppController {
 		var $uses = array();
 
 		function index($model) {
 			$this->loadModel($model);
 			$this->set(compact('model'));
 			$data = $this->$model->find('all');
-//			foreach($data as $id=>$entry) {
-//				$this->Event->triggerEvent($model.'View', $data[$id]);
-//			}
+			foreach($data as $id=>$entry) {
+                foreach($entry[$model] as $field=>$value) {
+                    preg_match_all('/(.*)<!-- pagebreak -->/', $value, $matches);
+                    if($matches[0])
+                        $data[$id][$model][$field] = $matches[0][0];
+                }
+			}
+
 			$this->set(compact('data'));
 			$this->set('title_for_layout', __(Inflector::humanize(Inflector::tableize($model)), true));
 			$this->set('json', array('data'));
@@ -22,10 +27,18 @@
 			$this->loadModel($model);
 			$data['model'] = $model;
 			$data['entry'] = $this->$model->findBySlug($slug);
-            $config = Configure::read('modules.'.$this->module.'.models');
+            $modules = Configure::read('modules');
+            $modelName = Inflector::humanize($model);
+            foreach ($modules as $module) {
+                if(isset($module['models'][$modelName])) {
+                    $config = $module['models'][$modelName];
+                    break;
+                }
+            }
 
-            if(isset($config[Inflector::humanize($model)]['_view']))
-                $visible = $config[Inflector::humanize($model)]['_view'];
+            if(isset($config['_view']))
+                $visible = $config['_view'];
+
 //            $this->Event->triggerEvent('ViewerView', $data['entry']);
 //			$this->Event->triggerEvent($model.'View', $data['entry']);
 

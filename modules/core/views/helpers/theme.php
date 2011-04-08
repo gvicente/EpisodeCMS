@@ -42,13 +42,13 @@ class ThemeHelper extends AppHelper {
         return '<div id="'.$widget_id.'">'.$widgets.'</div>';
     }
 
-    function menu($id = null) {
+    function menu($id = null, $params = array()) {
         $menu_items = Configure::read('menus.'.$id);
         $output = '';
 
         if ($menu_items) {
             unset($menu_items['_title']);
-            $output = $this->render_menu($menu_items);
+            $output = $this->render_menu($menu_items, $params);
         }
         
         return $output;
@@ -91,8 +91,8 @@ class ThemeHelper extends AppHelper {
         return $output;
     }
 
-    function widget($name) {
+    function widget($name, $data=array()) {
         $app = new AppController();
-        return $app->renderPartial('../'.$name);
+        return $app->renderPartial('../'.$name, $data);
     }
 } 
