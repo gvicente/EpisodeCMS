@@ -1,11 +1,14 @@
 ---
+debug: 4
 setup: false
 modules: 
   blog: 1.0.1
   dev: 1.0.1
   portfolio: 1.0.1
-  newsletter: 
   comments: 1.0.1
+  resources: 1.0.1
+  gallery: 1.0.1
+  newsletter: 1.0.1
 title: empty
 description: empty project
 version: 0

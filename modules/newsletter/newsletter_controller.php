@@ -1,10 +1,15 @@
 <?php
 class NewsletterController extends AppController {
-    function newsletter() {
-
-    }
+    var $uses = array();
 
     function subscribe() {
-        die('ok');
+        $this->loadModel('Subscriber');
+        $this->autoRender = false;
+
+        if ($this->data) {
+            $this->Subscriber->save($this->data);
+        }
+
+        $this->redirect($this->referer());
     }
 }

@@ -9,7 +9,7 @@ if ($config['setup']) {
     $x = explode('/', $_GET['url']);
     $x = Inflector::humanize($x[0]);
     if (!in_array($x, $controllers)) {
-        Router::connect('/:model/:slug', array('controller' => 'viewer', 'action' => 'view'), array('pass' => array('model', 'slug'), 'model' => '[^/]+', 'slug' => '[^/]+'));
+        //Router::connect('/:model/:slug', array('controller' => 'viewer', 'action' => 'view'), array('pass' => array('model', 'slug'), 'model' => '[^/]+', 'slug' => '[^/]+'));
     }
 
     Router::parseExtensions('json', 'rss', 'xml');

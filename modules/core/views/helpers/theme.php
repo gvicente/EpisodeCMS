@@ -91,8 +91,19 @@ class ThemeHelper extends AppHelper {
         return $output;
     }
 
-    function widget($name, $data=array()) {
+    function widget($name, $params=array()) {
         $app = new AppController();
-        return $app->renderPartial('../'.$name, $data);
+        $app->constructClasses();
+
+        $widget_name = 'Widget'.Inflector::classify(str_replace('/', '_', $name));
+        if ($data = $app->Event->triggerEvent($widget_name, $params))
+            $data = end($data['Global'][$widget_name]);
+
+        return $app->renderPartial('../'.$name, compact('data'));
+    }
+
+    function block($slug) {
+        $widget = new WidgetsController();
+        return $widget->_showBlock($slug);
     }
 } 

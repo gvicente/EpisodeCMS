@@ -51,10 +51,10 @@
                     $this->redirect($this->referer());
 				} else {
 					$this->data['User']['password'] = '';
+                    $this->redirect($this->referer());
 				}
 			} else {
 				$this->Auth->login($this->Cookie->read('Auth.User'));
 			}
-            $this->redirect($this->referer());
 		}
 	}

@@ -1,0 +1,26 @@
+intro:
+  version: 1.0.1
+  en:
+    title: Resources
+    description: Resources management system
+    authors:
+      - Aleksey Razbakov <razbakov.aleksey@gmail.com>
+  ru:
+    title: Ссылки
+    description: Система управления ссылками
+    authors:
+      - Алексей Разбаков <razbakov.aleksey@gmail.com>
+content:
+menu:
+  admin:
+    Content:
+      Resources|Site links:
+        _link:
+          controller:admin
+          action:browse
+          module:resources
+models:
+  Resource:
+    _default:
+    title: string*
+    link: string*

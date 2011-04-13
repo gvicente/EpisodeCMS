@@ -1,4 +1,5 @@
 intro:
+  version: 1.0.1
   en:
     title: Newsletter
 menu:
@@ -9,7 +10,7 @@ menu:
           controller: admin
           action: browse
           module: newsletter
-          model: subscriber
+          model: Subscriber
 routes:
   /newsletter:
     controller: newsletter
