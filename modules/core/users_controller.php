@@ -48,7 +48,7 @@
 						$this->Cookie->delete('Auth.User');
 					}
 
-                    $this->redirect($this->referer());
+                    $this->redirect('/');
 				} else {
 					$this->data['User']['password'] = '';
                     $this->redirect($this->referer());

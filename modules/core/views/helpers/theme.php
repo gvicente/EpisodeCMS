@@ -37,7 +37,7 @@ class ThemeHelper extends AppHelper {
 
         $widget_id = $id;
         if (!$widget_id)
-           $widget_id =  'widet-'.$widget_name;
+           $widget_id =  'widget-'.$widget_name;
         
         return '<div id="'.$widget_id.'">'.$widgets.'</div>';
     }
