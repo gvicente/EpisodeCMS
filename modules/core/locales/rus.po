@@ -86,7 +86,7 @@ msgid "Control Panel"
 msgstr "Панель управления"
 
 msgid "Dashboard"
-msgstr "Консоль"
+msgstr "Настройки"
 
 msgid "Update"
 msgstr "Обновить"
