@@ -20,14 +20,14 @@ options:
   maintance: bool
 ui:
   install:
-    _theme: _install
+    _theme: minimal-install
     _title: Install Wizard
   login:
     _ui: admin
-    _title: Autorization
+    _title: Authorization
   admin:
     _title: Control Panel
-    _theme: _default
+    _theme: gray-stone
     _js:
       -jquery
       -jquery-ui/jquery-ui
