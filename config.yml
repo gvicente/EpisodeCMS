@@ -1,0 +1,7 @@
+---
+project: empty
+database: 
+  host: localhost
+  database: site
+  login: root
+  password: 

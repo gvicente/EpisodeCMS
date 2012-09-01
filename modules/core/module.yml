@@ -27,7 +27,7 @@ ui:
     _title: Authorization
   admin:
     _title: Control Panel
-    _theme: gray-stone
+    _theme: gray-apple
     _js:
       -jquery
       -jquery-ui/jquery-ui

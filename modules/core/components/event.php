@@ -105,7 +105,7 @@ class EventComponent extends Object {
 
 		if(@$controllers)
 		foreach ($controllers as $controller) {
-			if (($scope == $controller || low($scope) == 'global')) { // must be in scope, or global
+			if (($scope == $controller || lowercase($scope) == 'global')) { // must be in scope, or global
 				$controllerClass = $controller.'Controller';
 				if (!class_exists($controllerClass)) { // app import doesn't work..
 					App::import('Controller', $controller);

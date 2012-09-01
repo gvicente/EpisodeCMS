@@ -14,7 +14,7 @@ class AppController extends Controller {
         App::import('Core', 'l10n');
         $this->L10n = new L10n();
 
-        $this->view = 'Theme';
+        $this->view = 'Enity';
         parent::__construct();
         
         $ui = Configure::read('ui');

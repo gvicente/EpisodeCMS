@@ -1,6 +1,10 @@
 <?php
 App::import('vendor', 'spyc');
 
+function lowercase($string) {
+	return strtolower($string);
+}
+
 function array_extend($a, $b) {
     foreach ($b as $k => $v) {
         if (is_array($v)) {
@@ -31,6 +35,18 @@ function save($file, $array) {
     $string = Spyc::YAMLDump($array);
     file_put_contents($file . '.yml', $string);
     chmod($file. '.yml', 0777);
+}
+
+function __generateFolders($folderName) {
+    $directory = '';
+    $parts = explode(DS, $folderName);
+    foreach($parts as $part) {
+        $directory .= $part.DS;
+        if (!is_dir($directory)) {
+            file_exists($directory) || mkdir($directory, 0777, true);
+        }
+    }
+    return $directory;
 }
 
 function __controllerize($file) {

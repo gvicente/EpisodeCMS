@@ -9,6 +9,7 @@ define('APP_PATH', ROOT . DS . APP_DIR . DS);
 define('CORE_PATH', CAKE_CORE_INCLUDE_PATH);
 define('CONFIGS', CAKE_CORE_INCLUDE_PATH . 'cake' . DS . 'config' . DS);
 define('TEMP', ROOT . DS . 'tmp' . DS);
+define('ENITY_CACHE', TEMP . 'cache' . DS . 'enity');
 
 foreach (array(
     TEMP,
@@ -16,6 +17,7 @@ foreach (array(
     TEMP . 'cache' . DS . 'persistent',
     TEMP . 'cache' . DS . 'models',
     TEMP . 'cache' . DS . 'views',
+    ENITY_CACHE,
     TEMP . 'cache' . DS . 'translations',
     ROOT . DS . 'public'
 ) as $folder) {

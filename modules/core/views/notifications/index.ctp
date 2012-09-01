@@ -47,17 +47,6 @@ $(function(){
     });
 });
 </script>
-<div id="center">
-	<h2><?php __('Dashboard') ?></h2>
-    <div id="wall">
-    <div class="todo" default="Do you want to do something? Click here and start typing...">
-        <div class="mark"></div>
-        <div class="text" contenteditable="true"></div>
-        <div class="actions">
-            <a href="#">send</a>
-        </div>
-    </div>
-</div>
 	<?php if(empty($data)): ?>
 	    <p><?php __('There are no new notifications') ?></p>
 	<?php else: foreach($data as $object=>$entries):?>

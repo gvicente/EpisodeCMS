@@ -695,7 +695,7 @@ class View extends Object {
  * @access protected
  */
 	function _render($___viewFn, $___dataForView, $loadHelpers = true, $cached = false) {
-		$loadedHelpers = array();
+        $loadedHelpers = array();
 
 		if ($this->helpers != false && $loadHelpers === true) {
 			$loadedHelpers = $this->_loadHelpers($loadedHelpers, $this->helpers);
